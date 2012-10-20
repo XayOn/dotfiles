@@ -1,0 +1,3 @@
+echo '~/.jabashit/bashrc' >> ~/.bashrc
+echo '~/.zshit/confs/zshrc' >> ~/.bashrc
+echo 'source-file ~/.tmuxshit/confs/tmux.conf' >> ~/.tmux.conf
