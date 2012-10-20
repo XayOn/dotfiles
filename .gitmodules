@@ -10,3 +10,6 @@
 [submodule "mc-solarized-skin"]
 	path = othershit/src/mc-solarized-skin
 	url = https://github.com/nkulikov/mc-solarized-skin
+[submodule "tmuxshit"]
+	path = tmuxshit
+	url = http://github.com/XayOn/tmuxshit
