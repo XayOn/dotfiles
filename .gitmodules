@@ -8,8 +8,8 @@
 	path = zshit
 	url = http://github.com/XayOn/zshit
 [submodule "othershit/mutt-colors-solarized"]
-	path = othershit/mutt-colors-solarized
+	path = othershit/src/mutt-colors-solarized
 	url = https://github.com/altercation/mutt-colors-solarized
 [submodule "mc-solarized-skin"]
-	path = mc-solarized-skin
+	path = othershit/src/mc-solarized-skin
 	url = https://github.com/nkulikov/mc-solarized-skin
