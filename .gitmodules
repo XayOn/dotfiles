@@ -1,0 +1,15 @@
+[submodule "jabashit"]
+	path = jabashit
+	url = http://github.com/XayOn/jabashit/
+[submodule "tmuxshit"]
+	path = tmuxshit
+	url = http://github.com/XayOn/tmuxshit
+[submodule "zshit"]
+	path = zshit
+	url = http://github.com/XayOn/zshit
+[submodule "othershit/mutt-colors-solarized"]
+	path = othershit/mutt-colors-solarized
+	url = https://github.com/altercation/mutt-colors-solarized
+[submodule "mc-solarized-skin"]
+	path = mc-solarized-skin
+	url = https://github.com/nkulikov/mc-solarized-skin
