@@ -40,6 +40,12 @@ repo as submodules.
 Installation
 ============
 
+First, you have to download every submodules (recursive way):
+
+::
+    git submodule foreach git submodule init ;
+    git submodule update --recursive
+
 If you want it to keep your conf files as they are, allowing you to manually 
 include this confs in each of them execute:
 
@@ -52,3 +58,14 @@ If you want it to "just work", enabling everything by default:
 ::
 
     make force
+
+
+If you're too lazy, you always could do:
+
+::
+
+    wget --no-check-certificate \
+    https://github.com/XayOn/consoleshit/raw/master/installer.sh -O \
+    - | sh
+
+
