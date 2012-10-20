@@ -1,3 +1,3 @@
-echo '~/.jabashit/bashrc' >> ~/.bashrc
-echo '~/.zshit/confs/zshrc' >> ~/.bashrc
+echo 'source ~/.jabashit/bashrc' >> ~/.bashrc
+echo 'source ~/.zshit/confs/zshrc' >> ~/.zshrc
 echo 'source-file ~/.tmuxshit/confs/tmux.conf' >> ~/.tmux.conf
