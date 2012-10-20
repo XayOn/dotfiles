@@ -1,9 +1,6 @@
 [submodule "jabashit"]
 	path = jabashit
 	url = http://github.com/XayOn/jabashit/
-[submodule "tmuxshit"]
-	path = tmuxshit
-	url = http://github.com/XayOn/tmuxshit
 [submodule "zshit"]
 	path = zshit
 	url = http://github.com/XayOn/zshit
