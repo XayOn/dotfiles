@@ -13,3 +13,12 @@
 [submodule "mc-solarized-skin"]
 	path = othershit/src/mc-solarized-skin
 	url = https://github.com/nkulikov/mc-solarized-skin
+[submodule "othershit/srcmc-solarized-skin"]
+	path = othershit/srcmc-solarized-skin
+	url = https://github.com/nkulikov/mc-solarized-skin
+[submodule "othershit/src/mutt-colors-solarized"]
+	path = othershit/src/mutt-colors-solarized
+	url = https://github.com/altercation/mutt-colors-solarized
+[submodule "othershit/src/mc-solarized-skin"]
+	path = othershit/src/mc-solarized-skin
+	url = https://github.com/nkulikov/mc-solarized-skin
