@@ -43,6 +43,9 @@ Installation
 First, you have to download every submodules (recursive way):
 
 ::
+
+    git submodule init;
+    git submodule update;
     git submodule foreach git submodule init ;
     git submodule update --recursive
 
@@ -65,7 +68,7 @@ If you're too lazy, you always could do:
 ::
 
     wget --no-check-certificate \
-    https://github.com/XayOn/consoleshit/raw/master/installer.sh -O \
+    https://github.com/XayOn/consoleshit/raw/master/install.sh -O \
     - | sh
 
 
