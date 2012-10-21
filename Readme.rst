@@ -8,7 +8,7 @@ It helps mantaining the consistency of styles in your terminal (uses
 powerline and solarized as main styles) and splits it up in different 
 directories.
 
-![Nice result](https://github.com/XayOn/consoleshit/consoleshit.png)
+.. image:: https://github.com/XayOn/consoleshit/consoleshit.png
 
 tmuxshit:
  - Configuration for tmux including:
