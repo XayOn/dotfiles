@@ -8,6 +8,8 @@ It helps mantaining the consistency of styles in your terminal (uses
 powerline and solarized as main styles) and splits it up in different 
 directories.
 
+.. image:: https://raw.github.com/XayOn/consoleshit/master/consoleshit.png
+
 tmuxshit:
  - Configuration for tmux including:
    Tmux-powerline
@@ -71,4 +73,6 @@ If you're too lazy, you always could do:
     https://github.com/XayOn/consoleshit/raw/master/install.sh -O \
     - | sh
 
+
+Here you have a consoleshit installation tutorial with a demo: http://www.youtube.com/watch?v=FEK1hPHtmw8
 
