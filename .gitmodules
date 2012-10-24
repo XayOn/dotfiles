@@ -16,3 +16,6 @@
 [submodule "othershit/src/irssi-colors-solarized"]
 	path = othershit/src/irssi-colors-solarized
 	url = https://github.com/huyz/irssi-colors-solarized
+[submodule "othershit/src/ls--"]
+	path = othershit/src/ls--
+	url = https://github.com/trapd00r/ls--
