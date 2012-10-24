@@ -36,20 +36,20 @@ Othershit
 ls++
 +++++++
 
-For some reason ls++ install is asking for root permissions, till I firgure 
-it out, I leave it outside default installation, if you want to install it, 
-just execute:
-
-::
-
-    make -C consoleshit ls--
-
 To use ls++ by default instead of ls, write this down on your .bashrc or 
 your .zshrc:
 
 ::
 
     alias ls=ls++
+
+
+For that, you have to install Term::ExtendedColor, I recomend installing it 
+systemwide:
+
+::
+
+    su -c "cpan Term::ExtendedColor"
 
 
 Notes
