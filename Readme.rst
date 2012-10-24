@@ -28,8 +28,27 @@ Zshit:
 Othershit
  - Interesting configuration for other tools, right now it contains mutt and 
    mc's solarized themes.
+ - CW color wrappers from fakehalo
+ - ls++ from trapd00r
+   - This requires perl module Term::ExtendedColor, so I'm not replacing ls 
+     for ls++ by default
 
-Note that most of the work here is not mine, I just made it easy to install.
+ls++
++++++++
+
+To use ls++ by default instead of ls, write this down on your .bashrc or 
+your .zshrc:
+
+::
+
+    alias ls=ls++
+
+
+Notes
+========
+
+Most of the work here is not mine, I just made it easy to install and put it 
+all togheter.
 Novice users probably lose a lot of interest in the console because its 
 default "ugliness" and/or difficulty to install themes, this makes it all 
 easier, getting the nicest themes and works available out there for bash.
@@ -74,5 +93,6 @@ If you're too lazy, you always could do:
     - | sh
 
 
-Here you have a consoleshit installation tutorial with a demo: http://www.youtube.com/watch?v=FEK1hPHtmw8
+Here you have a consoleshit installation tutorial with a demo: 
+http://www.youtube.com/watch?v=FEK1hPHtmw8
 

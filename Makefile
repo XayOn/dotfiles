@@ -3,8 +3,9 @@ all: conf
 clean:
 	rm -rf ~/.jabashit ~/.zshit ~/.tmuxshit
 
-conf:
+conf: clean
 	@for i in */ ; do make -C $$i config; done
 
 force: conf
 	@bash .force_confs
+	@make -C othershit force
