@@ -8,8 +8,6 @@ config:
 	@cp src/confs/zshrc ~/.consoleshit/
 	@cp src/confs/bashrc ~/.consoleshit/
 	@echo "Now source ~/.consoleshit/zshrc or ~/.consoleshit/bashrc on your .zshrc or your .bashrc"
-
-ls--:
 	@bash install_ls++.sh
 force:
 	@echo "source ~/.consoleshit/zshrc" >> ~/.zshrc

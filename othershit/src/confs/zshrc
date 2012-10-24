@@ -1,1 +1,1 @@
-export PATH="$HOME/.cw/def:$PATH:/root/.perl5/bin/"
+export PATH="$HOME/.cw/def:$PATH:$HOME/.perl5/bin/"
