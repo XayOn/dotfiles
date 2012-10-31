@@ -10,6 +10,10 @@ directories.
 
 .. image:: https://raw.github.com/XayOn/consoleshit/master/consoleshit.png
 
+
+This uses stuff that is based on lokaltog's patched fonts for powerline, make sure to read this before and patch your font: https://github.com/Lokaltog/vim-powerline
+
+
 tmuxshit:
  - Configuration for tmux including:
    Tmux-powerline
