@@ -1,7 +1,0 @@
-#!/cw
-path /etc
-random cyan:green:purple
-base random
-match random+:random .
-regex none:random& [ 	]
-
