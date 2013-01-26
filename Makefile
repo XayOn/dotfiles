@@ -8,6 +8,7 @@ conf: clean
 
 deps:
 	make -C deps/
+	cd ..
 
 force: conf
 	@bash .force_confs
