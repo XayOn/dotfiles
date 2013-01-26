@@ -1,4 +1,2 @@
-all:
-	sh install
 config:
-	@echo nothing to do 
+	sh install

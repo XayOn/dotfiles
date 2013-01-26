@@ -6,4 +6,5 @@
 	make install
 	cp ls++.conf ~/.ls++.conf
 	cd ..
+    mkdir ~/.consoleshit
 	sh get_xresources_solarized.sh
