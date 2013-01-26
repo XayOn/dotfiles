@@ -11,4 +11,3 @@ deps:
 
 force: conf
 	@bash .force_confs
-	@make -C lifestyleshit  force # Force this motherfucking lifestyle
