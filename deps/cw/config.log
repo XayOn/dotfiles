@@ -1,0 +1,52 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:534: checking for gcc
+configure:647: checking whether the C compiler (gcc  ) works
+configure:663: gcc -o conftest    conftest.c  1>&5
+configure:689: checking whether the C compiler (gcc  ) is a cross-compiler
+configure:694: checking whether we are using GNU C
+configure:722: checking whether gcc accepts -g
+configure:784: checking for a BSD compatible install
+configure:837: checking whether make sets ${MAKE}
+configure:864: checking for -pedantic (gcc) compiler flag
+configure:875: gcc -c -pedantic  conftest.c 1>&5
+configure:886: checking for -Wall (gcc) compiler flag
+configure:897: gcc -c -pedantic -Wall  conftest.c 1>&5
+configure:910: checking how to run the C preprocessor
+configure:990: checking for ANSI C header files
+configure:1094: checking for openpty in -lutil
+configure:1143: checking for /dev/ptmx
+configure:1171: checking for getpt
+configure:1171: checking for isatty
+configure:1171: checking for isxdigit
+configure:1171: checking for openpty
+configure:1171: checking for putenv
+configure:1171: checking for regcomp
+configure:1171: checking for setenv
+configure:1171: checking for setproctitle
+configure:1171: checking for setsid
+configure:1171: checking for sigaction
+configure:1171: checking for sscanf
+configure:1171: checking for uname
+configure:1171: checking for unsetenv
+configure:1171: checking for vsnprintf
+configure:1171: checking for waitpid
+configure:1227: checking for ctype.h
+configure:1227: checking for fcntl.h
+configure:1227: checking for libgen.h
+configure:1227: checking for libutil.h
+configure:1227: checking for pty.h
+configure:1227: checking for regex.h
+configure:1227: checking for signal.h
+configure:1227: checking for string.h
+configure:1227: checking for strings.h
+configure:1227: checking for stropts.h
+configure:1227: checking for unix.h
+configure:1227: checking for util.h
+configure:1227: checking for sys/ioctl.h
+configure:1227: checking for sys/stat.h
+configure:1227: checking for sys/time.h
+configure:1227: checking for sys/types.h
+configure:1227: checking for sys/utsname.h
+configure:1227: checking for sys/wait.h

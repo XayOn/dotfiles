@@ -19,3 +19,6 @@
 [submodule "othershit/src/ls--"]
 	path = othershit/src/ls--
 	url = https://github.com/trapd00r/ls--
+[submodule "lifestyleshit/src/solarized"]
+	path = lifestyleshit/src/solarized
+	url = http://github.com/altercation/solarized

@@ -7,5 +7,3 @@ git submodule update
 git submodule foreach git submodule init ;
 git submodule update --recursive
 make force
-cd
-
