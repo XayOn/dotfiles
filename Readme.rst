@@ -13,7 +13,6 @@ directories.
 
 This uses stuff that is based on lokaltog's patched fonts for powerline, make sure to read this before and patch your font: https://github.com/Lokaltog/vim-powerline
 
-
 tmuxshit:
  - Configuration for tmux including:
    Tmux-powerline
@@ -39,8 +38,8 @@ Othershit
 Pimshit
  - Lots of configurations for multiple apps. Have a look at its own page, but basically mutt, calcurse, weechat and so on will come with even wizards!
 
-Tmuxshit
- - Handy stuff for tmux, solarized, powerline...
+Vimshit
+ - My vim configuration files
 
 ls++
 +++++++
