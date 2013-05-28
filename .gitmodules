@@ -25,3 +25,6 @@
 [submodule "PIMShit"]
 	path = PIMShit
 	url = http://github.com/XayOn/PIMShit
+[submodule "vimshit"]
+	path = vimshit
+	url = https://github.com/XayOn/vimshit
