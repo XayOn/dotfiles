@@ -22,3 +22,6 @@
 [submodule "lifestyleshit/src/solarized"]
 	path = lifestyleshit/src/solarized
 	url = http://github.com/altercation/solarized
+[submodule "PIMShit"]
+	path = PIMShit
+	url = http://github.com/XayOn/PIMShit
