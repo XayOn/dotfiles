@@ -1,7 +1,7 @@
 Prettier terminal
 ==================
 
-This is an organished set of configurations for bash, tmux, zsh and some
+This is an organished set of configurations for tmux, zsh and some
 other cli or tui apps.
 
 It helps mantaining the consistency of styles in your terminal (uses
@@ -20,13 +20,10 @@ tmux:
    Cmatrix screensaver for tmux conf
    Mouse support enabled by default
 
-bash:
- - Huge set of confs for bash, including also powerline and LS_COLORS
-
 Zsh:
- - Small set of confs for bash, relying on oh-my-zsh (it installs this
+ - Small set of confs for zsh, relying on oh-my-zsh (it installs this
    also), with powerline-zsh theme combined with the zsh fork of
-   bash-powerline for theme consistency.
+   zsh-powerline for theme consistency.
 
 Others:
  - Interesting configuration for other tools, right now it contains mutt and
