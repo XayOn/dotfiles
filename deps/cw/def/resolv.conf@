@@ -1,7 +1,0 @@
-#!/cw
-path /etc
-random cyan:green
-base random
-token random+:default 0 32
-token random+:default 0 9
-
