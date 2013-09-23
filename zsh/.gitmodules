@@ -1,0 +1,18 @@
+[submodule "src/oh-my-zsh"]
+	path = src/oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh
+[submodule "src/oh-my-zsh-powerline-theme"]
+	path = src/oh-my-zsh-powerline-theme
+	url = https://github.com/jeremyFreeAgent/oh-my-zsh-powerline-theme
+[submodule "src/powerline-zsh"]
+	path = src/powerline-zsh
+	url = https://github.com/carlcarl/powerline-zsh
+[submodule "src/zsh-syntax-highlighting"]
+	path = src/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting
+[submodule "src/zsh-syntax-highlighting-filetypes"]
+	path = src/zsh-syntax-highlighting-filetypes
+	url = https://github.com/trapd00r/zsh-syntax-highlighting-filetypes
+[submodule "src/LS_COLORS"]
+	path = src/LS_COLORS
+	url = https://github.com/trapd00r/LS_COLORS

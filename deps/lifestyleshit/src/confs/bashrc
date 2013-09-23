@@ -1,0 +1,1 @@
+export PATH="$HOME/.cw/def:$PATH:$HOME/.perl5/bin/"
