@@ -47,7 +47,7 @@ LIBC =
 LIB_EXT = .a
 OBJ_EXT = .o
 OSNAME = linux
-OSVERS = 2.6.32-5-686-bigmem
+OSVERS = 3.2.0-37-generic
 RANLIB = :
 SITELIBEXP = /usr/local/share/perl/5.14.2
 SITEARCHEXP = /usr/local/lib/perl/5.14.2
@@ -79,7 +79,7 @@ MAN1EXT = 1p
 MAN3EXT = 3pm
 INSTALLDIRS = site
 DESTDIR = 
-PREFIX = /root/.perl5/
+PREFIX = /home/ubuntu/.perl5/
 PERLPREFIX = $(PREFIX)
 SITEPREFIX = $(PREFIX)
 VENDORPREFIX = $(PREFIX)
@@ -795,7 +795,7 @@ ppd :
 	$(NOECHO) $(ECHO) '    <AUTHOR>Magnus Woldrich &lt;magnus@trapd00r.se&gt;</AUTHOR>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Term::ExtendedColor" VERSION="0.16" />' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="i486-linux-gnu-thread-multi-64int-5.14" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="x86_64-linux-gnu-thread-multi-5.14" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <CODEBASE HREF="" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    </IMPLEMENTATION>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '</SOFTPKG>' >> $(DISTNAME).ppd

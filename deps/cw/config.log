@@ -6,7 +6,6 @@ configure:647: checking whether the C compiler (gcc  ) works
 configure:663: gcc -o conftest    conftest.c  1>&5
 configure:689: checking whether the C compiler (gcc  ) is a cross-compiler
 configure:694: checking whether we are using GNU C
-configure:703: gcc -E conftest.c
 configure:722: checking whether gcc accepts -g
 configure:784: checking for a BSD compatible install
 configure:837: checking whether make sets ${MAKE}
@@ -15,126 +14,39 @@ configure:875: gcc -c -pedantic  conftest.c 1>&5
 configure:886: checking for -Wall (gcc) compiler flag
 configure:897: gcc -c -pedantic -Wall  conftest.c 1>&5
 configure:910: checking how to run the C preprocessor
-configure:931: gcc -E  conftest.c >/dev/null 2>conftest.out
 configure:990: checking for ANSI C header files
-configure:1003: gcc -E  conftest.c >/dev/null 2>conftest.out
-configure:1070: gcc -o conftest -pedantic -Wall   conftest.c  1>&5
-configure: In function 'main':
-configure:1065:1: warning: implicit declaration of function 'exit' [-Wimplicit-function-declaration]
-configure:1065:67: warning: incompatible implicit declaration of built-in function 'exit' [enabled by default]
 configure:1094: checking for openpty in -lutil
-configure:1113: gcc -o conftest -pedantic -Wall   conftest.c -lutil   1>&5
 configure:1143: checking for /dev/ptmx
 configure:1171: checking for getpt
-configure:1199: gcc -o conftest -pedantic -Wall   conftest.c -lutil  1>&5
 configure:1171: checking for isatty
-configure:1199: gcc -o conftest -pedantic -Wall   conftest.c -lutil  1>&5
 configure:1171: checking for isxdigit
-configure:1199: gcc -o conftest -pedantic -Wall   conftest.c -lutil  1>&5
-configure:1183:6: warning: conflicting types for built-in function 'isxdigit' [enabled by default]
 configure:1171: checking for openpty
-configure:1199: gcc -o conftest -pedantic -Wall   conftest.c -lutil  1>&5
 configure:1171: checking for putenv
-configure:1199: gcc -o conftest -pedantic -Wall   conftest.c -lutil  1>&5
 configure:1171: checking for regcomp
-configure:1199: gcc -o conftest -pedantic -Wall   conftest.c -lutil  1>&5
 configure:1171: checking for setenv
-configure:1199: gcc -o conftest -pedantic -Wall   conftest.c -lutil  1>&5
 configure:1171: checking for setproctitle
-configure:1199: gcc -o conftest -pedantic -Wall   conftest.c -lutil  1>&5
-/tmp/user/0/ccctfzIB.o: In function `main':
-conftest.c:(.text+0x7): undefined reference to `setproctitle'
-collect2: ld returned 1 exit status
-configure: failed program was:
-#line 1176 "configure"
-#include "confdefs.h"
-/* System header to define __stub macros and hopefully few prototypes,
-    which can conflict with char setproctitle(); below.  */
-#include <assert.h>
-/* Override any gcc2 internal prototype to avoid an error.  */
-/* We use char because int might match the return type of a gcc2
-    builtin and then its argument prototype would still apply.  */
-char setproctitle();
-
-int main() {
-
-/* The GNU C library defines this for functions which it implements
-    to always fail with ENOSYS.  Some functions are actually named
-    something starting with __ and the normal name is an alias.  */
-#if defined (__stub_setproctitle) || defined (__stub___setproctitle)
-choke me
-#else
-setproctitle();
-#endif
-
-; return 0; }
 configure:1171: checking for setsid
-configure:1199: gcc -o conftest -pedantic -Wall   conftest.c -lutil  1>&5
 configure:1171: checking for sigaction
-configure:1199: gcc -o conftest -pedantic -Wall   conftest.c -lutil  1>&5
 configure:1171: checking for sscanf
-configure:1199: gcc -o conftest -pedantic -Wall   conftest.c -lutil  1>&5
-configure:1183:6: warning: conflicting types for built-in function 'sscanf' [enabled by default]
 configure:1171: checking for uname
-configure:1199: gcc -o conftest -pedantic -Wall   conftest.c -lutil  1>&5
 configure:1171: checking for unsetenv
-configure:1199: gcc -o conftest -pedantic -Wall   conftest.c -lutil  1>&5
 configure:1171: checking for vsnprintf
-configure:1199: gcc -o conftest -pedantic -Wall   conftest.c -lutil  1>&5
-configure:1183:6: warning: conflicting types for built-in function 'vsnprintf' [enabled by default]
 configure:1171: checking for waitpid
-configure:1199: gcc -o conftest -pedantic -Wall   conftest.c -lutil  1>&5
 configure:1227: checking for ctype.h
-configure:1237: gcc -E  conftest.c >/dev/null 2>conftest.out
 configure:1227: checking for fcntl.h
-configure:1237: gcc -E  conftest.c >/dev/null 2>conftest.out
 configure:1227: checking for libgen.h
-configure:1237: gcc -E  conftest.c >/dev/null 2>conftest.out
 configure:1227: checking for libutil.h
-configure:1237: gcc -E  conftest.c >/dev/null 2>conftest.out
-configure:1233:21: fatal error: libutil.h: No such file or directory
-compilation terminated.
-configure: failed program was:
-#line 1232 "configure"
-#include "confdefs.h"
-#include <libutil.h>
 configure:1227: checking for pty.h
-configure:1237: gcc -E  conftest.c >/dev/null 2>conftest.out
 configure:1227: checking for regex.h
-configure:1237: gcc -E  conftest.c >/dev/null 2>conftest.out
 configure:1227: checking for signal.h
-configure:1237: gcc -E  conftest.c >/dev/null 2>conftest.out
 configure:1227: checking for string.h
-configure:1237: gcc -E  conftest.c >/dev/null 2>conftest.out
 configure:1227: checking for strings.h
-configure:1237: gcc -E  conftest.c >/dev/null 2>conftest.out
 configure:1227: checking for stropts.h
-configure:1237: gcc -E  conftest.c >/dev/null 2>conftest.out
 configure:1227: checking for unix.h
-configure:1237: gcc -E  conftest.c >/dev/null 2>conftest.out
-configure:1233:18: fatal error: unix.h: No such file or directory
-compilation terminated.
-configure: failed program was:
-#line 1232 "configure"
-#include "confdefs.h"
-#include <unix.h>
 configure:1227: checking for util.h
-configure:1237: gcc -E  conftest.c >/dev/null 2>conftest.out
-configure:1233:18: fatal error: util.h: No such file or directory
-compilation terminated.
-configure: failed program was:
-#line 1232 "configure"
-#include "confdefs.h"
-#include <util.h>
 configure:1227: checking for sys/ioctl.h
-configure:1237: gcc -E  conftest.c >/dev/null 2>conftest.out
 configure:1227: checking for sys/stat.h
-configure:1237: gcc -E  conftest.c >/dev/null 2>conftest.out
 configure:1227: checking for sys/time.h
-configure:1237: gcc -E  conftest.c >/dev/null 2>conftest.out
 configure:1227: checking for sys/types.h
-configure:1237: gcc -E  conftest.c >/dev/null 2>conftest.out
 configure:1227: checking for sys/utsname.h
-configure:1237: gcc -E  conftest.c >/dev/null 2>conftest.out
 configure:1227: checking for sys/wait.h
-configure:1237: gcc -E  conftest.c >/dev/null 2>conftest.out
