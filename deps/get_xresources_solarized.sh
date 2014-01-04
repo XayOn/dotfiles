@@ -1,1 +1,1 @@
-wget https://raw.github.com/solarized/xresources/master/solarized -O ~/.consoleshit/Xresources
+wget https://raw.github.com/solarized/xresources/master/solarized -O ~/.prettierTerminal/Xresources
