@@ -1,7 +1,7 @@
 # This Makefile is for the App::ls++ extension to perl.
 #
 # It was generated automatically by MakeMaker version
-# 6.57_05 (Revision: 65705) from the contents of
+# 6.66 (Revision: 66600) from the contents of
 # Makefile.PL. Don't edit this file, edit Makefile.PL instead.
 #
 #       ANY CHANGES MADE HERE WILL BE LOST!
@@ -14,13 +14,15 @@
 #     ABSTRACT => q[ls on steroids]
 #     AUTHOR => [q[Magnus Woldrich <magnus@trapd00r.se>]]
 #     BUILD_REQUIRES => {  }
+#     CONFIGURE_REQUIRES => {  }
 #     EXE_FILES => [q[ls++]]
 #     LICENSE => q[perl]
-#     MAN1PODS => { ls++.conf=>q[blib/man1/ls++.conf.1], ls++=>q[blib/man1/ls++.1] }
+#     MAN1PODS => { ls++=>q[blib/man1/ls++.1], ls++.conf=>q[blib/man1/ls++.conf.1] }
 #     META_MERGE => { resources=>{ repository=>q[https://github.com/trapd00r/ls--], bugtracker=>q[https://github.com/trapd00r/ls--/issues] } }
 #     NAME => q[App::ls++]
 #     PL_FILES => {  }
 #     PREREQ_PM => { Term::ExtendedColor=>q[0.16] }
+#     TEST_REQUIRES => {  }
 #     VERSION_FROM => q[./ls++]
 #     clean => { FILES=>q[ls++-*] }
 #     dist => { COMPRESS=>q[gzip -9f], SUFFIX=>q[gz] }
@@ -30,7 +32,7 @@
 
 # --- MakeMaker const_config section:
 
-# These definitions are from config.sh (via /usr/lib/perl/5.14/Config.pm).
+# These definitions are from config.sh (via /usr/lib/perl/5.18/Config.pm).
 # They may have been overridden via Makefile.PL or on the command line.
 AR = ar
 CC = cc
@@ -47,10 +49,10 @@ LIBC =
 LIB_EXT = .a
 OBJ_EXT = .o
 OSNAME = linux
-OSVERS = 3.2.0-37-generic
+OSVERS = 3.2.0-4-amd64
 RANLIB = :
-SITELIBEXP = /usr/local/share/perl/5.14.2
-SITEARCHEXP = /usr/local/lib/perl/5.14.2
+SITELIBEXP = /usr/local/share/perl/5.18.1
+SITEARCHEXP = /usr/local/lib/perl/5.18.1
 SO = so
 VENDORARCHEXP = /usr/lib/perl5
 VENDORLIBEXP = /usr/share/perl5
@@ -79,19 +81,19 @@ MAN1EXT = 1p
 MAN3EXT = 3pm
 INSTALLDIRS = site
 DESTDIR = 
-PREFIX = /home/ubuntu/.perl5/
+PREFIX = /home/nanobenv/.perl5/
 PERLPREFIX = $(PREFIX)
 SITEPREFIX = $(PREFIX)
 VENDORPREFIX = $(PREFIX)
-INSTALLPRIVLIB = $(PERLPREFIX)/share/perl/5.14
+INSTALLPRIVLIB = $(PERLPREFIX)/share/perl/5.18
 DESTINSTALLPRIVLIB = $(DESTDIR)$(INSTALLPRIVLIB)
-INSTALLSITELIB = $(SITEPREFIX)/share/perl/5.14.2
+INSTALLSITELIB = $(SITEPREFIX)/share/perl/5.18.1
 DESTINSTALLSITELIB = $(DESTDIR)$(INSTALLSITELIB)
 INSTALLVENDORLIB = $(VENDORPREFIX)/share/perl5
 DESTINSTALLVENDORLIB = $(DESTDIR)$(INSTALLVENDORLIB)
-INSTALLARCHLIB = $(PERLPREFIX)/lib/perl/5.14
+INSTALLARCHLIB = $(PERLPREFIX)/lib/perl/5.18
 DESTINSTALLARCHLIB = $(DESTDIR)$(INSTALLARCHLIB)
-INSTALLSITEARCH = $(SITEPREFIX)/lib/perl/5.14.2
+INSTALLSITEARCH = $(SITEPREFIX)/lib/perl/5.18.1
 DESTINSTALLSITEARCH = $(DESTDIR)$(INSTALLSITEARCH)
 INSTALLVENDORARCH = $(VENDORPREFIX)/lib/perl5
 DESTINSTALLVENDORARCH = $(DESTDIR)$(INSTALLVENDORARCH)
@@ -119,14 +121,14 @@ INSTALLSITEMAN3DIR = $(SITEPREFIX)/man/man3
 DESTINSTALLSITEMAN3DIR = $(DESTDIR)$(INSTALLSITEMAN3DIR)
 INSTALLVENDORMAN3DIR = $(VENDORPREFIX)/share/man/man3
 DESTINSTALLVENDORMAN3DIR = $(DESTDIR)$(INSTALLVENDORMAN3DIR)
-PERL_LIB = /usr/share/perl/5.14
-PERL_ARCHLIB = /usr/lib/perl/5.14
+PERL_LIB = /usr/share/perl/5.18
+PERL_ARCHLIB = /usr/lib/perl/5.18
 LIBPERL_A = libperl.a
 FIRST_MAKEFILE = Makefile
 MAKEFILE_OLD = Makefile.old
 MAKE_APERL_FILE = Makefile.aperl
 PERLMAINCC = $(CC)
-PERL_INC = /usr/lib/perl/5.14/CORE
+PERL_INC = /usr/lib/perl/5.18/CORE
 PERL = /usr/bin/perl
 FULLPERL = /usr/bin/perl
 ABSPERL = $(PERL)
@@ -141,9 +143,9 @@ PERM_DIR = 755
 PERM_RW = 644
 PERM_RWX = 755
 
-MAKEMAKER   = /usr/share/perl/5.14/ExtUtils/MakeMaker.pm
-MM_VERSION  = 6.57_05
-MM_REVISION = 65705
+MAKEMAKER   = /usr/share/perl/5.18/ExtUtils/MakeMaker.pm
+MM_VERSION  = 6.66
+MM_REVISION = 66600
 
 # FULLEXT = Pathname for extension directory (eg Foo/Bar/Oracle).
 # BASEEXT = Basename part of FULLEXT. May be just equal FULLEXT. (eg Oracle)
@@ -194,13 +196,13 @@ PM_TO_BLIB =
 
 
 # --- MakeMaker platform_constants section:
-MM_Unix_VERSION = 6.57_05
+MM_Unix_VERSION = 6.66
 PERL_MALLOC_DEF = -DPERL_EXTMALLOC_DEF -Dmalloc=Perl_malloc -Dfree=Perl_mfree -Drealloc=Perl_realloc -Dcalloc=Perl_calloc
 
 
 # --- MakeMaker tool_autosplit section:
 # Usage: $(AUTOSPLITFILE) FileToSplit AutoDirToSplitInto
-AUTOSPLITFILE = $(ABSPERLRUN)  -e 'use AutoSplit;  autosplit($$ARGV[0], $$ARGV[1], 0, 1, 1)' --
+AUTOSPLITFILE = $(ABSPERLRUN)  -e 'use AutoSplit;  autosplit($$$$ARGV[0], $$$$ARGV[1], 0, 1, 1)' --
 
 
 
@@ -413,11 +415,11 @@ POD2MAN = $(POD2MAN_EXE)
 
 
 manifypods : pure_all  \
-	ls++.conf \
-	ls++
+	ls++ \
+	ls++.conf
 	$(NOECHO) $(POD2MAN) --section=$(MAN1EXT) --perm_rw=$(PERM_RW) \
-	  ls++.conf blib/man1/ls++.conf.1 \
-	  ls++ blib/man1/ls++.1 
+	  ls++ blib/man1/ls++.1 \
+	  ls++.conf blib/man1/ls++.conf.1 
 
 
 
@@ -460,23 +462,24 @@ clean_subdirs :
 
 clean :: clean_subdirs
 	- $(RM_F) \
-	  *$(LIB_EXT) core \
-	  core.[0-9] $(INST_ARCHAUTODIR)/extralibs.all \
-	  core.[0-9][0-9] $(BASEEXT).bso \
-	  pm_to_blib.ts core.[0-9][0-9][0-9][0-9] \
-	  MYMETA.yml $(BASEEXT).x \
-	  $(BOOTSTRAP) perl$(EXE_EXT) \
-	  tmon.out *$(OBJ_EXT) \
-	  pm_to_blib $(INST_ARCHAUTODIR)/extralibs.ld \
-	  blibdirs.ts core.[0-9][0-9][0-9][0-9][0-9] \
-	  *perl.core core.*perl.*.? \
-	  $(MAKE_APERL_FILE) $(BASEEXT).def \
-	  perl core.[0-9][0-9][0-9] \
-	  mon.out lib$(BASEEXT).def \
-	  perlmain.c perl.exe \
-	  so_locations $(BASEEXT).exp 
+	  core.[0-9][0-9] MYMETA.json \
+	  $(BASEEXT).def *perl.core \
+	  core.[0-9] lib$(BASEEXT).def \
+	  mon.out core.[0-9][0-9][0-9] \
+	  $(BASEEXT).x perl \
+	  perl.exe $(INST_ARCHAUTODIR)/extralibs.all \
+	  perlmain.c pm_to_blib.ts \
+	  tmon.out core.[0-9][0-9][0-9][0-9] \
+	  $(BASEEXT).exp core.[0-9][0-9][0-9][0-9][0-9] \
+	  so_locations $(INST_ARCHAUTODIR)/extralibs.ld \
+	  core.*perl.*.? $(MAKE_APERL_FILE) \
+	  perl$(EXE_EXT) $(BOOTSTRAP) \
+	  core $(BASEEXT).bso \
+	  pm_to_blib blibdirs.ts \
+	  *$(OBJ_EXT) MYMETA.yml \
+	  *$(LIB_EXT) 
 	- $(RM_RF) \
-	  blib ls++-* 
+	  ls++-* blib 
 	- $(MV) $(FIRST_MAKEFILE) $(MAKEFILE_OLD) $(DEV_NULL)
 
 
@@ -489,7 +492,7 @@ realclean_subdirs :
 # Delete temporary files (via clean) and also delete dist files
 realclean purge ::  clean realclean_subdirs
 	- $(RM_F) \
-	  $(MAKEFILE_OLD) $(FIRST_MAKEFILE) 
+	  $(FIRST_MAKEFILE) $(MAKEFILE_OLD) 
 	- $(RM_RF) \
 	  $(DISTVNAME) 
 
@@ -497,32 +500,83 @@ realclean purge ::  clean realclean_subdirs
 # --- MakeMaker metafile section:
 metafile : create_distdir
 	$(NOECHO) $(ECHO) Generating META.yml
-	$(NOECHO) $(ECHO) '--- #YAML:1.0' > META_new.yml
-	$(NOECHO) $(ECHO) 'name:               App-ls++' >> META_new.yml
-	$(NOECHO) $(ECHO) 'version:            0.348' >> META_new.yml
-	$(NOECHO) $(ECHO) 'abstract:           ls on steroids' >> META_new.yml
+	$(NOECHO) $(ECHO) '---' > META_new.yml
+	$(NOECHO) $(ECHO) 'abstract: '\''ls on steroids'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'author:' >> META_new.yml
-	$(NOECHO) $(ECHO) '    - Magnus Woldrich <magnus@trapd00r.se>' >> META_new.yml
-	$(NOECHO) $(ECHO) 'license:            perl' >> META_new.yml
-	$(NOECHO) $(ECHO) 'distribution_type:  module' >> META_new.yml
-	$(NOECHO) $(ECHO) 'configure_requires:' >> META_new.yml
-	$(NOECHO) $(ECHO) '    ExtUtils::MakeMaker:  0' >> META_new.yml
+	$(NOECHO) $(ECHO) '  - '\''Magnus Woldrich <magnus@trapd00r.se>'\''' >> META_new.yml
 	$(NOECHO) $(ECHO) 'build_requires:' >> META_new.yml
-	$(NOECHO) $(ECHO) '    ExtUtils::MakeMaker:  0' >> META_new.yml
-	$(NOECHO) $(ECHO) 'requires:' >> META_new.yml
-	$(NOECHO) $(ECHO) '    Term::ExtendedColor:  0.16' >> META_new.yml
-	$(NOECHO) $(ECHO) 'resources:' >> META_new.yml
-	$(NOECHO) $(ECHO) '    bugtracker:  https://github.com/trapd00r/ls--/issues' >> META_new.yml
-	$(NOECHO) $(ECHO) '    repository:  https://github.com/trapd00r/ls--' >> META_new.yml
-	$(NOECHO) $(ECHO) 'no_index:' >> META_new.yml
-	$(NOECHO) $(ECHO) '    directory:' >> META_new.yml
-	$(NOECHO) $(ECHO) '        - t' >> META_new.yml
-	$(NOECHO) $(ECHO) '        - inc' >> META_new.yml
-	$(NOECHO) $(ECHO) 'generated_by:       ExtUtils::MakeMaker version 6.57_05' >> META_new.yml
+	$(NOECHO) $(ECHO) '  ExtUtils::MakeMaker: 0' >> META_new.yml
+	$(NOECHO) $(ECHO) 'configure_requires:' >> META_new.yml
+	$(NOECHO) $(ECHO) '  ExtUtils::MakeMaker: 0' >> META_new.yml
+	$(NOECHO) $(ECHO) 'dynamic_config: 1' >> META_new.yml
+	$(NOECHO) $(ECHO) 'generated_by: '\''ExtUtils::MakeMaker version 6.66, CPAN::Meta::Converter version 2.120921'\''' >> META_new.yml
+	$(NOECHO) $(ECHO) 'license: perl' >> META_new.yml
 	$(NOECHO) $(ECHO) 'meta-spec:' >> META_new.yml
-	$(NOECHO) $(ECHO) '    url:      http://module-build.sourceforge.net/META-spec-v1.4.html' >> META_new.yml
-	$(NOECHO) $(ECHO) '    version:  1.4' >> META_new.yml
+	$(NOECHO) $(ECHO) '  url: http://module-build.sourceforge.net/META-spec-v1.4.html' >> META_new.yml
+	$(NOECHO) $(ECHO) '  version: 1.4' >> META_new.yml
+	$(NOECHO) $(ECHO) 'name: App-ls++' >> META_new.yml
+	$(NOECHO) $(ECHO) 'no_index:' >> META_new.yml
+	$(NOECHO) $(ECHO) '  directory:' >> META_new.yml
+	$(NOECHO) $(ECHO) '    - t' >> META_new.yml
+	$(NOECHO) $(ECHO) '    - inc' >> META_new.yml
+	$(NOECHO) $(ECHO) 'requires:' >> META_new.yml
+	$(NOECHO) $(ECHO) '  Term::ExtendedColor: 0.16' >> META_new.yml
+	$(NOECHO) $(ECHO) 'resources:' >> META_new.yml
+	$(NOECHO) $(ECHO) '  bugtracker: https://github.com/trapd00r/ls--/issues' >> META_new.yml
+	$(NOECHO) $(ECHO) '  repository: https://github.com/trapd00r/ls--' >> META_new.yml
+	$(NOECHO) $(ECHO) 'version: 0.348' >> META_new.yml
 	-$(NOECHO) $(MV) META_new.yml $(DISTVNAME)/META.yml
+	$(NOECHO) $(ECHO) Generating META.json
+	$(NOECHO) $(ECHO) '{' > META_new.json
+	$(NOECHO) $(ECHO) '   "abstract" : "ls on steroids",' >> META_new.json
+	$(NOECHO) $(ECHO) '   "author" : [' >> META_new.json
+	$(NOECHO) $(ECHO) '      "Magnus Woldrich <magnus@trapd00r.se>"' >> META_new.json
+	$(NOECHO) $(ECHO) '   ],' >> META_new.json
+	$(NOECHO) $(ECHO) '   "dynamic_config" : 1,' >> META_new.json
+	$(NOECHO) $(ECHO) '   "generated_by" : "ExtUtils::MakeMaker version 6.66, CPAN::Meta::Converter version 2.120921",' >> META_new.json
+	$(NOECHO) $(ECHO) '   "license" : [' >> META_new.json
+	$(NOECHO) $(ECHO) '      "perl_5"' >> META_new.json
+	$(NOECHO) $(ECHO) '   ],' >> META_new.json
+	$(NOECHO) $(ECHO) '   "meta-spec" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",' >> META_new.json
+	$(NOECHO) $(ECHO) '      "version" : "2"' >> META_new.json
+	$(NOECHO) $(ECHO) '   },' >> META_new.json
+	$(NOECHO) $(ECHO) '   "name" : "App-ls++",' >> META_new.json
+	$(NOECHO) $(ECHO) '   "no_index" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '      "directory" : [' >> META_new.json
+	$(NOECHO) $(ECHO) '         "t",' >> META_new.json
+	$(NOECHO) $(ECHO) '         "inc"' >> META_new.json
+	$(NOECHO) $(ECHO) '      ]' >> META_new.json
+	$(NOECHO) $(ECHO) '   },' >> META_new.json
+	$(NOECHO) $(ECHO) '   "prereqs" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '      "build" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '         "requires" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '            "ExtUtils::MakeMaker" : "0"' >> META_new.json
+	$(NOECHO) $(ECHO) '         }' >> META_new.json
+	$(NOECHO) $(ECHO) '      },' >> META_new.json
+	$(NOECHO) $(ECHO) '      "configure" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '         "requires" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '            "ExtUtils::MakeMaker" : "0"' >> META_new.json
+	$(NOECHO) $(ECHO) '         }' >> META_new.json
+	$(NOECHO) $(ECHO) '      },' >> META_new.json
+	$(NOECHO) $(ECHO) '      "runtime" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '         "requires" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '            "Term::ExtendedColor" : "0.16"' >> META_new.json
+	$(NOECHO) $(ECHO) '         }' >> META_new.json
+	$(NOECHO) $(ECHO) '      }' >> META_new.json
+	$(NOECHO) $(ECHO) '   },' >> META_new.json
+	$(NOECHO) $(ECHO) '   "release_status" : "stable",' >> META_new.json
+	$(NOECHO) $(ECHO) '   "resources" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '      "bugtracker" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '         "web" : "https://github.com/trapd00r/ls--/issues"' >> META_new.json
+	$(NOECHO) $(ECHO) '      },' >> META_new.json
+	$(NOECHO) $(ECHO) '      "repository" : {' >> META_new.json
+	$(NOECHO) $(ECHO) '         "url" : "https://github.com/trapd00r/ls--"' >> META_new.json
+	$(NOECHO) $(ECHO) '      }' >> META_new.json
+	$(NOECHO) $(ECHO) '   },' >> META_new.json
+	$(NOECHO) $(ECHO) '   "version" : "0.348"' >> META_new.json
+	$(NOECHO) $(ECHO) '}' >> META_new.json
+	-$(NOECHO) $(MV) META_new.json $(DISTVNAME)/META.json
 
 
 # --- MakeMaker signature section:
@@ -614,15 +668,19 @@ ci :
 
 # --- MakeMaker distmeta section:
 distmeta : create_distdir metafile
-	$(NOECHO) cd $(DISTVNAME) && $(ABSPERLRUN) -MExtUtils::Manifest=maniadd -e 'eval { maniadd({q{META.yml} => q{Module meta-data (added by MakeMaker)}}) } ' \
-	  -e '    or print "Could not add META.yml to MANIFEST: $${'\''@'\''}\n"' --
+	$(NOECHO) cd $(DISTVNAME) && $(ABSPERLRUN) -MExtUtils::Manifest=maniadd -e 'exit unless -e q{META.yml};' \
+	  -e 'eval { maniadd({q{META.yml} => q{Module YAML meta-data (added by MakeMaker)}}) }' \
+	  -e '    or print "Could not add META.yml to MANIFEST: $$$${'\''@'\''}\n"' --
+	$(NOECHO) cd $(DISTVNAME) && $(ABSPERLRUN) -MExtUtils::Manifest=maniadd -e 'exit unless -f q{META.json};' \
+	  -e 'eval { maniadd({q{META.json} => q{Module JSON meta-data (added by MakeMaker)}}) }' \
+	  -e '    or print "Could not add META.json to MANIFEST: $$$${'\''@'\''}\n"' --
 
 
 
 # --- MakeMaker distsignature section:
 distsignature : create_distdir
 	$(NOECHO) cd $(DISTVNAME) && $(ABSPERLRUN) -MExtUtils::Manifest=maniadd -e 'eval { maniadd({q{SIGNATURE} => q{Public-key signature (added by MakeMaker)}}) } ' \
-	  -e '    or print "Could not add SIGNATURE to MANIFEST: $${'\''@'\''}\n"' --
+	  -e '    or print "Could not add SIGNATURE to MANIFEST: $$$${'\''@'\''}\n"' --
 	$(NOECHO) cd $(DISTVNAME) && $(TOUCH) SIGNATURE
 	cd $(DISTVNAME) && cpansign -s
 
@@ -790,12 +848,12 @@ testdb_static :: testdb_dynamic
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
-	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0.348">' > $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="$(VERSION)">' > $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <ABSTRACT>ls on steroids</ABSTRACT>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>Magnus Woldrich &lt;magnus@trapd00r.se&gt;</AUTHOR>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Term::ExtendedColor" VERSION="0.16" />' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="x86_64-linux-gnu-thread-multi-5.14" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="i486-linux-gnu-thread-multi-64int-5.18" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <CODEBASE HREF="" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    </IMPLEMENTATION>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '</SOFTPKG>' >> $(DISTNAME).ppd

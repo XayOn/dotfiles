@@ -28,7 +28,6 @@ Zsh:
 Others:
  - Interesting configuration for other tools, right now it contains mutt and
    mc's solarized themes.
- - CW color wrappers from fakehalo
  - ls++ from trapd00r
    - This requires perl module Term::ExtendedColor, so I'm not replacing ls for ls++ by default
 

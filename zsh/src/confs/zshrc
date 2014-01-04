@@ -1,7 +1,7 @@
 # Configure enabled oh-my-zsh plugins here
 ZSH=$HOME/.prettierTerminal/zsh/oh-my-zsh/
 export TERM=xterm-256color # It only works with 256 capable terminals, sorry =)
-export PATH=$HOME/.bin/:$HOME/.cw/def:$HOME/.perl5/bin:$PATH
+export PATH=$HOME/.bin/:$HOME/.perl5/bin:$PATH
 plugins=(git zsh-syntax-highlighting-filetypes zsh-syntax-highlighting )
 source ~/.prettierTerminal/zsh/confs/enable_powerline
 source ~/.prettierTerminal/zsh/oh-my-zsh/oh-my-zsh.sh
