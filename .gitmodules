@@ -49,3 +49,6 @@
 [submodule "deps/powerline"]
 	path = deps/powerline
 	url = https://github.com/Lokaltog/powerline
+[submodule "tmux/src/confs/tmux-colors-solarized"]
+	path = tmux/src/confs/tmux-colors-solarized
+	url = https://github.com/seebi/tmux-colors-solarized

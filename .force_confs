@@ -1,2 +1,3 @@
 echo 'source ~/.prettierTerminal/zsh/confs/zshrc' >> ~/.zshrc
 echo 'source ~/.prettierTerminal/tmux/confs/tmux-next.conf' >> ~/.tmux.conf
+echo 'source ~/.prettierTerminal/bash/bashrc' >> ~/.bashrc

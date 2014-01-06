@@ -25,7 +25,7 @@
 #     TEST_REQUIRES => {  }
 #     VERSION_FROM => q[./ls++]
 #     clean => { FILES=>q[ls++-*] }
-#     dist => { COMPRESS=>q[gzip -9f], SUFFIX=>q[gz] }
+#     dist => { SUFFIX=>q[gz], COMPRESS=>q[gzip -9f] }
 
 # --- MakeMaker post_initialize section:
 
@@ -462,22 +462,22 @@ clean_subdirs :
 
 clean :: clean_subdirs
 	- $(RM_F) \
-	  $(MAKE_APERL_FILE) pm_to_blib \
-	  blibdirs.ts perl$(EXE_EXT) \
-	  core.[0-9] perl.exe \
-	  $(BASEEXT).def MYMETA.yml \
-	  $(BASEEXT).exp MYMETA.json \
-	  core.*perl.*.? $(BOOTSTRAP) \
-	  so_locations perlmain.c \
-	  core.[0-9][0-9][0-9] *$(LIB_EXT) \
-	  pm_to_blib.ts *$(OBJ_EXT) \
-	  tmon.out core \
-	  $(BASEEXT).x perl \
-	  core.[0-9][0-9][0-9][0-9][0-9] $(INST_ARCHAUTODIR)/extralibs.all \
-	  $(INST_ARCHAUTODIR)/extralibs.ld lib$(BASEEXT).def \
-	  core.[0-9][0-9][0-9][0-9] $(BASEEXT).bso \
-	  core.[0-9][0-9] mon.out \
-	  *perl.core 
+	  perlmain.c lib$(BASEEXT).def \
+	  *perl.core tmon.out \
+	  MYMETA.json $(BOOTSTRAP) \
+	  core.[0-9][0-9][0-9][0-9][0-9] so_locations \
+	  $(INST_ARCHAUTODIR)/extralibs.ld pm_to_blib \
+	  perl.exe core.[0-9][0-9][0-9][0-9] \
+	  core.[0-9][0-9][0-9] $(BASEEXT).def \
+	  core.[0-9][0-9] $(BASEEXT).bso \
+	  $(MAKE_APERL_FILE) blibdirs.ts \
+	  perl$(EXE_EXT) perl \
+	  $(BASEEXT).x $(BASEEXT).exp \
+	  core.[0-9] core \
+	  core.*perl.*.? MYMETA.yml \
+	  $(INST_ARCHAUTODIR)/extralibs.all mon.out \
+	  pm_to_blib.ts *$(LIB_EXT) \
+	  *$(OBJ_EXT) 
 	- $(RM_RF) \
 	  ls++-* blib 
 	- $(MV) $(FIRST_MAKEFILE) $(MAKEFILE_OLD) $(DEV_NULL)
@@ -852,7 +852,7 @@ ppd :
 	$(NOECHO) $(ECHO) '    <ABSTRACT>ls on steroids</ABSTRACT>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>Magnus Woldrich &lt;magnus@trapd00r.se&gt;</AUTHOR>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '        <REQUIRE VERSION="0.16" NAME="Term::ExtendedColor" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Term::ExtendedColor" VERSION="0.16" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="x86_64-linux-gnu-thread-multi-5.18" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <CODEBASE HREF="" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    </IMPLEMENTATION>' >> $(DISTNAME).ppd
