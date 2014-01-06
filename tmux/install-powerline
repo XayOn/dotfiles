@@ -1,7 +1,0 @@
-#!/bin/bash
-[[ ! -e ~/.powerline ]] && {
-    git clone https://github.com/Lokaltog/powerline ~/.powerline/
-}
-mkdir -p ~/.config/powerline/tmux/themes/
-cp -r src/config/powerline/* ~/.config/powerline/tmux/themes/
-

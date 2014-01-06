@@ -13,6 +13,12 @@ directories.
 
 This uses stuff that is based on lokaltog's patched fonts for powerline, make sure to read this before and patch your font: https://github.com/Lokaltog/vim-powerline
 
+You need to have python PIP installed, in debian and ubuntu:
+
+::
+
+    apt-get install python-pip
+
 tmux:
  - Configuration for tmux including:
    Tmux-powerline

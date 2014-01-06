@@ -46,3 +46,6 @@
 [submodule "zsh/src/powerline-zsh"]
 	path = zsh/src/powerline-zsh
 	url = https://github.com/carlcarl/powerline-zsh
+[submodule "deps/powerline"]
+	path = deps/powerline
+	url = https://github.com/Lokaltog/powerline

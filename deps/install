@@ -17,3 +17,6 @@ cd ..
 mkdir -f ~/.prettierTerminal 
 sh get_xresources_solarized.sh
 
+# Install powerline 
+pip install --user git+git://github.com/Lokaltog/powerline
+
