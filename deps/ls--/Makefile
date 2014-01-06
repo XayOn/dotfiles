@@ -17,15 +17,15 @@
 #     CONFIGURE_REQUIRES => {  }
 #     EXE_FILES => [q[ls++]]
 #     LICENSE => q[perl]
-#     MAN1PODS => { ls++=>q[blib/man1/ls++.1], ls++.conf=>q[blib/man1/ls++.conf.1] }
-#     META_MERGE => { resources=>{ repository=>q[https://github.com/trapd00r/ls--], bugtracker=>q[https://github.com/trapd00r/ls--/issues] } }
+#     MAN1PODS => { ls++.conf=>q[blib/man1/ls++.conf.1], ls++=>q[blib/man1/ls++.1] }
+#     META_MERGE => { resources=>{ bugtracker=>q[https://github.com/trapd00r/ls--/issues], repository=>q[https://github.com/trapd00r/ls--] } }
 #     NAME => q[App::ls++]
 #     PL_FILES => {  }
 #     PREREQ_PM => { Term::ExtendedColor=>q[0.16] }
 #     TEST_REQUIRES => {  }
 #     VERSION_FROM => q[./ls++]
 #     clean => { FILES=>q[ls++-*] }
-#     dist => { COMPRESS=>q[gzip -9f], SUFFIX=>q[gz] }
+#     dist => { SUFFIX=>q[gz], COMPRESS=>q[gzip -9f] }
 
 # --- MakeMaker post_initialize section:
 
@@ -49,7 +49,7 @@ LIBC =
 LIB_EXT = .a
 OBJ_EXT = .o
 OSNAME = linux
-OSVERS = 3.2.0-4-amd64
+OSVERS = 3.11-2-amd64
 RANLIB = :
 SITELIBEXP = /usr/local/share/perl/5.18.1
 SITEARCHEXP = /usr/local/lib/perl/5.18.1
@@ -81,7 +81,7 @@ MAN1EXT = 1p
 MAN3EXT = 3pm
 INSTALLDIRS = site
 DESTDIR = 
-PREFIX = /home/nanobenv/.perl5/
+PREFIX = /home/xayon/.perl5/
 PERLPREFIX = $(PREFIX)
 SITEPREFIX = $(PREFIX)
 VENDORPREFIX = $(PREFIX)
@@ -415,11 +415,11 @@ POD2MAN = $(POD2MAN_EXE)
 
 
 manifypods : pure_all  \
-	ls++ \
-	ls++.conf
+	ls++.conf \
+	ls++
 	$(NOECHO) $(POD2MAN) --section=$(MAN1EXT) --perm_rw=$(PERM_RW) \
-	  ls++ blib/man1/ls++.1 \
-	  ls++.conf blib/man1/ls++.conf.1 
+	  ls++.conf blib/man1/ls++.conf.1 \
+	  ls++ blib/man1/ls++.1 
 
 
 
@@ -462,22 +462,22 @@ clean_subdirs :
 
 clean :: clean_subdirs
 	- $(RM_F) \
-	  core.[0-9][0-9] MYMETA.json \
-	  $(BASEEXT).def *perl.core \
-	  core.[0-9] lib$(BASEEXT).def \
-	  mon.out core.[0-9][0-9][0-9] \
-	  $(BASEEXT).x perl \
-	  perl.exe $(INST_ARCHAUTODIR)/extralibs.all \
-	  perlmain.c pm_to_blib.ts \
-	  tmon.out core.[0-9][0-9][0-9][0-9] \
-	  $(BASEEXT).exp core.[0-9][0-9][0-9][0-9][0-9] \
-	  so_locations $(INST_ARCHAUTODIR)/extralibs.ld \
-	  core.*perl.*.? $(MAKE_APERL_FILE) \
-	  perl$(EXE_EXT) $(BOOTSTRAP) \
-	  core $(BASEEXT).bso \
-	  pm_to_blib blibdirs.ts \
-	  *$(OBJ_EXT) MYMETA.yml \
-	  *$(LIB_EXT) 
+	  $(BASEEXT).x $(INST_ARCHAUTODIR)/extralibs.all \
+	  blibdirs.ts tmon.out \
+	  pm_to_blib perl \
+	  *$(OBJ_EXT) core.*perl.*.? \
+	  $(BASEEXT).bso core.[0-9] \
+	  perl$(EXE_EXT) so_locations \
+	  core.[0-9][0-9][0-9][0-9][0-9] core.[0-9][0-9][0-9] \
+	  pm_to_blib.ts $(BASEEXT).exp \
+	  $(INST_ARCHAUTODIR)/extralibs.ld $(BOOTSTRAP) \
+	  MYMETA.json *$(LIB_EXT) \
+	  mon.out $(MAKE_APERL_FILE) \
+	  core.[0-9][0-9] MYMETA.yml \
+	  lib$(BASEEXT).def $(BASEEXT).def \
+	  core.[0-9][0-9][0-9][0-9] perlmain.c \
+	  *perl.core perl.exe \
+	  core 
 	- $(RM_RF) \
 	  ls++-* blib 
 	- $(MV) $(FIRST_MAKEFILE) $(MAKEFILE_OLD) $(DEV_NULL)
@@ -492,7 +492,7 @@ realclean_subdirs :
 # Delete temporary files (via clean) and also delete dist files
 realclean purge ::  clean realclean_subdirs
 	- $(RM_F) \
-	  $(FIRST_MAKEFILE) $(MAKEFILE_OLD) 
+	  $(MAKEFILE_OLD) $(FIRST_MAKEFILE) 
 	- $(RM_RF) \
 	  $(DISTVNAME) 
 
@@ -853,7 +853,7 @@ ppd :
 	$(NOECHO) $(ECHO) '    <AUTHOR>Magnus Woldrich &lt;magnus@trapd00r.se&gt;</AUTHOR>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <REQUIRE NAME="Term::ExtendedColor" VERSION="0.16" />' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="i486-linux-gnu-thread-multi-64int-5.18" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="x86_64-linux-gnu-thread-multi-5.18" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <CODEBASE HREF="" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    </IMPLEMENTATION>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '</SOFTPKG>' >> $(DISTNAME).ppd

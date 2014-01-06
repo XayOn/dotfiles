@@ -1,7 +1,19 @@
-	cd ls--
-	perl Makefile.PL PREFIX=~/.perl5/
-	make install
-	cp ls++.conf ~/.ls++.conf
-	cd ..
-        mkdir -f ~/.prettierTerminal 
-	sh get_xresources_solarized.sh
+# Install inconsolata
+mkdir ~/.fonts
+cp -r fonts/* ~/.fonts
+
+# Configure xfce4-terminal
+grep Configuration ~/.config/xfce4/terminal/terminalrc || echo "[Configuration]" >> ~/.config/xfce4/terminal/terminalrc 
+echo "\nFontName=Inconsolata for Powerline Medium 17" >> ~/.config/xfce4/terminal/terminalrc 
+
+# Install ls++
+cd ls--
+perl Makefile.PL PREFIX=~/.perl5/
+make install
+cp ls++.conf ~/.ls++.conf
+cd ..
+
+# Create xresources
+mkdir -f ~/.prettierTerminal 
+sh get_xresources_solarized.sh
+
