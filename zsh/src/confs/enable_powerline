@@ -1,4 +1,6 @@
-ZSH_THEME="powerline"
-function _update_ps1(){export PROMPT="$(~/.prettierTerminal/zsh/powerline-zsh/powerline-zsh.py $?)"; }
-precmd() { _update_ps1; }
+ZSH_THEME="blinks"
+
+if [[ -r ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
+    source ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+fi
 
