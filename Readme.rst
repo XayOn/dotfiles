@@ -11,7 +11,7 @@ directories.
 .. image:: https://raw.github.com/XayOn/prettierTerminal/master/prettierTerminal.png
 
 
-This uses stuff that is based on lokaltog's patched fonts for powerline, make sure to read this before and patch your font: https://github.com/Lokaltog/vim-powerline
+This installs Inconsolata for powerline, a nice font patched for powerline.
 
 You need to have python PIP installed, in debian and ubuntu:
 
@@ -21,15 +21,14 @@ You need to have python PIP installed, in debian and ubuntu:
 
 tmux:
  - Configuration for tmux including:
-   Tmux-powerline
-   Tmux-solarized
+   Powerline
+   Solarized
    Cmatrix screensaver for tmux conf
    Mouse support enabled by default
 
 Zsh:
  - Small set of confs for zsh, relying on oh-my-zsh (it installs this
-   also), with powerline-zsh theme combined with the zsh fork of
-   zsh-powerline for theme consistency.
+   also), with powerline theme and zsh syntax highlighting.
 
 Others:
  - Interesting configuration for other tools, right now it contains mutt and
@@ -61,14 +60,10 @@ Notes
 
 Most of the work here is not mine, I just made it easy to install and put it
 all togheter.
+
 Novice users probably lose a lot of interest in the console because its
 default "ugliness" and/or difficulty to install themes, this makes it all
 easier, getting the nicest themes and works available out there for bash.
-
-Each external package (tmux-solarized, tmux-powerline, oh-my-zsh,
-zsh-powerline, oh-my-zsh-themes-powerline, mc-colors-solarized,
-mutt-colors-solarized, bash-powerline, LS_COLORS... ) are included in this
-repo as submodules.
 
 Installation
 ============
@@ -88,6 +83,8 @@ include this confs in each of them execute:
 ::
 
     make
+
+After that, you have to look at .prettierTerminal and include in your configuration file the bashrc/zshrc/foorc files.
 
 If you want it to "just work", enabling everything by default:
 
