@@ -1,7 +1,2 @@
-if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
-    source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
-fi
 export TERM=xterm-256color # It only works with 256 capable terminals, sorry =)
-export PATH=$HOME/.bin/:$HOME/.perl5/bin:$PATH:~/.local/bin
-export POWERLINE_COMMAND=powerline
-alias ls="ls --color"
+export PATH=$HOME/.bin/:$PATH:~/.local/bin

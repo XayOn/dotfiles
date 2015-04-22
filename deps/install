@@ -7,17 +7,6 @@ grep Configuration ~/.config/xfce4/terminal/terminalrc || echo "[Configuration]"
 echo "\nFontName=Inconsolata for Powerline Medium 17" >> ~/.config/xfce4/terminal/terminalrc
 echo "\nColorBackground=#00002b2b3636" >> ~/.config/xfce4/terminal/terminalrc
 
-# Install ls++
-cd ls--
-perl Makefile.PL PREFIX=~/.perl5/
-make install
-cp ls++.conf ~/.ls++.conf
-cd ..
-
 # Create xresources
 mkdir -f ~/.prettierTerminal
 sh get_xresources_solarized.sh
-
-# Install powerline
-pip install --user git+git://github.com/Lokaltog/powerline
-

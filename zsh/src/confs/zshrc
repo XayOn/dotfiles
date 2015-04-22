@@ -7,5 +7,3 @@ plugins=(git zsh-syntax-highlighting-filetypes zsh-syntax-highlighting )
 
 source ~/.prettierTerminal/zsh/oh-my-zsh/oh-my-zsh.sh
 source ~/.prettierTerminal/zsh/confs/enable_powerline
-
-eval $( dircolors -b ~/.prettierTerminal/zsh/LS_COLORS/LS_COLORS )
