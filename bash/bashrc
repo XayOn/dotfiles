@@ -1,2 +1,0 @@
-export TERM=xterm-256color # It only works with 256 capable terminals, sorry =)
-export PATH=$HOME/.bin/:$PATH:~/.local/bin
