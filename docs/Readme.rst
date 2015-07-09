@@ -11,7 +11,7 @@ such as:
 
 So, yeah, this project is now vim-dependent =)
 
-And, if you've got any problem with 
+And, if you've got any problem with vim...
 
 .. image:: http://media1.giphy.com/media/6idqG60e7D9e0/200w.gif
 
