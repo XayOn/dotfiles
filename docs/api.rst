@@ -1,25 +1,75 @@
+get_dircolors
+-------------
+
+Downloads dircolors-solarized.
+
+
+get_inconsolata_for_powerline
+-----------------------------
+
+- Adds inconsolata for powerline to ~/.fonts
+
+
 get_vim_lines
 -------------
 
 Executes vim promptline and tmuxline plugins to get the configs.
 
 
-bash
------
+install_bash
+------------
 
 This code actually:
 
 * Creates a bashrc.pt with vim-promptline sourcing on it
 * If not already on ~/.bashrc, adds a line sourcing it
 
-TODO: Do this =)
+
+run main stuff
+--------------
+
+Runs the script
 
 
+[32m✓[0m 
 
-try_spf13
----------
 
-tries to install required plugins using spf13-vim
+spf13vim
+--------
+
+Installs spf13-vim.
+
+
+tmux
+-----
+
+* Creates a tmux config file.
+* If not already on ~/.tmuxrc source it.
+
+
+xfce4_terminal
+--------------
+
+- Downloads solarized config for xfce4 temrminal and applies it.
+- Configures Inconsolata for Powerline
+
+.. warning::
+
+    BE CAREFUL.
+    This COMPLETLY overwrites your xfce4-terminal configuration.
+
+
+xresources
+----------
+
+Downloads xresources solarized file, puts it into ~/.Xresources 
+(not overwriting) and reloads xresources
+
+.. warning::
+
+    This APPENDS to ~/.Xresources, so you might have to clean it
+    manually if something goes wrong
+
 
 zsh
 -----

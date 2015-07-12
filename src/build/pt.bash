@@ -667,11 +667,9 @@ log_icon="\e[31m✓\e[0m"
 log_icon_ok="\e[32m✓\e[0m"
 log_icon_nok="\e[31m✗\e[0m"
 LOG=$(mktemp)
-echo "Writing log in ${LOG}"
 
 run_and_log(){
-    #$2 &> ${LOG} && {
-    $2 && {
+    $2 &> ${LOG} && {
         _log_icon=$log_icon_ok
         } || {
         _log_icon=$log_icon_nok
@@ -890,19 +888,37 @@ doc <<EOD
     Installs spf13-vim.
 
 EOD
+
 eval $endoc
+
     curl -fsSL https://raw.github.com/spf13/spf13-vim/3.0/bootstrap.sh | bash
     echo -e "Bundle 'edkolev/tmuxline.vim'\nBundle 'edkolev/promptline.vim'" > ~/.vimrc.bundles.local
     vim -c ":BundleInstall" -c ":qa"
 
 }
 
-run_and_log "Instalando spf13-vim" spf13vim
-run_and_log "Get vim promptline and tmuxline" get_vim_lines
-run_and_log "Get dircolors" get_dircolors
-run_and_log "Get inconsolata" get_inconsolata_for_powerline
-run_and_log "Make zsh config" zsh
-run_and_log "Make bash config" install_bash
-run_and_log "Make tmux config" tmux
-run_and_log "Get xresources" xresources
-run_and_log "Configure xfce4 terminal" xfce4_terminal
+run(){
+doc <<EOD
+
+    run main stuff
+    --------------
+
+    Runs the script
+
+EOD
+
+eval $endoc
+
+    echo "Writing log in ${LOG}"
+    run_and_log "Instalando spf13-vim" spf13vim
+    run_and_log "Get vim promptline and tmuxline" get_vim_lines
+    run_and_log "Get dircolors" get_dircolors
+    run_and_log "Get inconsolata" get_inconsolata_for_powerline
+    run_and_log "Make zsh config" zsh
+    run_and_log "Make bash config" install_bash
+    run_and_log "Make tmux config" tmux
+    run_and_log "Get xresources" xresources
+    run_and_log "Configure xfce4 terminal" xfce4_terminal
+}
+
+[[ "bash" != $0  ]] && run
