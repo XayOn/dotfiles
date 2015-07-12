@@ -19,8 +19,33 @@ Here, I still manage a few more configurations.
 This way we end up having a cool all-with-the-same-appearance command line.
 It also installs Inconsolata for powerline, a nice font patched for powerline.
 
+This requires VIM and xfce4-terminal, and optionally tmux, bash and zsh.
+
+I'd recommend the xfce4-terminal + tmux + zsh setup =)
+On debian systems, you could do:
+
+::
+
+    apt-get install tmux xfce4-terminal zsh vim bash
+
+
 Functionalities
 ===============
+
+VIM
+---
+
+* Installs SPF13-VIM
+
+SOLARIZED
+---------
+
+Adds solarized support to:
+
+* Tmux
+* LS_COLORS
+* VIM
+* xfce4-terminal
 
 Tmux
 ----
@@ -28,7 +53,6 @@ Tmux
 * Loads tmuxline-generated config.
 * Cmatrix screensaver
 * Mouse support pre-configured
-
 
 ZSH
 ---
@@ -54,7 +78,6 @@ Installation
 
 Currently, prettierTerminal depends on the following software:
 
-* `spf13-vim <http://vim.spf13.com>` (or having vim-airline, promptline and tmuxline installed)
 * tmux
 * bash or zsh
 
