@@ -34,6 +34,11 @@ Mostly awesomeness.
 
 But yes, you get:
 
+Promptlines
+-----------
+
+* Cool airline promptlines for bash, zsh and tmux
+
 Vim goodies
 -----------
 
