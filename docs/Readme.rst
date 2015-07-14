@@ -29,6 +29,8 @@ On debian systems, you could do:
     apt-get install tmux xfce4-terminal zsh vim bash
 
 
+.. image:: /docs/start.gif
+
 Functionalities
 ===============
 
