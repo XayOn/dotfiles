@@ -804,6 +804,7 @@ eval $endoc
     echo 'plugins=(git)' > ~/.zshrc.pt
     echo 'source ~/.prompt.pt' >> ~/.zshrc.pt
     echo 'eval `dircolors ~/.dircolors.pt`' >> ~/.zshrc.pt
+    echo 'alias ls="ls --color"' >> ~/.zshrc.pt
     grep .zshrc.pt ~/.zshrc || echo "source ~/.zshrc.pt" >> ~/.zshrc
 }
 
@@ -825,7 +826,8 @@ eval $endoc
     wget -O ~/.baex.bash https://raw.githubusercontent.com/XayOn/baex/master/src/build/baex.bash
     echo "source ~/.baex.bash" >> ~/.bashrc.pt
     echo "source ~/.prompt.pt" >> ~/.bashrc.pt
-    echo 'eval `dircolors ~/.dircolors.pt`' >> ~/.zshrc.pt
+    echo 'eval `dircolors ~/.dircolors.pt`' >> ~/.bashrc.pt
+    echo 'alias ls="ls --color"' >> ~/.bashrc.pt
     grep .bashrc.pt ~/.bashrc || echo "source ~/.bashrc.pt" >> ~/.bashrc
 }
 
