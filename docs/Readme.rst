@@ -85,7 +85,7 @@ Or, in a quicker way:
 
 ::
 
-    wget https://github.com/XayOn/prettierTerminal/blob/master/src/build/pt.bash -O - | bash
+    wget https://github.com/XayOn/prettierTerminal/raw/master/src/build/pt.bash -O - | bash
 
 More info
 =========
