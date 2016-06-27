@@ -2,7 +2,6 @@ Prettier terminal
 ==================
 
 .. image:: https://img.shields.io/github/downloads/xayon/prettierTerminal/total.svg?maxAge=2592000
-.. image:: https://img.shields.io/pypi/dm/prettierTerminal.svg?maxAge=2592000
 .. image:: https://img.shields.io/github/stars/xayon/prettierTerminal.svg?style=social&label=Star&maxAge=2592000
 
 
