@@ -1,6 +1,12 @@
 Prettier terminal
 ==================
 
+.. image:: https://img.shields.io/github/downloads/xayon/prettierTerminal/total.svg?maxAge=2592000
+.. image:: https://img.shields.io/pypi/dm/prettierTerminal.svg?maxAge=2592000
+.. image:: https://img.shields.io/github/stars/xayon/prettierTerminal.svg?style=social&label=Star&maxAge=2592000
+
+
+
 Want a prettier terminal?
 You found one!
 
@@ -9,7 +15,7 @@ You found one!
 This offers a simple-and-quick installer for a few tools that'll make your
 terminal cuter.
 
-This project *heavily* depends on vim. 
+This project *heavily* depends on vim.
 So, if you've got any problem with vim...
 
 .. image:: http://media1.giphy.com/media/6idqG60e7D9e0/200w.gif
