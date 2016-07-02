@@ -5,7 +5,7 @@ your terminal to be like this one:
 
 .. image:: http://i.imgur.com/ozMOyZc.gif
 
-.. contents:: local
+.. contents:: :local:
 
 **Note that it works best with xfce4-terminal**
 
