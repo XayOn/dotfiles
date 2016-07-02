@@ -1,11 +1,11 @@
 .. image:: http://i.imgur.com/VMIUygW.png
 
-PrettierTerminal is an all-in-one installer / configuration tool
-to auto-install + configure a terminal configuration like this one:
+PrettierTerminal is an **all-in-one installer** :tophat: that configures
+your terminal to be like this one:
 
 .. image:: http://i.imgur.com/ozMOyZc.gif
 
-** Note that it works best with xfce4-terminal **
+**Note that it works best with xfce4-terminal**
 
 This project *heavily* depends on vim. If you've got any problem with vim:
 
