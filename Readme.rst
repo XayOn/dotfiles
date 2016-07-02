@@ -30,27 +30,17 @@ PrettierTerminal currently offers:
   + Configures mouse and arrow support
 
 
-Installation
-============
+Usage
+=====
 
-** Please, please, please backup your .bashrc, .zshrc and .vim* **
+Backup
+++++++
+
+**Please, please, please backup your .bashrc, .zshrc and .vim***
 It should not break them, but it modifies them so it's best to do so.
 
-To install prettierTerminal, just **execute as your user pt.bash**
-
-::
-
-    bash build/pt.bash
-
-Or, if you dare you can **execute it directly**
-
-::
-
-    wget https://github.com/XayOn/prettierTerminal/raw/master/src/build/pt.bash -O - | bash
-
-
-**Minimal requirements are vim, and (bash or zsh).**
-For a better experience I recommend **xfce4-terminal** and **tmux**.
+Dependencies
+++++++++++++
 
 On debian and derivatives you could install all the deps with
 
@@ -58,6 +48,25 @@ On debian and derivatives you could install all the deps with
 
     apt-get install tmux xfce4-terminal zsh vim bash
 
+Installation
+++++++++++++
+
+To install prettierTerminal, just **execute as your user pt.bash**
+
+::
+
+    bash build/pt.bash
+
+
+Or, if you dare you can **execute it directly**
+
+::
+
+    wget https://github.com/XayOn/prettierTerminal/raw/master/src/build/pt.bash -O - | bash
+
+**Minimal requirements are vim, and (bash or zsh).**
+
+For a better experience I recommend **xfce4-terminal** and **tmux**.
 
 More info
 =========
