@@ -1,4 +1,4 @@
-.. image:: http://9gag.com/gag/aqL5Vzj
+.. image:: http://i.imgur.com/VMIUygW.png
 
 PrettierTerminal is an all-in-one installer / configuration tool
 to auto-install + configure a terminal configuration like this one:
