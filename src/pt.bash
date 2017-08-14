@@ -34,13 +34,10 @@ EOF
 }
 
 get_sourcecode_pro(){
-    # TODO
-    return
-}
-
-get_icons_in_terminal(){
-    # TODO
-    return
+    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v1.1.0/SourceCodePro.zip -O /tmp/sourcecodepro.zip
+    mkdir ~/.fonts
+    cd ~/.fonts
+    unzip /tmp/sourcecodepro.zip
 }
 
 
@@ -178,7 +175,7 @@ eval $endoc
     echo "Writing log in ${LOG}"
     type git || sudo apt-get install git
     type vim || sudo apt-get install vim-nox
-    type colorls || sudo gem install colorls
+    type colorls || { sudo apt-get install libncurses5-dev; sudo gem install colorls; }
     type most || sudo apt-get install most
 
     run_and_log "Get dircolors" get_dircolors

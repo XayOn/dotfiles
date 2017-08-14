@@ -677,37 +677,35 @@ run_and_log(){
     echo -e "${_log_icon} ${1}"
 }
 
-get_inconsolata_for_powerline(){
-doc <<EOD
 
-    get_inconsolata_for_powerline
-    -----------------------------
+tmux(){
+    # https://github.com/gpakosz/.tmux
+    cd
+    git clone https://github.com/gpakosz/.tmux.git
+    ln -s -f .tmux/.tmux.conf
+    cp .tmux/.tmux.conf.local .
+    cat <<EOF >> .tmux.conf.local
+    tmux_conf_theme_left_separator_main=''
+    tmux_conf_theme_left_separator_sub=''
+    tmux_conf_theme_right_separator_main=''
+    tmux_conf_theme_right_separator_sub=''
+    tmux_conf_battery_bar_symbol_full='♥'
+    tmux_conf_battery_bar_symbol_empty='·'
+EOF
 
-    - Adds inconsolata for powerline to ~/.fonts
-
-EOD
-eval $endoc
-
-    mkdir -p ~/.fonts
-    wget -O ~/.fonts/Inconsolata\ for\ Powerline.otf https://github.com/powerline/fonts/raw/master/Inconsolata/Inconsolata%20for%20Powerline.otf
-    fc-cache ~/.fonts
-
+    cd -
 }
 
-get_vim_lines(){
-doc <<EOD
-
-    get_vim_lines
-    -------------
-
-    Executes vim promptline and tmuxline plugins to get the configs.
-
-EOD
-eval $endoc
-
-    vim -c ":PromptlineSnapshot ~/.prompt.pt airline" -c ":q"
-    tmux new-session vim -c ":Tmuxline airline" -c ":TmuxlineSnapshot ~/.tmuxline.pt" -c ":q"
+get_sourcecode_pro(){
+    # TODO
+    return
 }
+
+get_icons_in_terminal(){
+    # TODO
+    return
+}
+
 
 get_dircolors(){
 doc <<EOD
@@ -742,7 +740,7 @@ EOD
 eval $endoc
     mkdir -p ~/.config/xfce4/terminal
     wget https://github.com/sgerrand/xfce4-terminal-colors-solarized/raw/master/dark/terminalrc -O ~/.config/xfce4/terminal/terminalrc
-    cat >> ~/.config/xfce4/terminal/terminalrc <<EOD 
+    cat >> ~/.config/xfce4/terminal/terminalrc <<EOD
     MiscAlwaysShowTabs=FALSE
     MiscBell=FALSE
     MiscBordersDefault=TRUE
@@ -760,7 +758,7 @@ eval $endoc
     MiscTabPosition=GTK_POS_TOP
     MiscHighlightUrls=TRUE
     ScrollingBar=TERMINAL_SCROLLBAR_NONE
-    FontName=Inconsolata for Powerline Medium 16
+    FontName=SourceCodePro Nerd Font Mono 14
 EOD
 }
 
@@ -770,7 +768,7 @@ doc <<EOD
     xresources
     ----------
 
-    Downloads xresources solarized file, puts it into ~/.Xresources 
+    Downloads xresources solarized file, puts it into ~/.Xresources
     (not overwriting) and reloads xresources
 
     .. warning::
@@ -794,110 +792,39 @@ doc <<EOD
 
     * Install (via curl) oh-my-zsh
     * Enables git plugin
-    * Creates a zshrc.pt with vim-promptline sourcing on it
+    * Creates a zshrc.pt
     * If not already on ~/.zshrc, adds a line sourcing it
 
 EOD
 eval $endoc
 
     bash <(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)
-    echo 'plugins=(git)' > ~/.zshrc.pt
-    echo 'source ~/.prompt.pt' >> ~/.zshrc.pt
-    echo 'eval `dircolors ~/.dircolors.pt`' >> ~/.zshrc.pt
-    echo 'alias ls="ls --color"' >> ~/.zshrc.pt
+    git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/themes/powerlevel9k
+    sed -i "s/robbyrussell/powerlevel9k\/powerlevel9k/g" ~/.zshrc
+
+    cat <<EOF >~/.zshrc.pt
+
+    plugins=(git)
+
+    [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+    export TERM=xterm-256color
+    export EDITOR=vim
+    export PAGER=most
+    export CDPATH=$CDPATH:~/devel/
+
+    # Export ADDR
+    wttr(){ curl wttr.in/~"$ADDR";}
+    cheat(){ curl cheat.sh/$@;}
+
+    alias tree="colorls -t"
+    alias ls="colorls -r"
+EOF
+
+    dircolors ~/.dircolors.pt >> .zshrc.pt
     grep .zshrc.pt ~/.zshrc || echo "source ~/.zshrc.pt" >> ~/.zshrc
 }
 
-install_bash(){
-
-doc <<EOD
-
-    install_bash
-    ------------
-
-    This code actually:
-    
-    * Creates a bashrc.pt with vim-promptline sourcing on it
-    * If not already on ~/.bashrc, adds a line sourcing it
-
-EOD
-eval $endoc
-
-    wget -O ~/.baex.bash https://raw.githubusercontent.com/XayOn/baex/master/src/build/baex.bash
-    echo "source ~/.baex.bash" >> ~/.bashrc.pt
-    echo "source ~/.prompt.pt" >> ~/.bashrc.pt
-    echo 'eval `dircolors ~/.dircolors.pt`' >> ~/.bashrc.pt
-    echo 'alias ls="ls --color"' >> ~/.bashrc.pt
-    grep .bashrc.pt ~/.bashrc || echo "source ~/.bashrc.pt" >> ~/.bashrc
-}
-
-tmux(){
-config=<<EOD
-    set-option -g status on
-    set-option -g status-interval 2
-    set-option -g status-utf8 on
-    set-option -g status-position top
-    set-window-option -g xterm-keys on
-    set -g default-command /bin/zsh
-    set -g default-shell /bin/zsh
-    source ~/.tmuxline.pt
-    set -g mouse-select-window on
-    set-option -g mouse-select-pane on
-    set-option -g mouse-resize-pane
-    set-option -g lock-server on
-    set-option -g lock-after-time 1800
-    set-option -g lock-command 'cmatrix -b -u 9'
-    bind -n S-down new-window
-    bind -n C-left prev
-    bind -n C-right next
-    bind -n C-S-left swap-window -t -1
-    bind -n C-S-right swap-window -t +1
-EOD
-
-doc <<EOD
-
-    bash
-    -----
-
-    * Creates a tmux config file.
-    * If not already on ~/.tmuxrc source it.
-
-    Adds config as
-
-    ::
-
-        $config
-
-EOD
-eval $endoc
-
-    cat > ~/.tmux.pt <<EOD $config 
-EOD
-
-    grep ".tmux.pt" ~/.tmux.conf || {
-        echo "source ~/.tmux.pt" >> ~/.tmux.conf
-    }
-
-}
-
-
-spf13vim(){
-doc <<EOD
-
-    spf13vim
-    --------
-
-    Installs spf13-vim.
-
-EOD
-
-eval $endoc
-
-    curl -fsSL https://raw.github.com/spf13/spf13-vim/3.0/bootstrap.sh | bash
-    echo -e "Bundle 'edkolev/tmuxline.vim'\nBundle 'edkolev/promptline.vim'" > ~/.vimrc.bundles.local
-    vim -c ":BundleInstall" -c ":qa"
-
-}
 
 run(){
 doc <<EOD
@@ -912,15 +839,115 @@ EOD
 eval $endoc
 
     echo "Writing log in ${LOG}"
-    run_and_log "Instalando spf13-vim" spf13vim
-    run_and_log "Get vim promptline and tmuxline" get_vim_lines
+    type git || sudo apt-get install git
+    type vim || sudo apt-get install vim-nox
+    type colorls || sudo gem install colorls
+    type most || sudo apt-get install most
+
     run_and_log "Get dircolors" get_dircolors
-    run_and_log "Get inconsolata" get_inconsolata_for_powerline
+    run_and_log "Get inconsolata" get_sourcecode_pro
+    run_and_log "Get icons_in_terminal" get_icons_in_terminal
     run_and_log "Make zsh config" zsh
-    run_and_log "Make bash config" install_bash
     run_and_log "Make tmux config" tmux
+    run_and_log "Make vim config" vim_cfg
     run_and_log "Get xresources" xresources
     run_and_log "Configure xfce4 terminal" xfce4_terminal
+}
+
+vim_cfg(){
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    cat <<EOF >> ~/.vimrc
+set nocompatible
+set hidden
+set encoding=utf-8
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.fzf
+
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'bagrat/vim-workspace'
+Plugin 'junegunn/vim-emoji'
+Plugin 'mhinz/vim-startify'
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'mhinz/vim-grepper'
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'w0rp/ale'
+Plugin 'mindriot101/vim-yapf'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'ivanov/vim-ipython'
+Plugin 'jmcantrell/vim-virtualenv'
+Plugin 'majutsushi/tagbar'
+Plugin 'janko-m/vim-test'
+Plugin 'benmills/vimux'
+Plugin 'edkolev/tmuxline.vim'
+Plugin 'junegunn/goyo.vim'
+Plugin 'jdkanani/vim-material-theme'
+Plugin 'kristijanhusak/vim-hybrid-material'
+Plugin 'itchyny/lightline.vim'
+Plugin 'embear/vim-localvimrc'
+call vundle#end()
+
+let g:lightline = {
+      \ 'colorscheme': 'jellybeans',
+      \ 'component': {
+      \   'readonly': '%{&readonly?"":""}',
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
+      \ }
+
+filetype plugin indent on
+
+let g:enable_bold_font = 1
+set laststatus=2
+set bg=dark
+colorscheme hybrid_material
+
+set mouse=a
+set expandtab
+set wrap
+set linebreak
+set syntax=auto
+syntax on
+
+autocmd BufWritePre * :%s/\s\+$//e
+
+autocmd FileType python set ts=4
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+autocmd FileType python match OverLength /\%79v.\+/
+autocmd FileType python autocmd BufWritePre * :%s/\s\+$//e
+
+nmap <F5> :NERDTreeToggle<CR> " f5 Nerdtree
+nmap <F8> :TagbarToggle<CR> " f8 for tagbar
+cabbrev bonly WSBufOnly
+noremap <Tab> :WSNext<CR>
+noremap <S-Tab> :WSPrev<CR>
+noremap <Leader><Tab> :WSClose<CR>
+noremap <Leader><S-Tab> :WSClose!<CR>
+noremap <C-t> :WSTabNew<CR>
+let g:workspace_powerline_separators = 1
+let g:workspace_tab_icon = "\uf00a"
+let g:workspace_left_trunc_icon = "\uf0a8"
+let g:workspace_right_trunc_icon = "\uf0a9"
+
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
+let test#strategy = "vimux"
+let test#python#runner = 'pytest'
+
+let g:ale_linters = {'python': ['flake8', 'pylint'],}
+
+let g:localvimrc_ask = 0
+EOF
+    vim +BundleInstall +qa
 }
 
 [[ "bash" != $0  ]] && run
