@@ -5,7 +5,7 @@ your terminal to be awesome
 
 .. contents:: :local:
 
-.. image:: https://i.imgur.com/tzaVH5i.gif 
+.. image:: https://i.imgur.com/iuefY0f.gif
 
 
 What does it offer
