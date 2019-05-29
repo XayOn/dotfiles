@@ -12,9 +12,9 @@ What does it offer
 ==================
 
 - **Awesomeness** :wink:
-- Same style (airline) on vim and zsh 
+- Same style on vim and tmux
+- Awesome style in zsh (can be made the same as vim and tmux by removing purepower) 
 - Neovim configuration for python with goodies
-- Solarized theme 
 - Automatic font configuration
 - Auto-ls
 - Automatically colored cat using 'bat'
@@ -29,12 +29,12 @@ Usage
 Dependencies
 ++++++++++++
 
-prettierTerminal will try to auto-install its dependencies on debian/ubuntu.
-
-In case you're using any other linux flavour you should install: 
+Basically everything is installed and contained in your $HOME. You only need:
 
 - neovim
 - zsh
+- git
+- tmux
 
 ::
 
@@ -44,5 +44,7 @@ Installation
 ++++++++++++
 
 To install prettierTerminal, just **execute as your user install.bash** 
+
+NOTE: You can't execute the installer WITHIN tmux
 
 For a better experience I recommend **gnome-terminal**

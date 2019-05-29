@@ -71,8 +71,7 @@ AUTO_LS_COMMANDS=(ls)
 zplug 'romkatv/powerlevel10k', use:powerlevel10k.zsh-theme
 
 # Setup neovim
-zplug "XayOn/c64b066d69734f6d0f5cbf2236d21bd5", from:gist, hook-build: "pip nstall --user yapf docformatter; nvim +PlugInstall +UpdateRemotePlugins +qa"
-
+zplug "XayOn/c64b066d69734f6d0f5cbf2236d21bd5", from:gist, hook-build: "pip install --user yapf docformatter; nvim +PlugInstall +UpdateRemotePlugins +qa; tmux new vim +Tmuxline +TmuxlineSnapshot\ ~/.tmux.pt.conf +qa"
 # Manage Zplug with zplug
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
@@ -84,7 +83,13 @@ zplug load
 
 alias cat=bat --paging=never
 
+source ~/.purepower
+
 EOF
 
-grep ".zshrc.pt" ~/.zshrc &>/dev/null || { echo -e "\nsource ~/.zshrc.pt" >> ~/.zshrc; }
+grep ".zshrc.pt" ~/.zshrc &>/dev/null || { echo -e "\nsource ~/.zshrc.pt" >> ~/.zshrc;  }
+( cd && curl -fsSLO https://raw.githubusercontent.com/romkatv/dotfiles-public/master/.purepower )
+
+grep "tmux.pt.conf" ~/.tmux.conf || { echo -e "\nsource ~/.tmux.pt.conf\n" >> ~/.tmux.conf; }
+
 zsh
