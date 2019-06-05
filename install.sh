@@ -87,6 +87,7 @@ zplug load
 alias cat=bat --paging=never
 
 source ~/.purepower
+export PATH=$PATH:~/.local/bin
 
 EOF
 
