@@ -75,6 +75,9 @@ zplug "XayOn/c64b066d69734f6d0f5cbf2236d21bd5", from:gist, hook-build: "pip inst
 # Manage Zplug with zplug
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
+# Zsh syntax highlighting
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
 # Install plugins if there are plugins that have not been installed
 zplug check || zplug install
 
