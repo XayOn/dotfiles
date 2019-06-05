@@ -88,6 +88,8 @@ alias cat=bat --paging=never
 
 source ~/.purepower
 export PATH=$PATH:~/.local/bin
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
 
 EOF
 
