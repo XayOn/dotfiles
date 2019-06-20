@@ -9,7 +9,7 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.g
 grep pt.vim ~/.config/nvim/init.vim &>/dev/null || { echo -e '\nsource ~/.zplug/repos/XayOn/c64b066d69734f6d0f5cbf2236d21bd5/pt.vim' >> ~/.config/nvim/init.vim; }
 
 # Install and configure fonts as default system font
-mkdir -p ~/.local/share/fonts/; mkdir -p ~/.config/fontconfig/; 
+mkdir -p ~/.local/share/fonts/; mkdir -p ~/.config/fontconfig/;
 curl -L --output ~/.local/share/fonts/SauceCodePro\ Nerd\ Font\ Mono.ttf "https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete%20Mono.ttf?raw=true"
 
 cat << EOF >~/.config/fontconfig/fonts.conf
@@ -41,18 +41,18 @@ zplug "Peltoche/lsd", from:gh-r, as:command
 zplug "sdispater/poetry", from:github, as:command, hook-build:"python get-poetry.py"
 
 # Zsh plugin for poetry. Fixes some issues and auto-loads poetry envs
-zplug 'darvid/zsh-poetry', from:github 
+zplug 'darvid/zsh-poetry', from:github
 
 # Install node version manager and nodejs
 zplug 'lukechilds/zsh-nvm'
 
-# Install bat, a cat alternative 
-# TODO: bat seems to not install correct arch on linux. 
+# Install bat, a cat alternative
+# TODO: bat seems to not install correct arch on linux.
 # This forces it to x86_64 linux so it wont work on mac or windows.
 # (nor arm or x86)
 zplug 'sharkdp/bat', as:command, from:gh-r, rename-to:bat, use:"*x86_64-*-linux*"
 
-# Intuitive and fast "find" replacement 
+# Intuitive and fast "find" replacement
 zplug 'sharkdp/fd', as:command, from:gh-r
 
 # Install FZF, a fuzzy finder
@@ -88,14 +88,23 @@ alias cat=bat --paging=never
 
 source ~/.purepower
 export PATH=$PATH:~/.local/bin
+export EDITOR=vim
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
 EOF
 
+# Setup git and git-flow sensible defaults
+git config --global core.hooksPath ~/.git_hooks
+git config --global gitflow.hotfix.finish.message "Hotfix %tag%"
+git config --global gitflow.release.finish.message "Release %tag%"
+git config --global gitflow.path.hooks $HOME/.git_hooks
+
+# Setup zsh
 grep ".zshrc.pt" ~/.zshrc &>/dev/null || { echo -e "\nsource ~/.zshrc.pt" >> ~/.zshrc;  }
 ( cd && curl -fsSLO https://raw.githubusercontent.com/romkatv/dotfiles-public/master/.purepower )
 
+# Setup tmux
 grep "tmux.pt.conf" ~/.tmux.conf || { echo -e "\nsource ~/.tmux.pt.conf\n" >> ~/.tmux.conf; }
 
 zsh

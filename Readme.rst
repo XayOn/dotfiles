@@ -73,11 +73,12 @@ Tmux
 - Style configured with vim's airline style
 
 
+
 Usage
 =====
 
 Dependencies
-++++++++++++
+------------
 
 Basically everything is installed and contained in your $HOME. You only need to
 have, preinstalled:
@@ -92,7 +93,7 @@ have, preinstalled:
     apt-get install tmux neovim zsh vim
 
 Installation
-++++++++++++
+--------------
 
 To install prettierTerminal, just **execute as your user install.bash**
 
