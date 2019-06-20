@@ -25,7 +25,6 @@ General
 - **Awesomeness** :wink:
 - Font-awesome based font (SauceCodePro)
 - Pretty cool commands:
-
   + :sparkles: lsd :arrow_right: Enhanced ls with colors. Aliased to `ls` and `tree`
   + :sparkles: poetry :arrow_right: Python Dependency management and packaging. Integrated with zsh.
   + :sparkles: nvm :arrow_right: NodeJS Version Manager
