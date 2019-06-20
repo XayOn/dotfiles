@@ -22,15 +22,16 @@ What does it offer
 
 General
 --------
-- **Awesomeness** :wink:
-- Font-awesome based font (SauceCodePro)
-- Pretty cool commands:
-  + :sparkles: lsd :arrow_right: Enhanced ls with colors. Aliased to `ls` and `tree`
-  + :sparkles: poetry :arrow_right: Python Dependency management and packaging. Integrated with zsh.
-  + :sparkles: nvm :arrow_right: NodeJS Version Manager
-  + :sparkles: bat :arrow_right: Enhanced cat with automatic syntax highlighting and paging
-  + :sparkles: fd :arrow_right: Modern find replacement
-  + :sparkles: fzf :arrow_right: Fuzzy finder. Configured with Ctrl+R keys.
+
+* **Awesomeness** :wink:
+* Font-awesome based font (SauceCodePro)
+* Pretty cool commands:
+  + lsd :arrow_right: Enhanced ls with colors. Aliased to `ls` and `tree`
+  + poetry :arrow_right: Python Dependency management and packaging. Integrated with zsh.
+  + nvm :arrow_right: NodeJS Version Manager
+  + bat :arrow_right: Enhanced cat with automatic syntax highlighting and paging
+  + fd :arrow_right: Modern find replacement
+  + fzf :arrow_right: Fuzzy finder. Configured with Ctrl+R keys.
 
 NeoVim
 ------
