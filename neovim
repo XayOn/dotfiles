@@ -1,0 +1,18 @@
+call plug#begin('~/.local/share/nvim/plugged')
+
+Plug 'philip-karlsson/aerojump.nvim'
+nmap <Leader>ab <Plug>(AerojumpBolt)
+
+Plug 'philip-karlsson/bolt.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+
+Plug 'neomake/neomake'
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'eugen0329/vim-esearch'
+Plug 'airblade/vim-gitgutter'
+Plug 'itchyny/lightline.vim'
+
+syntax on
+set bg=dark
+
+call plug#end()
