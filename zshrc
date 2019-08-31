@@ -27,7 +27,8 @@ zplug load
 
 alias cat=bat --paging=never
 alias tree="lsd --tree"
-alias ls="lsd -lh"
+ls(){ "lsd -lh"; }
+alias vim=nvim
 
 export XDG_CONFIG_HOME=~/.local/share
 export PATH=$PATH:~/.local/bin

@@ -3,14 +3,27 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'philip-karlsson/aerojump.nvim'
 nmap <Leader>ab <Plug>(AerojumpBolt)
 
-Plug 'philip-karlsson/bolt.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-
 Plug 'neomake/neomake'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 Plug 'eugen0329/vim-esearch'
 Plug 'airblade/vim-gitgutter'
 Plug 'itchyny/lightline.vim'
+Plug 'lenovsky/nuake'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ryanoasis/vim-devicons'
+
+Plug 'tpope/vim-fugitive'
+Plug 'shougo/denite.nvim'
+Plug 'shougo/deoplete.nvim'
+
+Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'honza/vim-snippets'
+Plug 'sirver/ultisnips'
+Plug 'sbdchd/neoformat'
+Plug 'mhinz/vim-startify'
+Plug 'philip-karlsson/bolt.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
 syntax on
 set bg=dark
