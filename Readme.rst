@@ -4,6 +4,8 @@ PrettierTerminal was an **all-in-one installer** :tophat: for your terminal to
 become awesome. Now it's an pretty, consistent configuration for neovim, zsh
 alacritty and sway.
 
+.. image:: ./docs/main.gif
+
 .. contents:: :local:
 
 Intro
@@ -32,7 +34,7 @@ On arch linux you can do so via:
 
 .. code:: bash
 
-  sudo pacman -S yay alacritty waybar sway lsd zsh
+  sudo pacman -S yay alacritty waybar sway lsd zsh nodejs python
   yay -S nwg-launchers-git mvpaper-git neovim-nightly otf-nerd-fonts-fira-code
 
 Then, you can either go the fast way
@@ -90,11 +92,11 @@ Dependencies
 ____________
 
 To use python debugger (dap) you'll need to have python3, and to install coc,
-you'll need to have nodejs installed and in your path:
+you'll need to have nodejs. You can install them on arch with: 
 
 .. code:: bash
 
-   pacman -S nodejs python3
+   pacman -S nodejs python
 
 ZSH Configuration
 -----------------
@@ -142,7 +144,7 @@ a drop-in replacement for i3.
 
 On these screenshots I use `WhiteSur dark theme for GTK and firefox
 <https://github.com/vinceliuice/WhiteSur-gtk-theme>`_ with
-`mpvpaper <https://github.com/GhostNaN/mpvpaper>`_ animated for the animated
+`mpvpaper <https://github.com/GhostNaN/mpvpaper>`_ for the animated
 backgrounds.
 
 Dependencies
