@@ -58,9 +58,6 @@ function! PackagerInit() abort
   call packager#add('rhysd/git-messenger.vim')
   call packager#add('mhinz/vim-signify')
 
-  " Show colors
-  call packager#add('RRethy/vim-hexokinase')
-
   " Automatically configure tabs
   call packager#add('tpope/vim-sleuth')
 

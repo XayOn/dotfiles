@@ -84,7 +84,7 @@ That's achieved with the following plugins:
 +--------------------------------------------------------------------+---------------------------------------------------------+---------------------------------------------------------------+
 | `treesitter <https://github.com/nvim-treesitter/nvim-treesitter>`_ | `tender <https://github.com/jacoborus/tender.vim>`_     | `gina <https://github.com/lambdalisue/gina.vim>`_             |
 +--------------------------------------------------------------------+---------------------------------------------------------+---------------------------------------------------------------+
-| `signify <https://github.com/mhinz/vim-signify>`_                  | `hexokinase <https://github.com/RRethy/vim-hexokinase>`_| `sleuth <https://github.com/tpope/vim-sleuth>`_               |
+| `signify <https://github.com/mhinz/vim-signify>`_                  |                                                         | `sleuth <https://github.com/tpope/vim-sleuth>`_               |
 +--------------------------------------------------------------------+---------------------------------------------------------+---------------------------------------------------------------+
 | `editorconfig <https://github.com/editorconfig/editorconfig-vim>`_ | `dadbod-ui <https://github.com/tpope/vim-dadbod>`_      | `dap <https://github.com/mfussenegger/nvim-dap-python>`_      |
 +--------------------------------------------------------------------+---------------------------------------------------------+---------------------------------------------------------------+
