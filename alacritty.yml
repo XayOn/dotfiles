@@ -1,0 +1,47 @@
+window:
+  padding:
+    x: 10
+    y: 10
+
+# Font configuration 
+font:
+  normal:
+    family: Fira Code
+  bold:
+    family: Fira Code
+  italic:
+    family: Fira Code
+  size: 14.0
+
+colors:
+  primary:
+    background: '0x282828'
+    foreground: '0xeeeeee'
+  cursor:
+    text: '0x272822'
+    cursor: '0xf8f8f2'
+  normal:
+    black: '0x282828'
+    red: '0xf43753'
+    green: '0xc9d05c'
+    yellow: '0xffc24b'
+    blue: '0xb3deef'
+    magenta: '0xd3b987'
+    cyan: '0x73cef4'
+    white: '0xeeeeee'
+  bright:
+    black: '0x4c4c4c'
+    red: '0xf43753'
+    green: '0xc9d05c'
+    yellow: '0xffc24b'
+    blue: '0xb3deef'
+    magenta: '0xd3b987'
+    cyan: '0x73cef4'
+    white: '0xfeffff'
+  indexed_colors:
+    - {index: 16, color: '0xfd971f'}
+    - {index: 17, color: '0xcc6633'}
+    - {index: 18, color: '0x383830'}
+    - {index: 19, color: '0x49483e'}
+    - {index: 20, color: '0xa59f85'}
+    - {index: 21, color: '0xf5f4f1'}

@@ -4,8 +4,6 @@ PrettierTerminal was an **all-in-one installer** :tophat: for your terminal to
 become awesome. Now it's an pretty, consistent configuration for neovim, zsh
 alacritty and sway.
 
-.. image:: ./docs/main.gif
-
 .. contents:: :local:
 
 Intro
@@ -17,6 +15,9 @@ awesomeness :sunglasses: of the configuration, with a lot less code by
 leveraging on that same tools.
 
 Arch :warning: It's been mostly tested on archlinux. Should work on any distro 
+
+.. image:: ./docs/main.gif
+
 
 Global installation
 -------------------
@@ -98,6 +99,25 @@ you'll need to have nodejs. You can install them on arch with:
 
    pacman -S nodejs python
 
+Installation
+____________
+
+To install this component, execute:
+
+.. bash::
+
+  curl sh -c "$(curl -fsSL https://raw.githubusercontent.com/XayOn/prettierTerminal/master/doc/install-neovim.sh)"
+
+Or:
+
+
+.. code:: bash
+
+  git clone https://github.com/XayOn/prettierTerminal
+  cd prettierTerminal
+  bash doc/install-neovim.sh
+
+
 ZSH Configuration
 -----------------
 
@@ -134,13 +154,30 @@ pacman:
 
     pacman -S lsd zsh
 
+Installation
+____________
+
+To install this component, execute:
+
+.. bash::
+
+  curl sh -c "$(curl -fsSL https://raw.githubusercontent.com/XayOn/prettierTerminal/master/doc/install-zsh.sh)"
+
+Or:
+
+
+.. code:: bash
+
+  git clone https://github.com/XayOn/prettierTerminal
+  cd prettierTerminal
+  bash doc/install-zsh.sh
+
+
 SwayWM configuration
 ---------------------
 
 `Sway window manager <https://swaywm.org/>`_ is a tiling Wayland compositor and
 a drop-in replacement for i3. 
-
-.. image:: docs/swaywm.rst
 
 On these screenshots I use `WhiteSur dark theme for GTK and firefox
 <https://github.com/vinceliuice/WhiteSur-gtk-theme>`_ with
@@ -163,3 +200,21 @@ On arch linux, just install them with pacman and yay:
 
   sudo pacman -S yay alacritty waybar
   yay -S nwg-launchers-git mvpaper-git
+
+Installation
+____________
+
+To install this component, execute:
+
+.. bash::
+
+  curl sh -c "$(curl -fsSL https://raw.githubusercontent.com/XayOn/prettierTerminal/master/doc/install-swaywm.sh)"
+
+Or:
+
+
+.. code:: bash
+
+  git clone https://github.com/XayOn/prettierTerminal
+  cd prettierTerminal
+  bash doc/install-swaywm.sh
