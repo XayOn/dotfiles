@@ -1,7 +1,7 @@
 # Auto-installation script 
 
 # Install NeoVim
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/prettierTerminal/master/docs/master/doc/install-neovim.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/XayOn/prettierTerminal/master/docs/install-neovim.sh)"
 
 # Setup zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/XayOn/prettierTerminal/master/docs/install-zsh.sh)"

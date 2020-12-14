@@ -42,7 +42,7 @@ Then, you can either go the fast way
 
 .. code:: bash
 
-  curl sh -c "$(curl -fsSL https://raw.githubusercontent.com/XayOn/prettierTerminal/master/doc/install-full.sh)"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/XayOn/prettierTerminal/master/doc/install-full.sh)"
 
 Or, the more traditional way 
 
