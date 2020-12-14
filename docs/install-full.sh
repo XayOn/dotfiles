@@ -4,7 +4,7 @@
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/XayOn/prettierTerminal/master/docs/install-neovim.sh)"
 
 # Setup zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/XayOn/prettierTerminal/master/docs/install-zsh.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/XayOn/prettierTerminal/master/docs/install-zshrc.sh)"
 
 # Setup swaywm
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/XayOn/prettierTerminal/master/docs/master/doc/install-swaywm.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/XayOn/prettierTerminal/master/docs/install-swaywm.sh)"
