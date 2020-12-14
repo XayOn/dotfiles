@@ -1,38 +1,155 @@
 .. image:: http://i.imgur.com/VMIUygW.png
 
-PrettierTerminal is an **all-in-one installer** :tophat: that configures
-your terminal to be awesome
-
-Requires:
-
-It's composed of three current steps:
-
-- Configuring zsh and extra CLI tools
-- Configuring TMUX 
-- Configuring vim
-
-All of this is made using the cooles tools (
-`ZPlug <https://github.com/zplug/zplug>`_,
-`Vim-Plug <https://github.com/junegunn/vim-plug>`_, 
-`TPM <https://github.com/tmux_plugins/tpm>`_)
+PrettierTerminal was an **all-in-one installer** :tophat: for your terminal to
+become awesome.
 
 .. contents:: :local:
 
-.. image:: https://i.imgur.com/iuefY0f.gif
+Intro
+-----
+
+With time, CLI lovers have grown, and there are a lot of better
+installers/solutions that do what prettierTerminal did, so I've kept the
+awesomeness :sunglasses: of the configuration, with a lot less code by leveraging
+on that same tools.
+
+:alert: It's been mostly tested on archlinux. Should work on any distro 
+
+Global dependencies summary
+---------------------------
+
+If you want my complete configuration, you need to install:
+
+- `nwg-launchers <https://github.com/nwg-piotr/nwg-launchers>`_
+- `alacritty <https://github.com/alacritty/alacritty/>`_
+- `waybar <https://github.com/Alexays/Waybar/>`_
+- `mpvpaper <https://github.com/GhostNaN/mpvpaper>` (optional)
+
+On arch linux you can do so via:
+
+.. code:: bash
+
+  sudo pacman -S yay alacritty waybar sway lsd zsh
+  yay -S nwg-launchers-git mvpaper-git neovim-nightly
 
 
-What does it offer
-==================
+NeoVIM configuration
+--------------------
 
-General
---------
+.. image:: docs/neovim.png
 
-* **Awesomeness** :wink:
-* OneDark theme for everything
-* Pretty cool commands:
-  - lsd :arrow_right: Enhanced ls with colors. Aliased to `ls` and `tree`
-  - poetry :arrow_right: Python Dependency management and packaging. Integrated with zsh.
-  - nvm :arrow_right: NodeJS Version Manager
-  - bat :arrow_right: Enhanced cat with automatic syntax highlighting and paging
-  - fd :arrow_right: Modern find replacement
-  - fzf :arrow_right: Fuzzy finder. Configured with Ctrl+R keys.
+This is a simple-but-complete neovim configuration, featuring:
+
+- Firefox integration
+- Tags and buffer bars
+- Fuzzy finder
+- Treesitter-based syntax highlighting
+- Git management
+- Show colors from your hex color codes
+- Auto-detect tabs or spaces
+- Database administration UIColor 
+- Editorconfig support
+- Custom galaxyline configuration based on spaceline.lua
+
+:warning: This requires a really recent version of `neovim
+          <https://neovim.io/>`_ nightly.
+
+That's achieved with the following plugins:
+- `vim-packager <https://github.com/kristijanhusak/vim-packager>`_
+- `firenvim <https://github.com/glacambre/firenvim>`_
+- `galaxyline <https://github.com/glepnir/galaxyline.nvim/>`_
+- `barbar <https://github.com/romgrk/barbar.nvim>`_
+- `fzf <https://github.com/junegunn/fzf.vim>`_
+- `fzf-preview <https://github.com/yuki-ycino/fzf-preview.vim>`_
+- `treesitter <https://github.com/nvim-treesitter/nvim-treesitter>`_
+- `tender <https://github.com/jacoborus/tender.vim>`_
+- `gina <https://github.com/lambdalisue/gina.vim>`_
+- `signify <https://github.com/mhinz/vim-signify>`_
+- `hexokinase <https://github.com/RRethy/vim-hexokinase>`_
+- `sleuth <https://github.com/tpope/vim-sleuth>`_
+- `editorconfig <https://github.com/editorconfig/editorconfig-vim>`_
+- `dadbod-ui <https://github.com/tpope/vim-dadbod>`_
+- `dap <https://github.com/mfussenegger/nvim-dap-python>`_
+
+To use python debugger (dap) you'll need to create a virtualenv:
+
+.. code:: bash
+
+  mkdir .virtualenvs
+  cd .virtualenvs
+  python -m venv debugpy
+  debugpy/bin/python -m pip install debugpy
+
+To install coc, you'll need to have nodejs installed and in your path:
+
+.. code:: bash
+
+   pacman -S nodejs
+
+ZSH Configuration
+-----------------
+
+For ZSH, it installs `ZINIT <https://github.com/zdharma/zinit>`_, my
+currently-favourite zsh plugin manager.
+
+It will install a few plugins, the `pure
+<https://github.com/sindresorhus/pure>`_ zsh theme, and the following binaries:
+
+  - `bat` - Enhanced cat with automatic syntax highlighting and paging
+  - `fzf <https://github.com/junegunn/fzf/>` Fuzzy finder. Configured with
+    Ctrl+R keys.
+
+The plugins currently installed are:
+
+- `zsh-users/zsh-autosuggestions
+  <https://github.com/zsh-users/zsh-autosuggestions>`_
+- `zdharma/fast-syntax-highlighting
+  <https://github.com/zdharma/fast-syntax-highlighting>`_
+- `desyncr/auto-ls <https://github.com/desyncr/auto-ls>`_
+- `MichaelAquilina/zsh-auto-notify
+  <https://github.com/MichaelAquilina/zsh-auto-notify>`_
+- `junegunn/fzf <https://github.com/junegunn/fzf>`_
+- `LS_COLORS <https://github.com/trapdoor/LS_COLORS>`_
+
+
+Dependencies
+_____________
+
+Requires lsd and zsh to be installed, on arch, you can install them with
+pacman:
+
+.. code:: bash
+
+    pacman -S lsd zsh
+
+SwayWM configuration
+---------------------
+
+`Sway window manager <https://swaywm.org/>`_ is a tiling Wayland compositor and
+a drop-in replacement for i3. 
+
+.. image:: docs/swaywm.rst
+
+On these screenshots I use `WhiteSur dark theme for GTK and firefox
+<https://github.com/vinceliuice/WhiteSur-gtk-theme>`_ with
+`mpvpaper <https://github.com/GhostNaN/mpvpaper>`_ animated for the animated
+backgrounds.
+
+Dependencies
+____________
+
+To use this swaywm configuration, you'd need:
+
+- `nwg-launchers <https://github.com/nwg-piotr/nwg-launchers>`_
+- `alacritty <https://github.com/alacritty/alacritty/>`_
+- `waybar <https://github.com/Alexays/Waybar/>`_
+- `mpvpaper <https://github.com/GhostNaN/mpvpaper>` (optional)
+
+On arch linux, just install them with pacman and yay:
+
+.. code:: bash
+
+  sudo pacman -S yay alacritty waybar
+  yay -S nwg-launchers-git mvpaper-git
+
+
