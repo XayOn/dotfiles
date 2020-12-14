@@ -104,7 +104,7 @@ ____________
 
 To install this component, execute:
 
-.. bash::
+.. code:: bash
 
   curl sh -c "$(curl -fsSL https://raw.githubusercontent.com/XayOn/prettierTerminal/master/doc/install-neovim.sh)"
 
@@ -159,7 +159,7 @@ ____________
 
 To install this component, execute:
 
-.. bash::
+.. code:: bash
 
   curl sh -c "$(curl -fsSL https://raw.githubusercontent.com/XayOn/prettierTerminal/master/doc/install-zsh.sh)"
 
@@ -206,7 +206,7 @@ ____________
 
 To install this component, execute:
 
-.. bash::
+.. code:: bash
 
   curl sh -c "$(curl -fsSL https://raw.githubusercontent.com/XayOn/prettierTerminal/master/doc/install-swaywm.sh)"
 
