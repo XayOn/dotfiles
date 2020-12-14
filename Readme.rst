@@ -1,4 +1,4 @@
-.. image:: http://i.imgur.com/VMIUygW.png
+.. image:: ./docs/logo.png
 
 PrettierTerminal was an **all-in-one installer** :tophat: for your terminal to
 become awesome. Now it's an pretty, consistent configuration for neovim, zsh
@@ -11,28 +11,45 @@ Intro
 
 With time, CLI lovers have grown, and there are a lot of better
 installers/solutions that do what prettierTerminal did, so I've kept the
-awesomeness :sunglasses: of the configuration, with a lot less code by leveraging
-on that same tools.
+awesomeness :sunglasses: of the configuration, with a lot less code by
+leveraging on that same tools.
 
 Arch :warning: It's been mostly tested on archlinux. Should work on any distro 
 
-Global dependencies summary
----------------------------
+Global installation
+-------------------
 
 If you want my complete configuration, you need to install:
 
 - `nwg-launchers <https://github.com/nwg-piotr/nwg-launchers>`_
 - `alacritty <https://github.com/alacritty/alacritty/>`_
 - `waybar <https://github.com/Alexays/Waybar/>`_
-- `mpvpaper <https://github.com/GhostNaN/mpvpaper>` (optional)
+- `mpvpaper <https://github.com/GhostNaN/mpvpaper>`_ (optional)
+- `Fira Code Font (patched by nerd fonts)
+  <https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode>`_
 
 On arch linux you can do so via:
 
 .. code:: bash
 
   sudo pacman -S yay alacritty waybar sway lsd zsh
-  yay -S nwg-launchers-git mvpaper-git neovim-nightly
+  yay -S nwg-launchers-git mvpaper-git neovim-nightly otf-nerd-fonts-fira-code
 
+Then, you can either go the fast way
+
+.. code:: bash
+
+  curl sh -c "$(curl -fsSL https://raw.githubusercontent.com/XayOn/prettierTerminal/master/doc/install-full.sh)"
+
+Or, the more traditional way 
+
+.. code:: bash
+
+  git clone https://github.com/XayOn/prettierTerminal
+  cd prettierTerminal
+  bash doc/install-full.sh
+
+Note that this WILL NOT install the GTK or firefox theme, that's up to you.
 
 NeoVIM configuration
 --------------------
@@ -73,20 +90,15 @@ That's achieved with the following plugins:
 - `dadbod-ui <https://github.com/tpope/vim-dadbod>`_
 - `dap <https://github.com/mfussenegger/nvim-dap-python>`_
 
-To use python debugger (dap) you'll need to create a virtualenv:
+Dependencies
+____________
+
+To use python debugger (dap) you'll need to have python3, and to install coc,
+you'll need to have nodejs installed and in your path:
 
 .. code:: bash
 
-  mkdir .virtualenvs
-  cd .virtualenvs
-  python -m venv debugpy
-  debugpy/bin/python -m pip install debugpy
-
-To install coc, you'll need to have nodejs installed and in your path:
-
-.. code:: bash
-
-   pacman -S nodejs
+   pacman -S nodejs python3
 
 ZSH Configuration
 -----------------
@@ -145,7 +157,7 @@ To use this swaywm configuration, you'd need:
 - `nwg-launchers <https://github.com/nwg-piotr/nwg-launchers>`_
 - `alacritty <https://github.com/alacritty/alacritty/>`_
 - `waybar <https://github.com/Alexays/Waybar/>`_
-- `mpvpaper <https://github.com/GhostNaN/mpvpaper>` (optional)
+- `mpvpaper <https://github.com/GhostNaN/mpvpaper>`_ (optional)
 
 On arch linux, just install them with pacman and yay:
 
@@ -153,5 +165,3 @@ On arch linux, just install them with pacman and yay:
 
   sudo pacman -S yay alacritty waybar
   yay -S nwg-launchers-git mvpaper-git
-
-

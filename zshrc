@@ -1,49 +1,42 @@
-source ~/.zplug/init.zsh
+zinit for \
+    light-mode zsh-users/zsh-autosuggestions \
+    light-mode zdharma/fast-syntax-highlighting \
+    light-mode desyncr/auto-ls \
+    light-mode MichaelAquilina/zsh-auto-notify \
+    light-mode pick"async.zsh" src"pure.zsh" sindresorhus/pure
 
-# External commands
-zplug "b4b4r07/enhancd", use:init.sh # enhanced "cd .." with autocompletion
-zplug "Peltoche/lsd", from:gh-r, as:command  # ls with colors
-zplug "sdispater/poetry", from:github, as:command, hook-build:"python get-poetry.py"  # Poetry, handle python projects
-zplug 'sharkdp/bat', as:command, from:gh-r, rename-to:bat, use:"*x86_64-*-linux*" # bat, enhanced cat command
-zplug 'sharkdp/fd', as:command, from:gh-r  # FD, enhanced find command
-zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf  # fuzzy finder
+zinit ice src"shell/key-bindings.zsh"
+zinit light junegunn/fzf
 
-# ZSH plugins
-zplug 'darvid/zsh-poetry', from:github   # handle poetry
-zplug 'lukechilds/zsh-nvm'  # handle nvm
-zplug 'junegunn/fzf', use:'shell/key-bindings.zsh' # fuzzy finder with ctrl+r
-zplug "desyncr/auto-ls", from:github  # Automatically execute ls upon entering a dir
-zplug "zsh-users/zsh-syntax-highlighting", defer:2  # Real time syntax highlighting
-zplug "zsh-users/zsh-autosuggestions" # Autosuggestions
-zplug "MichaelAquilina/zsh-auto-notify"  # Auto notify for long tasks
-zplug ice wait'1' lucid
-zplug light laggardkernel/zsh-thefuck  # TheFuck plugin
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zinit ice from"gh-r" as"program" mv"*/bat bat"
+zinit light sharkdp/bat
 
-# ZPlug itself
-zplug 'zplug/zplug', hook-build:'zplug --self-manage'
-zplug check || zplug install
-zplug load
+zinit ice from"gh-r" as"program" 
+zinit load junegunn/fzf-bin
 
-alias cat=bat --paging=never
-alias tree="lsd --tree"
-ls(){ "lsd -lh"; }
-alias vim=nvim
+zinit ice atclone"dircolors -b LS_COLORS > c.zsh" atpull'%atclone' pick"c.zsh" nocompile'!'
+zinit light trapd00r/LS_COLORS
 
-export XDG_CONFIG_HOME=~/.local/share
-export PATH=$PATH:~/.local/bin
+
+setopt appendhistory
+HISTFILE=~/.zhistory
+HISTSIZE=1000
+SAVEHIST=1000
+
+export PATH="$PATH:~/.local/bin:~/.poetry/bin:$PATH"
 export EDITOR=nvim
 
 export AUTO_LS_NEWLINE=false
-export AUTO_LS_COMMANDS=(ls)
+export AUTO_LS_COMMANDS=("ls")
 export ENHANCD_DOT_SHOW_FULLPATH=1
+
+# Force some default command replacements.
+alias cat=bat --paging=never
+alias tree="lsd --tree"
+ls() { lsd $@; }
+alias vim=nvim
 
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
-autoload -Uz add-zsh-hook
-_nicy_prompt() {
-  PROMPT=$(~/.nimble/bin/nicy)
-}
-add-zsh-hook precmd _nicy_prompt
-get_nerd_font(){ wget $(wget https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest -O -  | jq -r ".assets[]|select(.name==\"$1.zip\").browser_download_url")}
+[[ -e ~/.zshrc.custom ]] && source ~/.zshrc.custom
