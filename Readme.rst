@@ -14,7 +14,7 @@ installers/solutions that do what prettierTerminal did, so I've kept the
 awesomeness :sunglasses: of the configuration, with a lot less code by leveraging
 on that same tools.
 
- :warning: It's been mostly tested on archlinux. Should work on any distro 
+Arch :warning: It's been mostly tested on archlinux. Should work on any distro 
 
 Global dependencies summary
 ---------------------------
@@ -52,8 +52,8 @@ This is a simple-but-complete neovim configuration, featuring:
 - Editorconfig support
 - Custom galaxyline configuration based on spaceline.lua
 
- :warning: This requires a really recent version of `neovim
-           <https://neovim.io/>`_ nightly.
+NeoVim :warning: This requires a really recent version of `neovim
+<https://neovim.io/>`_ nightly.
 
 That's achieved with the following plugins:
 
