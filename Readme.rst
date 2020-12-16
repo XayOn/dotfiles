@@ -2,7 +2,7 @@
 
 PrettierTerminal was an **all-in-one installer** :tophat: for your terminal to
 become awesome. Now it's an pretty, consistent configuration for neovim, zsh
-alacritty and sway.
+alacritty and sway, powered by `dotbot <https://github.com/anishathalye/dotbot>`_
 
 .. contents:: :local:
 
@@ -13,8 +13,6 @@ With time, CLI lovers have grown, and there are a lot of better
 installers/solutions that do what prettierTerminal did, so I've kept the
 awesomeness :sunglasses: of the configuration, with a lot less code by
 leveraging on that same tools.
-
-Arch :warning: It's been mostly tested on archlinux. Should work on any distro 
 
 .. image:: ./docs/main.gif
 
@@ -32,28 +30,41 @@ If you want my complete configuration, you need to install:
   <https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode>`_
 - gtk-engine-murrine sassc optipng inkscape (gtk)
 
-On arch linux you can do so via:
+
+Fast installation
+_________________
+
+You can quickly install prettierTerminal with a single command:
+
+On arch:
+.. code:: bash
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/XayOn/prettierTerminal/master/install-remote.sh)
+
+On other systems (you have to manually install all the deps):
 
 .. code:: bash
 
-  sudo pacman -S yay alacritty waybar sway lsd zsh nodejs python gtk-engine-murrine gtk-engines sassc optipng inkscape
-  yay -S nwg-launchers-git mvpaper-git neovim-nightly otf-nerd-fonts-fira-code
-
-Then, you can either go the fast way
-
-.. code:: bash
-
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/XayOn/prettierTerminal/master/doc/install-full.sh)"
+  NOARCH=y sh -c "$(curl -fsSL https://raw.githubusercontent.com/XayOn/prettierTerminal/master/install-remote.sh)
 
 Or, the more traditional way 
 
 .. code:: bash
 
-  git clone https://github.com/XayOn/prettierTerminal
-  cd prettierTerminal
-  bash doc/install-full.sh
+  git clone https://github.com/XayOn/prettierTerminal ~/.prettierTerminal
+  cd ~/.prettierTerminal
+  bash install.sh
 
-Note that this WILL NOT install the GTK or firefox theme, that's up to you.
+And, leaving the installation on your side (non-arch systems):
+
+.. code:: bash
+
+  git clone https://github.com/XayOn/prettierTerminal ~/.prettierTerminal
+  cd ~/.prettierTerminal
+  bash install.sh --exclude yay sudo
+
+Note that this WILL NOT install the `whitesur firefox
+<https://github.com/vinceliuice/WhiteSur-gtk-theme/tree/master/src/other/firefox>`
+theme, that's up to you.
 
 NeoVIM configuration
 --------------------
@@ -100,25 +111,6 @@ you'll need to have nodejs. You can install them on arch with:
 
    pacman -S nodejs python
 
-Installation
-____________
-
-To install this component, execute:
-
-.. code:: bash
-
-  curl sh -c "$(curl -fsSL https://raw.githubusercontent.com/XayOn/prettierTerminal/master/doc/install-neovim.sh)"
-
-Or:
-
-
-.. code:: bash
-
-  git clone https://github.com/XayOn/prettierTerminal
-  cd prettierTerminal
-  bash doc/install-neovim.sh
-
-
 ZSH Configuration
 -----------------
 
@@ -155,25 +147,6 @@ pacman:
 
     pacman -S lsd zsh
 
-Installation
-____________
-
-To install this component, execute:
-
-.. code:: bash
-
-  curl sh -c "$(curl -fsSL https://raw.githubusercontent.com/XayOn/prettierTerminal/master/doc/install-zsh.sh)"
-
-Or:
-
-
-.. code:: bash
-
-  git clone https://github.com/XayOn/prettierTerminal
-  cd prettierTerminal
-  bash doc/install-zsh.sh
-
-
 SwayWM configuration
 ---------------------
 
@@ -201,21 +174,3 @@ On arch linux, just install them with pacman and yay:
 
   sudo pacman -S yay alacritty waybar
   yay -S nwg-launchers-git mvpaper-git
-
-Installation
-____________
-
-To install this component, execute:
-
-.. code:: bash
-
-  curl sh -c "$(curl -fsSL https://raw.githubusercontent.com/XayOn/prettierTerminal/master/doc/install-swaywm.sh)"
-
-Or:
-
-
-.. code:: bash
-
-  git clone https://github.com/XayOn/prettierTerminal
-  cd prettierTerminal
-  bash doc/install-swaywm.sh

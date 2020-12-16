@@ -18,15 +18,15 @@
     ~/.config/gtk-3.0/settings.ini: configs/gtk/gtkrc-3.0
     ~/.config/gtkrc-2.0: configs/gtk/gtkrc-2.0
 
-    - yay:
-        - nwg-launchers
-        - mpvpaper-git
-        - neovim-nightly
-        - otf-nerd-fonts-fira-code
-    
-    - sudo:
-        - shell:
-            - [pacman -S --noconfirm alacritty waybar sway lsd zsh nodejs python gtk-engine-murrine gtk-engines sassc optipng inkscape, Installing deps]
+- yay:
+    - nwg-launchers
+    - mpvpaper-git
+    - neovim-nightly
+    - otf-nerd-fonts-fira-code
+
+- sudo:
+    - shell:
+        - [pacman -S --noconfirm alacritty waybar sway lsd zsh nodejs python gtk-engine-murrine gtk-engines sassc optipng inkscape, Installing deps]
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
