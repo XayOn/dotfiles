@@ -1,9 +1,11 @@
+# Add a ten pixel padding
 window:
   padding:
     x: 10
     y: 10
 
-# Font configuration 
+# Fira Code 14 for everything. 
+# I like my fonts big and readable.
 font:
   normal:
     family: Fira Code
@@ -13,6 +15,7 @@ font:
     family: Fira Code
   size: 14.0
 
+# Tender (https://github.com/jacoborus/tender.vim) based theme
 colors:
   primary:
     background: '0x282828'

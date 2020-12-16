@@ -1,0 +1,53 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- create:
+    - ~/.config/neovim
+    - ~/.config/alacritty
+    - ~/.config/gtk-3.0
+
+- link:
+    ~/.config/neovim/init.vim: configs/neovim
+    ~/.config/waybar: configs/waybar
+    ~/.config/zshrc: configs/zshrc
+    ~/.config/swaywm: configs/swaywm
+    ~/.config/alacritty/alacritty.yml: configs/alacritty.yml
+    ~/.config/gtk-3.0/settings.ini: configs/gtk/gtkrc-3.0
+    ~/.config/gtkrc-2.0: configs/gtk/gtkrc-2.0
+
+    - yay:
+        - nwg-launchers
+        - mpvpaper-git
+        - neovim-nightly
+        - otf-nerd-fonts-fira-code
+    
+    - sudo:
+        - shell:
+            - [pacman -S --noconfirm alacritty waybar sway lsd zsh nodejs python gtk-engine-murrine gtk-engines sassc optipng inkscape, Installing deps]
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+    - [git clone https://github.com/kristijanhusak/vim-packager ~/.config/nvim/pack/packager/opt/vim-packager, Installing vim-packager]
+    - 
+      command: git clone https://github.com/vinceliuice/WhiteSur-gtk-theme /tmp/whitesur && sh /tmp/whitesur/install.sh
+      description: Installing whitesur gtk-theme
+      stderr: true
+      stdout: true
+    - 
+      command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)" && echo "source ~/.config/zshrc" >> ~/.zshrc
+      description: Installing and setting up zinit
+    - 
+      command: zsh
+      description: Entering zsh, press ctrl+d when finished
+      stdout: true
+      stderr: true
+      stdin: true
+    - 
+      command: sh -c "nvim +PackagerInstall +UpdateRemotePlugins +qa"
+      descrption: Installing neovim plugins
+      stderr: true
+      stdout: true
+      stdin: true

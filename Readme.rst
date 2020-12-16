@@ -30,12 +30,13 @@ If you want my complete configuration, you need to install:
 - `mpvpaper <https://github.com/GhostNaN/mpvpaper>`_ (optional)
 - `Fira Code Font (patched by nerd fonts)
   <https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode>`_
+- gtk-engine-murrine sassc optipng inkscape (gtk)
 
 On arch linux you can do so via:
 
 .. code:: bash
 
-  sudo pacman -S yay alacritty waybar sway lsd zsh nodejs python
+  sudo pacman -S yay alacritty waybar sway lsd zsh nodejs python gtk-engine-murrine gtk-engines sassc optipng inkscape
   yay -S nwg-launchers-git mvpaper-git neovim-nightly otf-nerd-fonts-fira-code
 
 Then, you can either go the fast way

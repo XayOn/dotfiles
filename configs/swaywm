@@ -2,10 +2,11 @@
 
 exec swaybg -i ~/.wallpapers/curr.png &
 
-# Set defaults
-set $menu nwggrid -o 1 -b 282828 -n 7 -s 90 -f -p
-set $term alacritty
-set $mod Mod4
+# Defaults
+set $menu nwggrid -o 1 -b 282828 -n 7 -s 90 -f -p # nwggrid as menu, with mod4+space
+set $term alacritty # Terminal
+set $mod Mod4 # Use mod4 as main modifier
+set $opacity 0.9 # Global window opacity
 
 # VIM-like mappings.
 set $left h
@@ -131,13 +132,6 @@ bar {
 }
 
 include /etc/sway/config.d/*
-
-set $cl_high #eeeeee 
-set $cl_indi #eeeeee
-set $cl_back #282828
-set $cl_fore #eeeeee
-set $cl_urge #f43753
-set $opacity 0.9
 
 # Colors                border   bg       text     indi     childborder
 client.focused          #282828 #eeeeee #eeeeee #eeeeee #f43753

@@ -2,15 +2,17 @@ if &compatible
   set nocompatible
 endif
 
+" Use tender colorscheme
 colorscheme tender
+set termguicolors
+
+" Common options
 filetype plugin on
 syntax on
-
 set mouse=a
 set number
-set updatetime=100
 let mapleader=","
-set termguicolors
+set updatetime=100
 
 " Load packager only when you need it
 function! PackagerInit() abort
