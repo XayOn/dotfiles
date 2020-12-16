@@ -100,25 +100,6 @@ To use python debugger (dap) you'll need to have python3, and to install coc,
 you'll need to have nodejs. 
 On archlinux, prettierTerminal will install them for you
 
-Installation
-____________
-
-To install this component, execute:
-
-.. code:: bash
-
-  curl sh -c "$(curl -fsSL https://raw.githubusercontent.com/XayOn/prettierTerminal/master/doc/install-neovim.sh)"
-
-Or:
-
-
-.. code:: bash
-
-  git clone https://github.com/XayOn/prettierTerminal
-  cd prettierTerminal
-  bash doc/install-neovim.sh
-
-
 ZSH Configuration
 -----------------
 
