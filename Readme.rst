@@ -58,7 +58,7 @@ Or, the more traditional way
   bash doc/install-full.sh
 
 Note that this WILL NOT install the `firefox whitesur theme
-<https://github.com/vinceliuice/WhiteSur-gtk-theme/tree/master/src/other/firefox>`,
+<https://github.com/vinceliuice/WhiteSur-gtk-theme/tree/master/src/other/firefox>`_,
 that's up to you.
 
 NeoVIM configuration
