@@ -42,7 +42,8 @@ If you want my complete configuration, you need to install:
 
 On archlinux, prettierTerminal will install them for you
 
-Then, you can either go the fast way
+
+You can install prettierTerminal with one single command:
 
 .. code:: bash
 
@@ -56,14 +57,16 @@ Or, the more traditional way
   cd prettierTerminal
   bash doc/install-full.sh
 
-Note that this WILL NOT install the GTK or firefox theme, that's up to you.
+Note that this WILL NOT install the `firefox whitesur theme
+<https://github.com/vinceliuice/WhiteSur-gtk-theme/tree/master/src/other/firefox>`,
+that's up to you.
 
 NeoVIM configuration
 --------------------
 
 .. image:: docs/neovim.png
 
-This is a simple-but-complete neovim configuration, featuring:
+This is a kiss but fully featured neovim configuration, including:
 
 - Firefox integration
 - Tags and buffer bars
@@ -132,25 +135,6 @@ _____________
 Requires lsd and zsh to be installed.
 On archlinux, prettierTerminal will install them for you
 
-Installation
-____________
-
-To install this component, execute:
-
-.. code:: bash
-
-  curl sh -c "$(curl -fsSL https://raw.githubusercontent.com/XayOn/prettierTerminal/master/doc/install-zsh.sh)"
-
-Or:
-
-
-.. code:: bash
-
-  git clone https://github.com/XayOn/prettierTerminal
-  cd prettierTerminal
-  bash doc/install-zsh.sh
-
-
 SwayWM configuration
 ---------------------
 
@@ -173,21 +157,3 @@ To use this swaywm configuration, you'd need:
 - `mpvpaper <https://github.com/GhostNaN/mpvpaper>`_ (optional)
 
 On archlinux, prettierTerminal will install them for you
-
-Installation
-____________
-
-To install this component, execute:
-
-.. code:: bash
-
-  curl sh -c "$(curl -fsSL https://raw.githubusercontent.com/XayOn/prettierTerminal/master/doc/install-swaywm.sh)"
-
-Or:
-
-
-.. code:: bash
-
-  git clone https://github.com/XayOn/prettierTerminal
-  cd prettierTerminal
-  bash doc/install-swaywm.sh
