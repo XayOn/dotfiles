@@ -1,6 +1,3 @@
-[submodule "dotbot-yay"]
-	path = dotbot-yay
-	url = https://github.com/oxson/dotbot-yay
 [submodule "dotbot-sudo"]
 	path = dotbot-sudo
 	url = https://github.com/DrDynamic/dotbot-sudo

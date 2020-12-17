@@ -23,10 +23,18 @@
     - mpvpaper-git
     - neovim-nightly
     - otf-nerd-fonts-fira-code
-
-- sudo:
-    - shell:
-        - [pacman -S --noconfirm alacritty waybar sway lsd zsh nodejs python gtk-engine-murrine gtk-engines sassc optipng inkscape, Installing deps]
+    - alacritty 
+    - waybar
+    - sway
+    - lsd
+    - zsh
+    - nodejs
+    - python
+    - gtk-engine-murrine
+    - gtk-engines
+    - sassc
+    - optipng
+    - inkscape
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
