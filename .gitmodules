@@ -1,0 +1,9 @@
+[submodule "dotbot-yay"]
+	path = dotbot-yay
+	url = https://github.com/alexwh/dotbot-yay
+[submodule "dotbot-sudo"]
+	path = dotbot-sudo
+	url = https://github.com/DrDynamic/dotbot-sudo
+[submodule "dotbot"]
+	path = dotbot
+	url = https://github.com/anishathalye/dotbot

@@ -1,0 +1,9 @@
+include "~/.themes/WhiteSur-dark/gtk-2.0/gtkrc"
+
+style "user-font" {
+	font_name = "Fira Code 13"
+}
+
+widget_class "*" style "user-font"
+gtk-font-name="Fira Code 13"
+include "/home/xayon/.gtkrc.mine"

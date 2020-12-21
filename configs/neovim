@@ -1,0 +1,499 @@
+if &compatible
+  set nocompatible
+endif
+
+" Use tender colorscheme
+colorscheme tender
+set termguicolors
+
+" Common options
+filetype plugin on
+syntax on
+set mouse=a
+set number
+let mapleader=","
+set updatetime=100
+
+" Load packager only when you need it
+function! PackagerInit() abort
+  packadd vim-packager
+  call packager#init()
+  call packager#add('kristijanhusak/vim-packager', { 'type': 'opt' })
+
+  " FireFox + neovim. 
+  call packager#add('glacambre/firenvim')
+
+  " Nice Statusline
+  call packager#add('glepnir/galaxyline.nvim')
+  call packager#add('kyazdani42/nvim-web-devicons')
+
+  " Main bar
+  call packager#add('romgrk/barbar.nvim')
+
+  " Fuzzy finder
+  call packager#add('junegunn/fzf', { 'do': './install --all && ln -s $(pwd) ~/.fzf'})
+  call packager#add('junegunn/fzf.vim')
+  call packager#add('yuki-ycino/fzf-preview.vim', {'branch': 'release'})
+
+  " Vim wiki
+  call packager#add('vimwiki/vimwiki', { 'type': 'opt' })
+
+  " Lateral file manager
+  call packager#add('ms-jpq/chadtree')
+
+  " Treesitter
+  call packager#add('haorenW1025/completion-nvim', {'requires': [
+  \ ['nvim-treesitter/completion-treesitter', {'requires': 'nvim-treesitter/nvim-treesitter'}],
+  \ {'name': 'steelsojka/completion-buffers', 'opts': {'type': 'opt'}},
+  \ 'kristijanhusak/completion-tags',
+  \ ]})
+
+  " Coc
+  call packager#add('neoclide/coc.nvim', { 'do': function('InstallCoc') })
+  call packager#add('ryanoasis/vim-devicons')
+
+  " Theme
+  call packager#add('jacoborus/tender.vim')
+
+  " Git management
+  call packager#add('lambdalisue/gina.vim')
+  call packager#add('rhysd/git-messenger.vim')
+  call packager#add('mhinz/vim-signify')
+
+  " Automatically configure tabs
+  call packager#add('tpope/vim-sleuth')
+
+  "Editorconfig
+  call packager#add('editorconfig/editorconfig-vim')
+
+  " Database management
+  call packager#add('kristijanhusak/vim-dadbod-ui')
+  call packager#add('tpope/vim-dadbod')
+
+  " Debugging
+  call packager#add('mfussenegger/nvim-dap-python')
+  call packager#add('mfussenegger/nvim-dap')
+endfunction
+
+function! InstallCoc(plugin) abort
+  exe '!cd '.a:plugin.dir.' && yarn install'
+  call coc#add_extension('coc-eslint', 'coc-tsserver', 'coc-python')
+endfunction
+
+command! -nargs=* -bar PackagerInstall call PackagerInit() | call packager#install(<args>)
+command! -nargs=* -bar PackagerUpdate call PackagerInit() | call packager#update(<args>)
+command! -bar PackagerClean call PackagerInit() | call packager#clean()
+command! -bar PackagerStatus call PackagerInit() | call packager#status()
+
+" Recommended way. Requires a virtualenv with dap installed.
+lua require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
+lua require('dap-python').test_runner = 'pytest'
+
+" Galaxyline configuration
+" Based on
+" https://github.com/glepnir/galaxyline.nvim/blob/main/example/spaceline.lua
+" with `tender` colors
+
+lua << EOF
+local gl = require('galaxyline')
+local gls = gl.section
+gl.short_line_list = {'LuaTree','vista','dbui'}
+
+local colors = {
+  bg = '#282828',
+  yellow = '#ffc24b',
+  cyan = '#73cef4',
+  darkblue = '#d3beef',
+  green = '#c9d05c',
+  orange = '#cc6633',
+  purple = '#d3b987',
+  magenta = '#d3b987',
+  grey = '#49483e',
+  blue = '#b3deef',
+  red = '#f43753'
+}
+
+local buffer_not_empty = function()
+  if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then
+    return true
+  end
+  return false
+end
+
+gls.left[1] = {
+  FirstElement = {
+    provider = function() return '▋' end,
+    highlight = {colors.blue,colors.yellow}
+  },
+}
+
+gls.left[2] = {
+  ViMode = {
+    provider = function()
+      local alias = {n = 'NORMAL',i = 'INSERT',c= 'COMMAND',V= 'VISUAL', [''] = 'VISUAL'}
+      return alias[vim.fn.mode()]
+    end,
+    separator = '',
+    separator_highlight = {colors.yellow,function()
+      if not buffer_not_empty() then
+        return colors.purple
+      end
+      return colors.darkblue
+    end},
+    highlight = {colors.magenta,colors.yellow,'bold'},
+  },
+}
+gls.left[3] ={
+  FileIcon = {
+    provider = 'FileIcon',
+    condition = buffer_not_empty,
+    highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.darkblue},
+  },
+}
+gls.left[4] = {
+  FileName = {
+    provider = {'FileName','FileSize'},
+    condition = buffer_not_empty,
+    separator = '',
+    separator_highlight = {colors.purple,colors.darkblue},
+    highlight = {colors.magenta,colors.darkblue}
+  }
+}
+
+gls.left[5] = {
+  GitIcon = {
+    provider = function() return '  ' end,
+    condition = buffer_not_empty,
+    highlight = {colors.orange,colors.purple},
+  }
+}
+gls.left[6] = {
+  GitBranch = {
+    provider = 'GitBranch',
+    condition = buffer_not_empty,
+    highlight = {colors.grey,colors.purple},
+  }
+}
+
+local checkwidth = function()
+  local squeeze_width  = vim.fn.winwidth(0) / 2
+  if squeeze_width > 40 then
+    return true
+  end
+  return false
+end
+
+gls.left[7] = {
+  DiffAdd = {
+    provider = 'DiffAdd',
+    condition = checkwidth,
+    icon = ' ',
+    highlight = {colors.green,colors.purple},
+  }
+}
+gls.left[8] = {
+  DiffModified = {
+    provider = 'DiffModified',
+    condition = checkwidth,
+    icon = ' ',
+    highlight = {colors.orange,colors.purple},
+  }
+}
+gls.left[9] = {
+  DiffRemove = {
+    provider = 'DiffRemove',
+    condition = checkwidth,
+    icon = ' ',
+    highlight = {colors.red,colors.purple},
+  }
+}
+gls.left[10] = {
+  LeftEnd = {
+    provider = function() return '' end,
+    separator = '',
+    separator_highlight = {colors.purple,colors.bg},
+    highlight = {colors.purple,colors.purple}
+  }
+}
+gls.left[11] = {
+  DiagnosticError = {
+    provider = 'DiagnosticError',
+    icon = '  ',
+    highlight = {colors.red,colors.bg}
+  }
+}
+gls.left[12] = {
+  Space = {
+    provider = function () return ' ' end
+  }
+}
+gls.left[13] = {
+  DiagnosticWarn = {
+    provider = 'DiagnosticWarn',
+    icon = '  ',
+    highlight = {colors.blue,colors.bg},
+  }
+}
+gls.right[1]= {
+  FileFormat = {
+    provider = 'FileFormat',
+    separator = '',
+    separator_highlight = {colors.bg,colors.purple},
+    highlight = {colors.grey,colors.purple},
+  }
+}
+gls.right[2] = {
+  LineInfo = {
+    provider = 'LineColumn',
+    separator = ' | ',
+    separator_highlight = {colors.darkblue,colors.purple},
+    highlight = {colors.grey,colors.purple},
+  },
+}
+gls.right[3] = {
+  PerCent = {
+    provider = 'LinePercent',
+    separator = '',
+    separator_highlight = {colors.darkblue,colors.purple},
+    highlight = {colors.grey,colors.darkblue},
+  }
+}
+gls.right[4] = {
+  ScrollBar = {
+    provider = 'ScrollBar',
+    highlight = {colors.yellow,colors.purple},
+  }
+}
+
+gls.short_line_left[1] = {
+  BufferType = {
+    provider = 'FileTypeName',
+    separator = '',
+    separator_highlight = {colors.purple,colors.bg},
+    highlight = {colors.grey,colors.purple}
+  }
+}
+
+
+gls.short_line_right[1] = {
+  BufferIcon = {
+    provider= 'BufferIcon',
+    separator = '',
+    separator_highlight = {colors.purple,colors.bg},
+    highlight = {colors.grey,colors.purple}
+  }
+}
+
+local gl = require('galaxyline')
+local gls = gl.section
+gl.short_line_list = {'LuaTree','vista','dbui'}
+
+local colors = {
+  bg = '#282828',
+  line_bg = '#353644',
+  fg = '#8FBCBB',
+  fg_green = '#65a380',
+
+  yellow = '#fabd2f',
+  cyan = '#008080',
+  darkblue = '#081633',
+  green = '#afd700',
+  orange = '#FF8800',
+  purple = '#5d4d7a',
+  magenta = '#c678dd',
+  blue = '#51afef';
+  red = '#ec5f67'
+}
+
+local buffer_not_empty = function()
+  if vim.fn.empty(vim.fn.expand('%:t')) ~= 1 then
+    return true
+  end
+  return false
+end
+
+gls.left[1] = {
+  FirstElement = {
+    provider = function() return '▊ ' end,
+    highlight = {colors.blue,colors.line_bg}
+  },
+}
+gls.left[2] = {
+  ViMode = {
+    provider = function()
+      -- auto change color according the vim mode
+      local mode_color = {n = colors.magenta, i = colors.green,v=colors.blue,[''] = colors.blue,V=colors.blue,
+                          c = colors.red,no = colors.magenta,s = colors.orange,S=colors.orange,
+                          [''] = colors.orange,ic = colors.yellow,R = colors.purple,Rv = colors.purple,
+                          cv = colors.red,ce=colors.red, r = colors.cyan,rm = colors.cyan, ['r?'] = colors.cyan,
+                          ['!']  = colors.red,t = colors.red}
+      vim.api.nvim_command('hi GalaxyViMode guifg='..mode_color[vim.fn.mode()])
+      return '  '
+    end,
+    highlight = {colors.red,colors.line_bg,'bold'},
+  },
+}
+gls.left[3] ={
+  FileIcon = {
+    provider = 'FileIcon',
+    condition = buffer_not_empty,
+    highlight = {require('galaxyline.provider_fileinfo').get_file_icon_color,colors.line_bg},
+  },
+}
+gls.left[4] = {
+  FileName = {
+    provider = {'FileName','FileSize'},
+    condition = buffer_not_empty,
+    highlight = {colors.fg,colors.line_bg,'bold'}
+  }
+}
+
+gls.left[5] = {
+  GitIcon = {
+    provider = function() return '  ' end,
+    condition = require('galaxyline.provider_vcs').check_git_workspace,
+    highlight = {colors.orange,colors.line_bg},
+  }
+}
+gls.left[6] = {
+  GitBranch = {
+    provider = 'GitBranch',
+    condition = require('galaxyline.provider_vcs').check_git_workspace,
+    highlight = {'#8FBCBB',colors.line_bg,'bold'},
+  }
+}
+
+local checkwidth = function()
+  local squeeze_width  = vim.fn.winwidth(0) / 2
+  if squeeze_width > 40 then
+    return true
+  end
+  return false
+end
+
+gls.left[7] = {
+  DiffAdd = {
+    provider = 'DiffAdd',
+    condition = checkwidth,
+    icon = ' ',
+    highlight = {colors.green,colors.line_bg},
+  }
+}
+gls.left[8] = {
+  DiffModified = {
+    provider = 'DiffModified',
+    condition = checkwidth,
+    icon = ' ',
+    highlight = {colors.orange,colors.line_bg},
+  }
+}
+gls.left[9] = {
+  DiffRemove = {
+    provider = 'DiffRemove',
+    condition = checkwidth,
+    icon = ' ',
+    highlight = {colors.red,colors.line_bg},
+  }
+}
+gls.left[10] = {
+  LeftEnd = {
+    provider = function() return '' end,
+    separator = '',
+    separator_highlight = {colors.bg,colors.line_bg},
+    highlight = {colors.line_bg,colors.line_bg}
+  }
+}
+gls.left[11] = {
+  DiagnosticError = {
+    provider = 'DiagnosticError',
+    icon = '  ',
+    highlight = {colors.red,colors.bg}
+  }
+}
+gls.left[12] = {
+  Space = {
+    provider = function () return ' ' end
+  }
+}
+gls.left[13] = {
+  DiagnosticWarn = {
+    provider = 'DiagnosticWarn',
+    icon = '  ',
+    highlight = {colors.blue,colors.bg},
+  }
+}
+gls.right[1]= {
+  FileFormat = {
+    provider = 'FileFormat',
+    separator = ' ',
+    separator_highlight = {colors.bg,colors.line_bg},
+    highlight = {colors.fg,colors.line_bg,'bold'},
+  }
+}
+gls.right[2] = {
+  LineInfo = {
+    provider = 'LineColumn',
+    separator = ' | ',
+    separator_highlight = {colors.blue,colors.line_bg},
+    highlight = {colors.fg,colors.line_bg},
+  },
+}
+gls.right[3] = {
+  PerCent = {
+    provider = 'LinePercent',
+    separator = ' ',
+    separator_highlight = {colors.line_bg,colors.line_bg},
+    highlight = {colors.cyan,colors.darkblue,'bold'},
+  }
+}
+gls.right[4] = {
+  ScrollBar = {
+    provider = 'ScrollBar',
+    highlight = {colors.blue,colors.purple},
+  }
+}
+
+gls.short_line_left[1] = {
+  BufferType = {
+    provider = 'FileTypeName',
+    separator = '',
+    separator_highlight = {colors.purple,colors.bg},
+    highlight = {colors.fg,colors.purple}
+  }
+}
+
+
+gls.short_line_right[1] = {
+  BufferIcon = {
+    provider= 'BufferIcon',
+    separator = '',
+    separator_highlight = {colors.purple,colors.bg},
+    highlight = {colors.fg,colors.purple}
+  }
+}
+EOF
+
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+
+" Configure DAP keybindings
+nnoremap <silent> <F5> :lua require'dap'.continue()<CR>
+nnoremap <silent> <F10> :lua require'dap'.step_over()<CR>
+nnoremap <silent> <F11> :lua require'dap'.step_into()<CR>
+nnoremap <silent> <F12> :lua require'dap'.step_out()<CR>
+nnoremap <silent> <leader>b :lua require'dap'.toggle_breakpoint()<CR>
+nnoremap <silent> <leader>B :lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
+nnoremap <silent> <leader>lp :lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>
+nnoremap <silent> <leader>dr :lua require'dap'.repl.open()<CR>
+nnoremap <silent> <leader>dl :lua require'dap'.repl.run_last()<CR>
+nnoremap <silent> <leader>dn :lua require('dap-python').test_method()<CR>
+vnoremap <silent> <leader>ds <ESC>:lua require('dap-python').debug_selection()<CR>
+
+" CHAD 
+nnoremap <C-o> <cmd>CHADopen<cr>
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline']}), <bang>0)
+
+" Use ctrl+p for file management and ctrl+g for git commands 
+nmap <C-p> :CocCommand fzf-preview.DirectoryFiles<CR>
+nmap <C-g> :CocCommand fzf-preview.GitActions<CR>
