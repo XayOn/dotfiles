@@ -41,13 +41,6 @@ function! PackagerInit() abort
   " Lateral file manager
   call packager#add('ms-jpq/chadtree')
 
-  " Treesitter
-  call packager#add('haorenW1025/completion-nvim', {'requires': [
-  \ ['nvim-treesitter/completion-treesitter', {'requires': 'nvim-treesitter/nvim-treesitter'}],
-  \ {'name': 'steelsojka/completion-buffers', 'opts': {'type': 'opt'}},
-  \ 'kristijanhusak/completion-tags',
-  \ ]})
-
   " Coc
   call packager#add('neoclide/coc.nvim', { 'do': function('InstallCoc') })
   call packager#add('ryanoasis/vim-devicons')
@@ -472,9 +465,6 @@ gls.short_line_right[1] = {
   }
 }
 EOF
-
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
 
 " Configure DAP keybindings
 nnoremap <silent> <F5> :lua require'dap'.continue()<CR>
