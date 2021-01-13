@@ -5,19 +5,22 @@
 - clean: ['~']
 
 - create:
-    - ~/.config/neovim
+    - ~/.config/nvim
     - ~/.config/alacritty
     - ~/.config/gtk-3.0
     - ~/.config/sway
+    - ~/.config/i3
 
 - link:
-    ~/.config/neovim/init.vim: configs/neovim
+    ~/.config/nvim/init.vim: configs/neovim
     ~/.config/waybar: configs/waybar
     ~/.config/zshrc: configs/zshrc
     ~/.config/sway/config: configs/swaywm
+    ~/.config/i3/config: configs/i3
     ~/.config/alacritty/alacritty.yml: configs/alacritty.yml
     ~/.config/gtk-3.0/settings.ini: configs/gtk/gtkrc-3.0
     ~/.config/gtkrc-2.0: configs/gtk/gtkrc-2.0
+    ~/.config/Xresources: configs/Xresources
 
 - yay:
     - nwg-launchers
