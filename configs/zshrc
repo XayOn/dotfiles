@@ -3,7 +3,9 @@ zinit for \
     light-mode zdharma/fast-syntax-highlighting \
     light-mode desyncr/auto-ls \
     light-mode MichaelAquilina/zsh-auto-notify \
-    light-mode pick"async.zsh" src"pure.zsh" sindresorhus/pure
+    light-mode romkatv/powerlevel10k
+
+zinit snippet https://github.com/sainnhe/edge/raw/master/zsh/.zsh-theme-edge-dark
 
 zinit ice src"shell/key-bindings.zsh"
 zinit light junegunn/fzf
@@ -29,6 +31,8 @@ export EDITOR=nvim
 export AUTO_LS_NEWLINE=false
 export AUTO_LS_COMMANDS=("ls")
 export ENHANCD_DOT_SHOW_FULLPATH=1
+export PURE_POWER_MODE=modern
+
 
 # Force some default command replacements.
 alias cat=bat --paging=never

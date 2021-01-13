@@ -4,10 +4,9 @@
     "height": 20,
     "modules-left": [
         "sway/workspaces",
-        "sway/mode"
+        "sway/window"
     ],
     "modules-center": [
-        "sway/window"
     ],
     "modules-right": [
         "network",
@@ -64,10 +63,10 @@
 
     "network": {
         "interval": 5,
-        "format-wifi": "  {essid} ({signalStrength}%)", // Icon: wifi
-        "format-ethernet": "  {ifname}: {ipaddr}/{cidr}", // Icon: ethernet
+        "format-wifi": "  {signalStrength}%", // Icon: wifi
+        "format-ethernet": "  {ifname}", // Icon: ethernet
         "format-disconnected": "⚠  Disconnected",
-        "tooltip-format": "{ifname}: {ipaddr}"
+        "tooltip-format": "{ifname} {essid}: {ipaddr}"
     },
 
     "sway/mode": {

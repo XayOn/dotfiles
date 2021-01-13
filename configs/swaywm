@@ -6,7 +6,7 @@ exec swaybg -i ~/.wallpapers/curr.png &
 set $menu nwggrid -o 1 -b 282828 -n 7 -s 90 -f -p
 set $term alacritty
 set $mod Mod4
-set $opacity 0.9
+set $opacity 0.97
 
 # VIM-like mappings.
 set $left h
@@ -20,8 +20,6 @@ floating_modifier $mod normal
 
 # Font
 font pango:Fira Code 13px 
-assign [app_id="virtualbox"] 6
-assign [app_id="firefox"] 1
 
 # Set gaps
 gaps inner 1
@@ -36,18 +34,11 @@ exec swayidle -w\
 
 ###### Bindings ######
 
-# Screenshot
-bindsym print exec grim -q 100 -g "$(slurp)" - | swappy -f -
-bindsym Shift+print exec grim -q 100 - | swappy -f -
-
-# Common utilities (terminal, kill, menu, reload)
+# Common utilities (terminal, kill, menu, reload, exit)
 bindsym $mod+return exec $term
 bindsym $mod+x kill
 bindsym $mod+Space exec $menu
-
 bindsym $mod+Shift+c reload
-
-# Exit menu
 bindsym $mod+Shift+e exec nwgbar -o 0.2
 
 # Focus
@@ -95,9 +86,6 @@ bindsym ctrl+Alt+Right workspace next_on_output
 bindsym ctrl+Alt+$right workspace next_on_output
 bindsym ctrl+Alt+Left workspace prev_on_output
 bindsym ctrl+Alt+$left workspace prev_on_output
-
-# Move focus to the parent container
-bindsym $mod+a focus parent
 
 # Layout
 bindsym $mod+s layout stacking
