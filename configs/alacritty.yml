@@ -5,11 +5,11 @@ window:
 
 font:
   normal:
-    family: Fira Code
+    family: Fira Code Nerd Font
   bold:
-    family: Fira Code
+    family: Fira Code Nerd Font
   italic:
-    family: Fira Code
+    family: Fira Code Nerd Font
   size: 14.0
 
 # Colors (One Dark)

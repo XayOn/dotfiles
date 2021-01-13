@@ -42,12 +42,11 @@ If you want my complete configuration, you need to install:
 
 On archlinux, prettierTerminal will install them for you
 
-
 You can install prettierTerminal with one single command:
 
 .. code:: bash
 
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/XayOn/prettierTerminal/master/doc/install-full.sh)"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/XayOn/prettierTerminal/master/install-remote.sh)"
 
 Or, the more traditional way 
 
@@ -55,11 +54,27 @@ Or, the more traditional way
 
   git clone https://github.com/XayOn/prettierTerminal
   cd prettierTerminal
-  bash doc/install-full.sh
+  bash install.sh
 
 Note that this WILL NOT install the `firefox whitesur theme
 <https://github.com/vinceliuice/WhiteSur-gtk-theme/tree/master/src/other/firefox>`_,
 that's up to you.
+
+If you're running prettierTerminal on a non-archlinux system, you need to pass
+the NOARCH variable or --exclude yay:
+
+.. code:: bash
+
+  NOARCH=y sh -c "$(curl -fsSL https://raw.githubusercontent.com/XayOn/prettierTerminal/master/install-remote.sh)"
+
+Or, the more traditional way 
+
+.. code:: bash
+
+  git clone https://github.com/XayOn/prettierTerminal
+  cd prettierTerminal
+  bash install.sh --exclude yay
+
 
 NeoVIM configuration
 --------------------
