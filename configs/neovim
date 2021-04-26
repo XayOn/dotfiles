@@ -117,3 +117,13 @@ let g:spaceline_colorscheme = 'one'
 
 let g:spaceline_custom_vim_status = {"n": "V","V":"🅥 ","v":"🅥 ","\<C-v>": "🅥 ","i":"🅘 ","R":"🅡 ","s":"🅢 ","t":"🅣 ","c":"🅒 ","!":"SE"}
 
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "all",
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+  },
+}
+EOF
+
+autocmd BufEnter * lua require'completion'.on_attach()
