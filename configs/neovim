@@ -22,15 +22,38 @@ function! PackagerInit() abort
   call packager#add('kyazdani42/nvim-tree.lua')
   call packager#add('glepnir/spaceline.vim')
 
-  " Treesitter LSP and blame (completion, highlight and git integration)
+  " LSP errors and actions 
+  call packager#add('kosayoda/nvim-lightbulb')
+  call packager#add('folke/trouble.nvim')
+  call packager#add('folke/lsp-colors.nvim')
+
+  " Treesitter LSP, refactor
   call packager#add('neovim/nvim-lspconfig')
   call packager#add('nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate'})
-  call packager#add('haorenW1025/completion-nvim', {'requires': [
-  \ 'nvim-treesitter/completion-treesitter',
-  \ ['aca/completion-tabnine', { 'do': './install.sh' }]
-  \ ]})
-  call packager#add('f-person/git-blame.nvim')
+
+  " Jump to definitions, refactor etc. 
+  call packager#add('nvim-treesitter/nvim-treesitter-refactor')
+  call packager#add('hrsh7th/nvim-compe')
+
+  " Show signature
+  call packager#add('ray-x/lsp_signature.nvim')
+
+  " Auto close tags, indent lines and show only current context
+  call packager#add('cohama/lexima.vim')
+  call packager#add('Yggdroot/indentLine')
+  call packager#add('wellle/context.vim')
+
+  " Snippets
+  call packager#add('hrsh7th/vim-vsnip')
+  call packager#add('hrsh7th/vim-vsnip-integ')
+
+  " Git blame and signs
+  call packager#add('APZelos/blamer.nvim')
   call packager#add('lewis6991/gitsigns.nvim')
+
+  " Initial screen
+  call packager#add('glepnir/dashboard-nvim')
+  call packager#add('liuchengxu/vim-clap', { 'do': ':Clap install-binary!' })
 
   " Theme, icons and color
   call packager#add('tjdevries/colorbuddy.vim')
@@ -41,14 +64,19 @@ function! PackagerInit() abort
 
   " Database management
   call packager#add('kristijanhusak/vim-dadbod-ui', {'requires': [
-  \ 'tpope/vim-dadbod', 'kristijanhusak/vim-dadbod-completion']})
+      \ 'tpope/vim-dadbod', 
+      \ 'kristijanhusak/vim-dadbod-completion']})
 
   " Fuzzy finder
-  call packager#add('nvim-telescope/telescope.nvim', {'requires': ['nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim']})
+  call packager#add('nvim-telescope/telescope.nvim', {'requires': [
+      \ 'nvim-lua/popup.nvim', 
+      \ 'nvim-lua/plenary.nvim']})
 
   " Debugging
   call packager#add('mfussenegger/nvim-dap-python', {'requires': [
-  \ 'mfussenegger/nvim-dap', 'theHamsta/nvim-dap-virtual-text', 'nvim-telescope/telescope-dap.nvim']})
+      \ 'mfussenegger/nvim-dap',  
+      \ 'theHamsta/nvim-dap-virtual-text',
+      \ 'rcarriga/nvim-dap-ui']})
 
   " Terminal
   call packager#add('vimlab/split-term.vim')
@@ -60,44 +88,49 @@ command! -nargs=* -bar PackagerUpdate call PackagerInit() | call packager#update
 command! -bar PackagerClean call PackagerInit() | call packager#clean()
 command! -bar PackagerStatus call PackagerInit() | call packager#status()
 
-" Recommended way. Requires a virtualenv with dap installed.
-lua require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
-lua require('dap-python').test_runner = 'pytest'
-lua vim.g.dap_virtual_text = 'all frames'
-
 " Colorscheme
 lua require('colorbuddy').colorscheme('onebuddy')
 
 " ---------- Completion configuracion ----------------
 " Setup completion.
-lua require'lspconfig'.pyls.setup{on_attach=require'completion'.on_attach}
-let g:completion_chain_complete_list = {
-    \ 'default': [
-    \    {'complete_items': ['lsp', 'tabnine' ]},
-    \    {'mode': '<c-p>'},
-    \    {'mode': '<c-n>'}
-    \]
-\}
-set completeopt=menuone,noinsert,noselect
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+lua require'lspconfig'.pyls.setup{on_attach=require'lsp_signature'.on_attach()}
+set completeopt=menuone,noselect
 
-" Setup folding
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
+lua << EOF
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  preselect = 'enable';
+  documentation = true;
+  source = {
+    vsnip = true;
+    path = true;
+    treesitter = true;
+  };
+}
+EOF
+
+let g:lexima_no_default_rules = v:true
+call lexima#set_default_rules()
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm(lexima#expand('<LT>CR>', 'i'))
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+
+lua vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
+
 
 " Terminal split below
 set splitbelow
 nnoremap <C-t> :10Term<cr>
 
-" --------------- Telescope (fuzzy finder) and tree (filemanager) configuration ---------------
-lua require('telescope').setup()
-nnoremap <C-p> :Telescope find_files theme=get_dropdown<cr>
-nnoremap <C-g> <cmd>Telescope live_grep<cr>
-nnoremap <C-o> :NvimTreeToggle<CR>
+" -------------- Debugger interface (open with f5) ----------------------
+lua require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
+lua require('dap-python').test_runner = 'pytest'
+lua require("dapui").setup()
 
-
-" -------------- Debugger ----------------------
+let g:dap_virtual_text = v:true
 nnoremap <silent> <F5> :lua require'dap'.continue()<CR>
 nnoremap <silent> <F10> :lua require'dap'.step_over()<CR>
 nnoremap <silent> <F11> :lua require'dap'.step_into()<CR>
@@ -111,19 +144,67 @@ nnoremap <silent> <leader>dl :lua require'dap'.repl.run_last()<CR>
 nnoremap <silent> <leader>dn :lua require('dap-python').test_method()<CR>
 vnoremap <silent> <leader>ds <ESC>:lua require('dap-python').debug_selection()<CR>
 
+" --------------- Telescope (fuzzy finder) and tree (filemanager) configuration ---------------
+lua require('telescope').setup()
+nnoremap <C-p> :Telescope find_files theme=get_dropdown<cr>
+nnoremap <C-g> <cmd>Telescope live_grep<cr>
+nnoremap <C-o> :NvimTreeToggle<CR>
+
+" Error display. Sets up telescope results too.
+lua require("trouble").setup {}
+
+" Git blame
+let g:blamer_enabled = 1
+let g:blamer_show_in_insert_modes = 0
+let g:blamer_delay = 300
+
 " Spaceline configuration
 let g:spaceline_seperate_style = 'slant-cons'
 let g:spaceline_colorscheme = 'one'
 
 let g:spaceline_custom_vim_status = {"n": "V","V":"🅥 ","v":"🅥 ","\<C-v>": "🅥 ","i":"🅘 ","R":"🅡 ","s":"🅢 ","t":"🅣 ","c":"🅒 ","!":"SE"}
 
+
+" --- Setup treesitter
+
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all",
+  ensure_installed = "all", 
+  context_commentstring = {
+      enable = true
+  },
+  textobjects = {
+      select = {
+          enable = true,
+          keymaps = {
+              ["af"] = "@function.outer",
+              ["if"] = "@function.inner",
+              ["ac"] = "@class.outer",
+              ["ic"] = "@class.inner"
+          }
+      }
+  },
+  refactor = {
+    navigation = {
+      enable = true,
+      keymaps = {
+        goto_definition = "gnd",
+        list_definitions = "gnD",
+        list_definitions_toc = "gO",
+        goto_next_usage = "<a-*>",
+        goto_previous_usage = "<a-#>",
+      },
+    },
+  },
   highlight = {
-    enable = true,              -- false will disable the whole extension
+    enable = true,
   },
 }
 EOF
 
-autocmd BufEnter * lua require'completion'.on_attach()
+inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" --- Setup lightbulb (lsp action prompts)
+autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
+
