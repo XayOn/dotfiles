@@ -1,210 +1,346 @@
-if &compatible
-  set nocompatible
-endif
+-- Common vim options
+vim.opt.exrc = true
+vim.g.signcolum = true
+vim.opt.timeoutlen = 20
+vim.opt.termguicolors = true
+vim.opt.mouse = "a"
+vim.opt.number = true
+vim.opt.updatetime = 80
+vim.g.mapleader = ","
+vim.opt.termguicolors = true
+vim.opt.completeopt="menuone,noinsert,noselect"
+vim.opt.splitbelow = true
 
-filetype plugin on
-syntax on
-set mouse=a
-set number
-set updatetime=80
-let mapleader=","
-set termguicolors
-colorscheme onebuddy
+-- Setup dashboard, disable indentline on it
+vim.g.dashboard_default_executive ='telescope'
+vim.g.indent_blankline_char_highlight_list = {'Warning', 'Function'}
 
-" Load packager only when you need it
-function! PackagerInit() abort
-  packadd vim-packager
-  call packager#init()
-  call packager#add('kristijanhusak/vim-packager', { 'type': 'opt' })
+-- Setup virtual text on debug
+vim.g.dap_virtual_text = "all frames"
 
-  " Bar, statusline and filemanager
-  call packager#add('romgrk/barbar.nvim')
-  call packager#add('kyazdani42/nvim-tree.lua')
-  call packager#add('glepnir/spaceline.vim')
-
-  " LSP errors and actions 
-  call packager#add('kosayoda/nvim-lightbulb')
-  call packager#add('folke/trouble.nvim')
-  call packager#add('folke/lsp-colors.nvim')
-
-  " Treesitter LSP, refactor
-  call packager#add('neovim/nvim-lspconfig')
-  call packager#add('nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate'})
-
-  " Jump to definitions, refactor etc. 
-  call packager#add('nvim-treesitter/nvim-treesitter-refactor')
-  call packager#add('hrsh7th/nvim-compe')
-
-  " Show signature
-  call packager#add('ray-x/lsp_signature.nvim')
-
-  " Auto close tags, indent lines and show only current context
-  call packager#add('cohama/lexima.vim')
-  call packager#add('Yggdroot/indentLine')
-  call packager#add('wellle/context.vim')
-
-  " Snippets
-  call packager#add('hrsh7th/vim-vsnip')
-  call packager#add('hrsh7th/vim-vsnip-integ')
-
-  " Git blame and signs
-  call packager#add('APZelos/blamer.nvim')
-  call packager#add('lewis6991/gitsigns.nvim')
-
-  " Initial screen
-  call packager#add('glepnir/dashboard-nvim')
-  call packager#add('liuchengxu/vim-clap', { 'do': ':Clap install-binary!' })
-
-  " Theme, icons and color
-  call packager#add('tjdevries/colorbuddy.vim')
-  call packager#add('Th3Whit3Wolf/onebuddy')
-  call packager#add('ryanoasis/vim-devicons')
-  call packager#add('kyazdani42/nvim-web-devicons')
-  call packager#add('RRethy/vim-hexokinase')
-
-  " Database management
-  call packager#add('kristijanhusak/vim-dadbod-ui', {'requires': [
-      \ 'tpope/vim-dadbod', 
-      \ 'kristijanhusak/vim-dadbod-completion']})
-
-  " Fuzzy finder
-  call packager#add('nvim-telescope/telescope.nvim', {'requires': [
-      \ 'nvim-lua/popup.nvim', 
-      \ 'nvim-lua/plenary.nvim']})
-
-  " Debugging
-  call packager#add('mfussenegger/nvim-dap-python', {'requires': [
-      \ 'mfussenegger/nvim-dap',  
-      \ 'theHamsta/nvim-dap-virtual-text',
-      \ 'rcarriga/nvim-dap-ui']})
-
-  " Terminal
-  call packager#add('vimlab/split-term.vim')
-
-endfunction
-
-command! -nargs=* -bar PackagerInstall call PackagerInit() | call packager#install(<args>)
-command! -nargs=* -bar PackagerUpdate call PackagerInit() | call packager#update(<args>)
-command! -bar PackagerClean call PackagerInit() | call packager#clean()
-command! -bar PackagerStatus call PackagerInit() | call packager#status()
-
-" Colorscheme
-lua require('colorbuddy').colorscheme('onebuddy')
-
-" ---------- Completion configuracion ----------------
-" Setup completion.
-lua require'lspconfig'.pyls.setup{on_attach=require'lsp_signature'.on_attach()}
-set completeopt=menuone,noselect
-
-lua << EOF
-require'compe'.setup {
-  enabled = true;
-  autocomplete = true;
-  preselect = 'enable';
-  documentation = true;
-  source = {
-    vsnip = true;
-    path = true;
-    treesitter = true;
-  };
+-- Setup codi
+vim.g["codi#interpreters"] = {
+    python={bin='python3', prompt='^(>>>|...) '}
 }
-EOF
 
-let g:lexima_no_default_rules = v:true
-call lexima#set_default_rules()
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm(lexima#expand('<LT>CR>', 'i'))
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+-- Setup theme italics
+vim.g.material_terminal_italics = 1
 
-lua vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
+-- Fix lsp not updating on insert mode
+vim.lsp.handlers["textDocument/publishDiagnostics"] =
+    vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
+                 {update_in_insert = true})
 
 
-" Terminal split below
-set splitbelow
-nnoremap <C-t> :10Term<cr>
+function getPythonPath()
+    local util = require("lspconfig/util")
+    local cwd = vim.fn.getcwd()
+    local local_poetry = vim.fn.expand("$HOME") .. '/.poetry/bin/poetry'
+    local has_poetry_installed_loc = vim.fn.executable(local_poetry)
+    local has_poetry_installed = vim.fn.executable('poetry')
+    local has_pipenv_installed = vim.fn.executable('pipenv')
 
-" -------------- Debugger interface (open with f5) ----------------------
-lua require('dap-python').setup('~/.virtualenvs/debugpy/bin/python')
-lua require('dap-python').test_runner = 'pytest'
-lua require("dapui").setup()
+    local pyproject = util.root_pattern("pyproject.toml")(cwd) 
+    local pipfile = util.root_pattern("Pipfile")(cwd) 
 
-let g:dap_virtual_text = v:true
-nnoremap <silent> <F5> :lua require'dap'.continue()<CR>
-nnoremap <silent> <F10> :lua require'dap'.step_over()<CR>
-nnoremap <silent> <F11> :lua require'dap'.step_into()<CR>
-nnoremap <silent> <F12> :lua require'dap'.step_out()<CR>
+    if (has_poetry_installed == 1 and pyproject) then
+        return 'poetry run python'
+    elseif (has_poetry_installed_loc and pyproject) then
+        return local_poetry .. ' run python'
+    end
 
-nnoremap <silent> <leader>b :lua require'dap'.toggle_breakpoint()<CR>
-nnoremap <silent> <leader>B :lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
-nnoremap <silent> <leader>lp :lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>
-nnoremap <silent> <leader>dr :lua require'dap'.repl.open()<CR>
-nnoremap <silent> <leader>dl :lua require'dap'.repl.run_last()<CR>
-nnoremap <silent> <leader>dn :lua require('dap-python').test_method()<CR>
-vnoremap <silent> <leader>ds <ESC>:lua require('dap-python').debug_selection()<CR>
+    if (has_pipenv_installed == 1 and pipfile) then
+        return 'pipenv run python'
+    end
 
-" --------------- Telescope (fuzzy finder) and tree (filemanager) configuration ---------------
-lua require('telescope').setup()
-nnoremap <C-p> :Telescope find_files theme=get_dropdown<cr>
-nnoremap <C-g> <cmd>Telescope live_grep<cr>
-nnoremap <C-o> :NvimTreeToggle<CR>
+    if vim.fn.executable(cwd .. "/venv/bin/python3") == 1 then
+        return cwd .. "/venv/bin/python3"
+    elseif vim.fn.executable(cwd .. "/env/bin/python3") == 1 then
+        return cwd .. "/venv/bin/python3"
+    else
+        return "/usr/bin/python3"
+    end
+end
 
-" Error display. Sets up telescope results too.
-lua require("trouble").setup {}
+return require('packer').startup(function()
+  use 'wbthomason/packer.nvim'
 
-" Git blame
-let g:blamer_enabled = 1
-let g:blamer_show_in_insert_modes = 0
-let g:blamer_delay = 300
+  -- Neovim initial dashboard
+  use 'glepnir/dashboard-nvim'
 
-" Spaceline configuration
-let g:spaceline_seperate_style = 'slant-cons'
-let g:spaceline_colorscheme = 'one'
+  -- Modern orgmode alternative
+  use {
+    'vhyrro/neorg', 
+    config = function()
+        require('neorg').setup {
+            load = {
+                ["core.defaults"] = {}, 
+                ["core.norg.concealer"] = {},
+                ["core.keybinds"] = { 
+                    config = {
+                      default_keybinds = true
+                    }
+                },
+                ["core.norg.dirman"] = {
+                    config = {
+                        workspaces = {
+                            my_workspace = "~/nextcloud/documents"
+                        }
+                    }
+                }
+            },
+        }
+    end}
 
-let g:spaceline_custom_vim_status = {"n": "V","V":"🅥 ","v":"🅥 ","\<C-v>": "🅥 ","i":"🅘 ","R":"🅡 ","s":"🅢 ","t":"🅣 ","c":"🅒 ","!":"SE"}
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = {'nvim-lua/plenary.nvim'},
+    config = function() require("telescope").setup {} end
+  }
 
+  -- LSP-based utilities.
+  use {
+    'glepnir/lspsaga.nvim', 
+    config = function()
+      require('lspsaga').init_lsp_saga{}
+    end}
+  use 'RRethy/vim-illuminate'
+  use {
+    'creativenull/diagnosticls-configs-nvim',
+    requires = { 'neovim/nvim-lspconfig' },
+    config = function() 
+    require 'diagnosticls-configs'.init {default_config = true} 
+    require 'diagnosticls-configs'.setup {}
+    end
+  }
+  use {'neovim/nvim-lspconfig', requires={'nvim-lua/completion-nvim'}, config = function()
+    local util = require("lspconfig/util")
+    require'lspconfig'.pyright.setup{
+      on_attach = function(client)
+        require'completion'.on_attach(client)
+        require 'illuminate'.on_attach(client)
+      end,
+      root_dir = function(fname)
+        return util.root_pattern(".git", "setup.py",  "setup.cfg", "pyproject.toml", "requirements.txt")(fname) or util.path.dirname(fname)
+      end;
+    }
+    vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
+  end}
 
-" --- Setup treesitter
-
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all", 
-  context_commentstring = {
-      enable = true
-  },
-  textobjects = {
-      select = {
+  -- Git utilities
+  use {
+    'ttys3/nvim-blamer.lua', 
+    config=function()
+      require'nvim-blamer'.setup({
           enable = true,
-          keymaps = {
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@class.outer",
-              ["ic"] = "@class.inner"
-          }
+          format = '%committer │ %committer-time-human │ %summary',
+      })
+    end
+  }
+  use 'lewis6991/gitsigns.nvim'
+
+  -- Database UI
+  use {
+    'kristijanhusak/vim-dadbod-ui', 
+    requires = {'tpope/vim-dadbod', 'kristijanhusak/vim-dadbod-completion'}
+  }
+ 
+ -- Debugger 
+ use {
+    'mfussenegger/nvim-dap-python', 
+      requires = {'mfussenegger/nvim-dap', 'Pocco81/DAPInstall.nvim', 'thehamsta/nvim-dap-virtual-text', 'rcarriga/nvim-dap-ui', "pocco81/dapinstall.nvim"},
+      config = function()
+          function exists(file)
+            local ok, err, code = os.rename(file, file)
+            if not ok then
+               if code == 13 then
+                  return true
+               end
+            end
+            return ok, err
+          end
+
+          require("dapui").setup()
+          require("dap-install").config("python_dbg", {
+            adapters = {
+                type = "executable",
+                command = "python3.9",
+                args = {"-m", "debugpy.adapter"}
+            },
+            configurations = {
+              {
+                type = 'python';
+                request = 'attach';
+                name = 'Attach remote';
+                host = function()
+                  local value = vim.fn.input('Host [127.0.0.1]: ')
+                  if value ~= "" then
+                    return value
+                  end
+                  return '127.0.0.1'
+                    end;
+                    port = function()
+                  return tonumber(vim.fn.input('Port [5678]: ')) or 5678
+                end;
+              },
+              {
+                 type = "python",
+                 request = "launch",
+                 name = "Launch current file",
+                 program = function()
+                   return vim.fn.expand("%:p") 
+                 end,
+                 pythonpath = getPythonPath
+              },
+              {
+                type = "python",
+                request = "launch",
+                name = "Launch custom file",
+                program = function()
+                  return vim.fn.input("File name ["..vim.fn.expand('%:p').."] :") or vim.fn.expand("%:p") 
+                end,
+                pythonpath = getPythonPath
+              }
       }
-  },
-  refactor = {
-    navigation = {
-      enable = true,
-      keymaps = {
-        goto_definition = "gnd",
-        list_definitions = "gnD",
-        list_definitions_toc = "gO",
-        goto_next_usage = "<a-*>",
-        goto_previous_usage = "<a-#>",
+    })
+    end
+  }
+
+  -- Terminal and REPL
+  use 'vimlab/split-term.vim'
+  use 'metakirby5/codi.vim'
+
+  -- Goodies
+  use {
+    "lukas-reineke/indent-blankline.nvim", 
+    config=function()
+      require("indent_blankline").setup { char = "|", filetype_exclude = {"dashboard"}, buftype_exclude = {"terminal", "dashboard"} }
+  end}
+  -- Interface 
+  use {'marko-cerovac/material.nvim', config=function() require('material').set() end}
+  use {
+    'hoob3rt/lualine.nvim',
+    requires = {'yamatsum/nvim-nonicons', 'kyazdani42/nvim-web-devicons', opt = true},
+    config = function() require'lualine'.setup { options={theme="material"}} end
+  }
+  use {'akinsho/nvim-bufferline.lua', 
+    config=function() 
+      require("bufferline").setup{options={
+        diagnostics="nvim_lsp",
+    numbers = "ordinal",
+    custom_filter = function(buf_number)
+          if ( vim.fn.bufname(buf_number) == "[dap-repl]") then
+        return false
+      end
+          if ( vim.bo[buf_number].buftype == 'terminal') then
+        return false 
+      end
+      return true
+        end,
+    offsets = {{filetype = "NvimTree", text = "File Explorer" }}
+     }}
+     end
+  }
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = 'kyazdani42/nvim-web-devicons'
+  }
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function() require("trouble").setup {} end
+  }
+
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      local wk = require("which-key")
+      wk.setup {
+            plugins = {
+                marks = true,
+                registers = true, 
+                spelling = { enabled=true },
+                presets = {
+                    operators = true, 
+                    motions = true,
+                    text_objects = true, 
+                    windows = true, 
+                    nav = true, 
+                    z = true, 
+                    g = true 
+                }
+            },
+      }
+      wk.register({
+        f = {
+          name = "File",
+      s = { "<cmd>write<cr>", "Save file" },
+          S = { "<cmd>w !sudo tee % > /dev/null<cr>", "Save file with sudo" },
+          a = { ":wq<CR>", "Write and quit" },
+          f = { "<cmd>Telescope find_files<cr>", "Find File" },
+          q = { ":q<CR>", "Quit"},
+          r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File", noremap=false},
+          t = { "<cmd>NvimTreeToggle<cr>", "Open Filemanager Tree" },
+        },
+      e = {
+          name = "Edit",
+          d = { "<cmd>DBUIToggle<cr>", "Databases" },
+          t = { '<cmd>Term<cr>', 'Terminal'},
+          c = { '<cmd>let @/=""<cr>', "Clear search highlight" },
+          g = { "<cmd>Telescope live_grep<cr>", "Search on all files" },
+          s = { require('telescope.builtin').spell_suggest, "Spelling" },
       },
-    },
-  },
-  highlight = {
-    enable = true,
-  },
-}
-EOF
-
-inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" --- Setup lightbulb (lsp action prompts)
-autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
-
+      g = {
+        name = "Git",
+        b = { ":Telescope git_bcommits<CR>", "Show current branch commits" },
+        c = { ":Telescope git_status<CR>", "Git status" },
+        d = { ":Telescope git_branches<CR>", "Switch branches" },
+        s = { function() require('lspsaga.floaterm').open_float_terminal('lazygit') end, "Git client"},
+      },
+      l = {
+        name = "Development (LSP)",
+        a = { require('lspsaga.codeaction').code_action, "Actions" },
+        d = { vim.lsp.buf.definition, "Go to definition" },
+        d = {"<cmd>LspTroubleToggle lsp_document_diagnostics<cr>", "File diagnostics" },
+        f = { require'lspsaga.provider'.lsp_finder, "Find usages" },
+        h = { require('lspsaga.hover').render_hover_doc, "Show doc" },
+        m = { require('lspsaga.rename').rename, "Rename" },
+        s = { require('lspsaga.signaturehelp').signature_help, "Show signature"},
+        w = {"<cmd>LspTroubleToggle lsp_workspace_diagnostics<cr>", "Workspace diagnostics" },
+      },
+      d = {
+        name = "Debug",
+        O = {require"dap".step_out, "Step out"},
+        b = {require"dap".toggle_breakpoint, "Breakpoint"},
+        c = {require"dap".continue, "Continue"},
+        d = {require("dapui").toggle, "Toggle debug UI"},
+        i = {require"dap".step_into, "Step into"},
+        o = {require"dap".step_over, "Step over"}
+      },
+      p = {
+         name = "Plugins",
+         c = { "<cmd>PackerCompile<cr>", "Compile" },
+         i = { "<cmd>PackerInstall<cr>", "Install" },
+         s = { "<cmd>PackerSync<cr>", "Sync" },
+         u = { "<cmd>PackerUpdate<cr>", "Update" }
+      },
+      b = {
+        name = "Buffers",
+        D = { "<cmd>bdelete!<cr>", "Delete buffer (force)" },
+        d = { "<cmd>bdelete<cr>", "Delete buffer" },
+        f = { "<cmd>brewind<cr>", "Go to first buffer" },
+        l = { "<cmd>blast<cr>", "Go to last buffer" },
+        n = { "<cmd>bnext<cr>", "Go to next buffer" },
+        p = { "<cmd>bprev<cr>", "Go to previous buffer" },
+        s = { "<cmd>Telescope buffers<cr>", "Find buffers" },
+        w = { "<cmd>q<cr>", "Close window" }
+      },
+      c = {
+        name = "Codi",
+        d ={ ":Codi!<CR>", "Disable Codi" },
+        e = { ":Codi<CR>", "Enable Codi" }
+      }
+    }, { prefix = "<leader>" })
+    end
+  }
+end)

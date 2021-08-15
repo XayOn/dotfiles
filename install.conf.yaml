@@ -12,7 +12,7 @@
     - ~/.config/i3
 
 - link:
-    ~/.config/nvim/init.vim: configs/neovim
+    ~/.config/nvim/init.lua: configs/neovim
     ~/.config/waybar: configs/waybar
     ~/.config/zshrc: configs/zshrc
     ~/.config/sway/config: configs/swaywm
@@ -42,7 +42,7 @@
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    - [git clone https://github.com/kristijanhusak/vim-packager ~/.config/nvim/pack/packager/opt/vim-packager, Installing vim-packager]
+    - [git clone https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim, "Installing packer.nvim"]
     - 
       command: git clone https://github.com/vinceliuice/WhiteSur-gtk-theme /tmp/whitesur && sh /tmp/whitesur/install.sh
       description: Installing whitesur gtk-theme
@@ -58,7 +58,7 @@
       stderr: true
       stdin: true
     - 
-      command: sh -c "nvim +PackagerInstall +UpdateRemotePlugins +qa"
+      command: sh -c "nvim +PackerSync +qa"
       descrption: Installing neovim plugins
       stderr: true
       stdout: true
