@@ -1,0 +1,68 @@
+[bar/topbar]
+height = 40
+width = 100%
+wm-restack = bspwm
+background = #263238
+modules-left = pulseaudio cpu
+modules-center = bspwm 
+modules-right = time powermenu
+font-0 = "Fira Code Nerd Font Mono:style=Regular:size=15;1"
+font-1 = "Fira Code Nerd Font Mono:style=Regular:size=25;2"
+
+[module/pulseaudio]
+type = internal/pulseaudio
+format-volume-offset = 10
+format-volume = %{O10}<label-volume>%{O20}
+format-muted = %{O10}ﳌ   %{O30}
+label-volume = %percentage%%{O5}
+label-volume-font = 1
+label-muted-font = 1
+format-volume-foreground = #89DDFF
+format-muted-foreground = #89DDFF
+interval = 10
+
+[module/cpu]
+type = internal/cpu
+interval = 5
+format-font = 1
+format = %{O10}<label>
+format-foreground = #f07178
+label = %percentage%%{O5}
+
+[module/bspwm]
+type = internal/bspwm
+pin-workspaces = true
+enable-click = true
+enable-scroll = true
+reverse-scroll = true
+format-font = 2
+format = <label-state>
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;料
+label-empty = %{F#b0bec5}%icon%%{F-}
+label-occupied = %{F#82aaff}%icon%%{F-}
+label-focused = %{F#ffcc00}%icon%%{F-}
+label-focused-padding = 1
+label-occupied-padding = 1
+label-empty-padding = 1
+
+[module/time]
+type = internal/date
+interval = 10
+time = %d %B %I:%M %P
+label = %time%
+label-font = 1
+format = %{O10}<label>%{O20}
+format-foreground = #c3e88d
+
+[module/powermenu]
+type = custom/menu
+format-foreground = #ff9cac
+menu-0-0 = %{O10}
+menu-0-0-exec = systemctl poweroff
+menu-0-1 = 勒%{O15}
+menu-0-1-exec = systemctl reboot
+label-open = %{O10}
+label-close = %{O10}

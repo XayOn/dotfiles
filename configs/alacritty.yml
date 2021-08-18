@@ -11,32 +11,18 @@ font:
   italic:
     family: Fira Code Nerd Font
   size: 14.0
-
-# Colors (One Dark)
 colors:
-  # Default colors
   primary:
-    background: '0x1e2127'
-    foreground: '0xabb2bf'
-
-  # Normal colors
+    background: '0x263238'
+    foreground: '0xB0BEC5'
+  cursor:
+    cursor: '0xFFCC00'
   normal:
-    black:   '0x1e2127'
-    red:     '0xe06c75'
-    green:   '0x98c379'
-    yellow:  '0xd19a66'
-    blue:    '0x61afef'
-    magenta: '0xc678dd'
-    cyan:    '0x56b6c2'
-    white:   '0xabb2bf'
-
-  # Bright colors
-  bright:
-    black:   '0x5c6370'
-    red:     '0xe06c75'
-    green:   '0x98c379'
-    yellow:  '0xd19a66'
-    blue:    '0x61afef'
-    magenta: '0xc678dd'
-    cyan:    '0x56b6c2'
-    white:   '0xffffff'
+    black:      '0x717CB4'
+    red:        '0xF07178'
+    green:      '0xC3E88D'
+    yellow:     '0xFFCB6B'
+    blue:       '0x82AAFF'
+    magenta:    '0xFF9CAC'
+    cyan:       '0x89DDFF'
+    white:      '0xFFFFFF'

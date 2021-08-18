@@ -1,0 +1,15 @@
+#! /bin/sh
+pgrep -x sxhkd > /dev/null || sxhkd &
+xrdb merge ~/.Xresources &
+xsetroot -cursor_name left_ptr &
+picom &
+ feh --bg-fill .wallpaper.png
+polybar -c ~/.config/polybar/config topbar &
+bspc monitor -d 1 2 3 4 5
+bspc config top_padding 5
+bspc config border_width 0
+bspc config borderless_monocle true
+bspc config gapless_monocle true
+bspc config focus_follows_pointer true
+bspc config window_gap 1
+bspc config split_ratio 0.50

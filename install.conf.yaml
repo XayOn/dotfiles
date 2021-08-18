@@ -9,15 +9,18 @@
     - ~/.config/alacritty
     - ~/.config/gtk-3.0
     - ~/.config/sway
-    - ~/.config/i3
+    - ~/.config/polybar
 
 - link:
     ~/.config/nvim/init.lua: configs/neovim
-    ~/.config/waybar: configs/waybar
     ~/.config/zshrc: configs/zshrc
     ~/.config/sway/config: configs/swaywm
-    ~/.config/i3/config: configs/i3
     ~/.config/alacritty/alacritty.yml: configs/alacritty.yml
+    ~/.config/waybar: configs/waybar
+    ~/.config/polybar/config: configs/polybar
+    ~/.config/tmux.conf: configs/tmux
+    ~/.config/sxhkd/sxhkdrc: configs/sxhkd
+    ~/.config/bspwm/bspwmrc: configs/bspwmrc
     ~/.config/gtk-3.0/settings.ini: configs/gtk/gtkrc-3.0
     ~/.config/gtkrc-2.0: configs/gtk/gtkrc-2.0
     ~/.config/Xresources: configs/Xresources
@@ -29,6 +32,7 @@
     - otf-nerd-fonts-fira-code
     - alacritty 
     - waybar
+    - rofi
     - sway
     - lsd
     - zsh
@@ -42,6 +46,7 @@
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
+    - [git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm, "Installing TPM, apply inside tmux with ctrl+b I"]
     - [git clone https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim, "Installing packer.nvim"]
     - 
       command: git clone https://github.com/vinceliuice/WhiteSur-gtk-theme /tmp/whitesur && sh /tmp/whitesur/install.sh
