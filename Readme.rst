@@ -1,5 +1,3 @@
-.. image:: ./docs/logo.png
-
 Pretty, consistent configuration for neovim, zsh alacritty and sway/bspwm (wayland/xorg).
 Colors based on `material <https://material-theme.site/>`_, wallpaper on screenshots (you'll need to place it on .wallpaper.png on your home) from `Wallpapercave <https://wallpapercave.com/minimal-nature-wallpapers#>`_
 
