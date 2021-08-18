@@ -16,7 +16,11 @@ leveraging on that same tools.
 Arch :warning: It's been mostly tested on archlinux.
 Should work on any distro, but requirements must be manually installed.
 
-.. image:: ./docs/main.gif
+.. image:: ./docs/clean.png
+
+.. image:: ./docs/neovim.png
+
+.. image:: ./docs/tmux_ncmpcpp.png
 
 
 Global installation
