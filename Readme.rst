@@ -1,8 +1,7 @@
 .. image:: ./docs/logo.png
 
-PrettierTerminal was an **all-in-one installer** :tophat: for your terminal to
-become awesome. Now it's an pretty, consistent configuration for neovim, zsh
-alacritty and sway.
+Pretty, consistent configuration for neovim, zsh alacritty and sway/bspwm (wayland/xorg).
+Colors based on `material <https://material-theme.site/>`_, wallpaper on screenshots (you'll need to place it on .wallpaper.png on your home) from `Wallpapercave <https://wallpapercave.com/minimal-nature-wallpapers#>`_
 
 .. contents:: :local:
 
@@ -14,7 +13,8 @@ installers/solutions that do what prettierTerminal did, so I've kept the
 awesomeness :sunglasses: of the configuration, with a lot less code by
 leveraging on that same tools.
 
-Arch :warning: It's been mostly tested on archlinux. Should work on any distro 
+Arch :warning: It's been mostly tested on archlinux.
+Should work on any distro, but requirements must be manually installed.
 
 .. image:: ./docs/main.gif
 
@@ -30,14 +30,16 @@ least:
 - python
 - yay (on arch linux)
 
-If you want my complete configuration, you need to install:
+If you want the full experience, you need to install:
 
 - `nwg-launchers <https://github.com/nwg-piotr/nwg-launchers>`_
 - `alacritty <https://github.com/alacritty/alacritty/>`_
-- `waybar <https://github.com/Alexays/Waybar/>`_
+- `waybar <https://github.com/Alexays/Waybar/>`_ or `polybar <https://github.com/polybar/polybar>`_
+- sway or bspwm, with sxhkd
 - `mpvpaper <https://github.com/GhostNaN/mpvpaper>`_ (optional)
 - `Fira Code Font (patched by nerd fonts)
   <https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode>`_
+- lazygit
 - gtk-engine-murrine sassc optipng inkscape (gtk)
 
 On archlinux, prettierTerminal will install them for you
@@ -55,10 +57,6 @@ Or, the more traditional way
   git clone https://github.com/XayOn/prettierTerminal
   cd prettierTerminal
   bash install.sh
-
-Note that this WILL NOT install the `firefox whitesur theme
-<https://github.com/vinceliuice/WhiteSur-gtk-theme/tree/master/src/other/firefox>`_,
-that's up to you.
 
 If you're running prettierTerminal on a non-archlinux system, you need to pass
 the NOARCH variable or --exclude yay:
@@ -81,35 +79,19 @@ NeoVIM configuration
 
 .. image:: docs/neovim.png
 
-This is a kiss but fully featured neovim configuration, including:
+This is a kiss but fully featured neovim configuration, with IDE-like features preconfigured mainly for python development
 
-- Firefox integration
 - Tags and buffer bars
 - Fuzzy finder
+- Wichkey with preconfigured menus
+- Debugger with DAP
 - Treesitter-based syntax highlighting
+- LSP (requires pyright to be installed for python)
 - Git management
-- Show colors from your hex color codes
-- Auto-detect tabs or spaces
-- Database administration UIColor 
-- Editorconfig support
-- Custom galaxyline configuration based on spaceline.lua
+- Database administration UI
 
 NeoVim :warning: This requires a really recent version of `neovim
 <https://neovim.io/>`_ nightly.
-
-That's achieved with the following plugins:
-
-+--------------------------------------------------------------------+---------------------------------------------------------+---------------------------------------------------------------+
-| `vim-packager <https://github.com/kristijanhusak/vim-packager>`_   | `firenvim <https://github.com/glacambre/firenvim>`_     | `galaxyline <https://github.com/glepnir/galaxyline.nvim/>`_   |
-+--------------------------------------------------------------------+---------------------------------------------------------+---------------------------------------------------------------+
-| `barbar <https://github.com/romgrk/barbar.nvim>`_                  | `fzf <https://github.com/junegunn/fzf.vim>`_            | `fzf-preview <https://github.com/yuki-ycino/fzf-preview.vim>`_|
-+--------------------------------------------------------------------+---------------------------------------------------------+---------------------------------------------------------------+
-| `treesitter <https://github.com/nvim-treesitter/nvim-treesitter>`_ | `tender <https://github.com/jacoborus/tender.vim>`_     | `gina <https://github.com/lambdalisue/gina.vim>`_             |
-+--------------------------------------------------------------------+---------------------------------------------------------+---------------------------------------------------------------+
-| `signify <https://github.com/mhinz/vim-signify>`_                  |                                                         | `sleuth <https://github.com/tpope/vim-sleuth>`_               |
-+--------------------------------------------------------------------+---------------------------------------------------------+---------------------------------------------------------------+
-| `editorconfig <https://github.com/editorconfig/editorconfig-vim>`_ | `dadbod-ui <https://github.com/tpope/vim-dadbod>`_      | `dap <https://github.com/mfussenegger/nvim-dap-python>`_      |
-+--------------------------------------------------------------------+---------------------------------------------------------+---------------------------------------------------------------+
 
 Dependencies
 ____________
@@ -156,10 +138,6 @@ SwayWM configuration
 `Sway window manager <https://swaywm.org/>`_ is a tiling Wayland compositor and
 a drop-in replacement for i3. 
 
-On these screenshots I use `WhiteSur dark theme for GTK and firefox
-<https://github.com/vinceliuice/WhiteSur-gtk-theme>`_ with
-`mpvpaper <https://github.com/GhostNaN/mpvpaper>`_ for the animated
-backgrounds.
 
 Dependencies
 ____________
