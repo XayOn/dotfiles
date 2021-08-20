@@ -9,6 +9,9 @@
     - ~/.config/alacritty
     - ~/.config/sway
     - ~/.config/polybar
+    - ~/.config/dunst
+    - ~/.config/sxhkdrc
+    - ~/.config/bspwm
 
 - link:
     ~/.config/nvim/init.lua: configs/neovim
@@ -17,6 +20,7 @@
     ~/.config/alacritty/alacritty.yml: configs/alacritty.yml
     ~/.config/waybar: configs/waybar
     ~/.config/polybar/config: configs/polybar
+    ~/.config/dunst/dunstrc: config/dunstrc
     ~/.config/tmux.conf: configs/tmux
     ~/.config/sxhkd/sxhkdrc: configs/sxhkd
     ~/.config/rofi.rasi: configs/rofi.rasi
