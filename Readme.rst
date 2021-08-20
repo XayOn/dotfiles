@@ -38,13 +38,12 @@ If you want the full experience, you need to install:
 - `alacritty <https://github.com/alacritty/alacritty/>`_
 - `waybar <https://github.com/Alexays/Waybar/>`_ or `polybar <https://github.com/polybar/polybar>`_
 - sway or bspwm, with sxhkd
-- `mpvpaper <https://github.com/GhostNaN/mpvpaper>`_ (optional)
 - `Fira Code Font (patched by nerd fonts)
   <https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode>`_
 - lazygit
-- gtk-engine-murrine sassc optipng inkscape (gtk)
+- Materia gtk theme https://github.com/nana-4/materia-theme
 
-On archlinux, prettierTerminal will install them for you
+On archlinux, prettierTerminal will install everything
 
 You can install prettierTerminal with one single command:
 

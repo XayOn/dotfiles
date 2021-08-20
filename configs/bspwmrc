@@ -3,9 +3,9 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 xrdb merge ~/.Xresources &
 xsetroot -cursor_name left_ptr &
 picom &
- feh --bg-fill .wallpaper.png
+feh --bg-fill .wallpaper.png
 polybar -c ~/.config/polybar/config topbar &
-bspc monitor -d 1 2 3 4 5
+bspc monitor -d 1 2 3 4
 bspc config top_padding 5
 bspc config border_width 0
 bspc config borderless_monocle true
