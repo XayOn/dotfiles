@@ -1,4 +1,6 @@
 #! /bin/sh
+dunst &
+xfsettingsd &
 pgrep -x sxhkd > /dev/null || sxhkd &
 xrdb merge ~/.Xresources &
 xsetroot -cursor_name left_ptr &
