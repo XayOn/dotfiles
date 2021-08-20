@@ -13,6 +13,7 @@ leveraging on that same tools.
 
 Arch :warning: It's been mostly tested on archlinux.
 Should work on any distro, but requirements must be manually installed.
+It makes a great match with my `Moonlander config <https://configure.zsa.io/moonlander/layouts/xMmq0/latest/0>`_,
 
 .. image:: ./docs/clean.png
 
@@ -37,10 +38,10 @@ If you want the full experience, you need to install:
 - `nwg-launchers <https://github.com/nwg-piotr/nwg-launchers>`_
 - `alacritty <https://github.com/alacritty/alacritty/>`_
 - `waybar <https://github.com/Alexays/Waybar/>`_ or `polybar <https://github.com/polybar/polybar>`_
-- sway or bspwm, with sxhkd
+- sway or bspwm with sxhkd and polybar
 - `Fira Code Font (patched by nerd fonts)
   <https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode>`_
-- lazygit
+- lazygit, node with pyright
 - Materia gtk theme https://github.com/nana-4/materia-theme
 
 On archlinux, prettierTerminal will install everything
@@ -97,8 +98,8 @@ NeoVim :warning: This requires a really recent version of `neovim
 Dependencies
 ____________
 
-To use python debugger (dap) you'll need to have python3, and to install coc,
-you'll need to have nodejs. 
+To use python debugger (dap) you'll need to have python3, for pyright you'll
+need nodejs
 On archlinux, prettierTerminal will install them for you
 
 ZSH Configuration
