@@ -28,3 +28,5 @@ super + x
 super + Tab
 	bspc desktop -l next
 
+super + l
+	i3lock-fancy --pixelate

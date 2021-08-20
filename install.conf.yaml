@@ -42,6 +42,7 @@
     - sxhkd
     - polybar
     - materia-gtk-theme
+    - i3lock-fancy-git
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
