@@ -1,11 +1,24 @@
 Pretty, consistent configuration for neovim, zsh alacritty and bspwm.
 
-Its bases are:
+Features
+--------
 
-- Keyboard centric
-- Minimalistic (as much as it can be). Four main colors (fg, bg, warning, error)
-- Config files should not be bloated (this includes documentation)
-- Colors based on `material <https://material-theme.site/>`_
+- Four workspaces. No need for more 👍
+- Minimalistic config files. Not overriding defaults or copying example files
+  whenever possible
+- Mostly distraction-free. Minimal info in the bar
+- Terminal-centric, keyboard-centric
+
+- `Material <https://material-theme.site/>`_ based colors almost everywhere. 
+  OC alacritty (partial) port, polybar, bspwm and rofi.
+  Wherever not possible, "dark material" colours are used (materia-dark for
+  gtk, altough no GTK app is being shown)
+
+- Modern NeoVIM config with all the new stuff (treesitter, dap, lsp...)
+  - Custom which-key menu
+  - Mostly python-oriented configurations
+  - Lua configuration from scratch
+- ZSH configuration with the same filosophy
 
 Wallpaper on screenshots (you'll need to place it on .wallpaper.png on your
 home) is from `Wallpapercave <https://wallpapercave.com/minimal-nature-wallpapers#>`_
@@ -140,7 +153,7 @@ BSPWM is a lightweight tiling window manager
 Keybindings are defined in sxhkdrc
 
 Dependencies
-____________
+_____________
 
 To use this bspwm configuration, you'd need:
 
@@ -150,3 +163,20 @@ To use this bspwm configuration, you'd need:
 - polybar
 - i3lock-fancy
 - materia-gtk-theme
+
+
+The hardware
+-------------
+
+If you have a moonlander ⌨️, I'm using some features (tap dance, layers...) to
+use bspwm without having to press two keys at the same time. Pretty much like
+vim's leader key. I've linked my moonlander configuration on the repository
+
+Extra
+-----
+
+I'm using mautrix-* + gomuks as my main communications platform, khal to manage
+my nextcloud calendars, and neovim with neorg for my todo lists, wich covers
+all my basic needs.
+
+Works well with less than 1gb ram (if you don't use firefox/chrome, that is)
