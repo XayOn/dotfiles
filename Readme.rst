@@ -8,9 +8,9 @@ Its bases are:
 - Colors based on `material <https://material-theme.site/>`_
 
 Wallpaper on screenshots (you'll need to place it on .wallpaper.png on your
-home) is from `Wallpapercave
-<https://wallpapercave.com/minimal-nature-wallpapers#>`_
-Font is fira code patched.
+home) is from `Wallpapercave <https://wallpapercave.com/minimal-nature-wallpapers#>`_
+
+Works well with `my moonlander configuration <https://configure.zsa.io/moonlander/layouts/xMmq0/latest/0>`_
 
 .. contents:: :local:
 
