@@ -60,10 +60,10 @@ Or, the more traditional way
 
 
 Manual dependencies installation
+
 - neovim nightly
-- `alacritty <https://github.com/alacritty/alacritty/>`_
-- `Fira Code Font (patched by nerd fonts)
-  <https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode>`_
+- `alacritty <https://github.com/alacritty/alacritty/>`
+- `Fira Code Font (patched by nerd fonts) <https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode>`_
 - lazygit, node, pyright, lsd, zsh
 - Materia gtk theme https://github.com/nana-4/materia-theme
 
@@ -86,8 +86,7 @@ preconfigured, mainly for python development
     - Debugger with DAP
     - LSP (requires pyright to be installed for python)
 
-:warning: This requires a really recent version of `neovim
-<https://neovim.io/>`_ nightly.
+:warning: This requires a really recent version of `neovim <https://neovim.io/>`_ nightly.
 
 Press leader (,) to see a nice menu with the leader-prefixed keybindings.
 Default vim keybindings will work as usuarl
@@ -149,5 +148,3 @@ To use this bspwm configuration, you'd need:
 - polybar
 - i3lock-fancy
 - materia-gtk-theme
-
-
