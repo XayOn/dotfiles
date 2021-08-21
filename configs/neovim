@@ -40,8 +40,8 @@ function getPythonPath()
     local has_poetry_installed = vim.fn.executable('poetry')
     local has_pipenv_installed = vim.fn.executable('pipenv')
 
-    local pyproject = util.root_pattern("pyproject.toml")(cwd) 
-    local pipfile = util.root_pattern("Pipfile")(cwd) 
+    local pyproject = util.root_pattern("pyproject.toml")(cwd)
+    local pipfile = util.root_pattern("Pipfile")(cwd)
 
     if (has_poetry_installed == 1 and pyproject) then
         return 'poetry run python'
@@ -70,52 +70,82 @@ return require('packer').startup(function()
 
   -- Modern orgmode alternative
   use {
-    'vhyrro/neorg', 
-    config = function()
-        require('neorg').setup {
-            load = {
-                ["core.defaults"] = {}, 
-                ["core.norg.concealer"] = {},
-                ["core.keybinds"] = { 
-                    config = {
-                      default_keybinds = true
+      "vhyrro/neorg",
+      config = function()
+          require('neorg').setup {
+              load = {
+                  ["core.defaults"] = {},
+                  ["core.norg.concealer"] = {},
+                  ["core.highlights"] = {},
+                  ["core.keybinds"] = {
+                    config={
+                      default_keybindings=true
                     }
-                },
-                ["core.norg.dirman"] = {
-                    config = {
-                        workspaces = {
-                            my_workspace = "~/nextcloud/documents"
-                        }
-                    }
-                }
-            },
-        }
-    end}
-
+                  },
+                  ["core.norg.dirman"] = {
+                      config = {
+                          workspaces = {
+                              nextcloud = "~/nextcloud/documents"
+                          }
+                      }
+                  }
+              },
+          }
+      end,
+      requires = "nvim-lua/plenary.nvim"
+  }
   use {
     'nvim-telescope/telescope.nvim',
     requires = {'nvim-lua/plenary.nvim'},
     config = function() require("telescope").setup {} end
   }
 
+  -- Treesitter
+  use {
+      'nvim-treesitter/nvim-treesitter',
+      run = ':TSUpdate',
+      requires={'p00f/nvim-ts-rainbow'},
+      config = function()
+        require'nvim-treesitter.configs'.setup {
+          ensure_installed = "all",
+          rainbow = { enable = true, extended_mode = true }
+        }
+      end
+  }
+
+  use {
+    'karb94/neoscroll.nvim',
+    config=function()
+      require('neoscroll').setup({
+        mappings={
+          '^[[5~', '^[[6~', '<C-b>', '<C-f>', '<C-y>', '<C-e>', 'zt', 'zz', 'zb'
+        }
+      })
+    end
+  }
+
   -- LSP-based utilities.
   use {
-    'glepnir/lspsaga.nvim', 
+    'glepnir/lspsaga.nvim',
     config = function()
       require('lspsaga').init_lsp_saga{}
     end}
-  use 'RRethy/vim-illuminate'
   use {
     'creativenull/diagnosticls-configs-nvim',
     requires = { 'neovim/nvim-lspconfig' },
-    config = function() 
-    require 'diagnosticls-configs'.init {default_config = true} 
+    config = function()
+    require 'diagnosticls-configs'.init {default_config = true}
     require 'diagnosticls-configs'.setup {}
     end
   }
   use {
-    'neovim/nvim-lspconfig', 
-    requires={'onsails/lspkind-nvim', 'nvim-lua/completion-nvim', 'ray-x/lsp_signature.nvim', 'RRethy/vim-illuminate'}, 
+    'neovim/nvim-lspconfig',
+    requires={
+      'onsails/lspkind-nvim', 
+      'nvim-lua/completion-nvim', 
+      'ray-x/lsp_signature.nvim', 
+      'RRethy/vim-illuminate'
+    },
     config = function()
       local util = require("lspconfig/util")
       require'lspconfig'.pyright.setup{
@@ -135,7 +165,7 @@ return require('packer').startup(function()
 
   -- Git utilities
   use {
-    'ttys3/nvim-blamer.lua', 
+    'ttys3/nvim-blamer.lua',
     config=function()
       require'nvim-blamer'.setup({
           enable = true,
@@ -147,13 +177,13 @@ return require('packer').startup(function()
 
   -- Database UI
   use {
-    'kristijanhusak/vim-dadbod-ui', 
+    'kristijanhusak/vim-dadbod-ui',
     requires = {'tpope/vim-dadbod', 'kristijanhusak/vim-dadbod-completion'}
   }
- 
- -- Debugger 
+
+ -- Debugger
  use {
-    'mfussenegger/nvim-dap-python', 
+    'mfussenegger/nvim-dap-python',
       requires = {'mfussenegger/nvim-dap', 'Pocco81/DAPInstall.nvim', 'thehamsta/nvim-dap-virtual-text', 'rcarriga/nvim-dap-ui', "pocco81/dapinstall.nvim"},
       config = function()
           function exists(file)
@@ -194,7 +224,7 @@ return require('packer').startup(function()
                  request = "launch",
                  name = "Launch current file",
                  program = function()
-                   return vim.fn.expand("%:p") 
+                   return vim.fn.expand("%:p")
                  end,
                  pythonpath = getPythonPath
               },
@@ -203,7 +233,7 @@ return require('packer').startup(function()
                 request = "launch",
                 name = "Launch custom file",
                 program = function()
-                  return vim.fn.input("File name ["..vim.fn.expand('%:p').."] :") or vim.fn.expand("%:p") 
+                  return vim.fn.input("File name ["..vim.fn.expand('%:p').."] :") or vim.fn.expand("%:p")
                 end,
                 pythonpath = getPythonPath
               }
@@ -218,19 +248,20 @@ return require('packer').startup(function()
 
   -- Goodies
   use {
-    "lukas-reineke/indent-blankline.nvim", 
+    "lukas-reineke/indent-blankline.nvim",
     config=function()
       require("indent_blankline").setup { char = "|", filetype_exclude = {"dashboard"}, buftype_exclude = {"terminal", "dashboard"} }
   end}
-  -- Interface 
+
+  -- Interface
   use {'marko-cerovac/material.nvim', config=function() require('material').set() end}
   use {
     'hoob3rt/lualine.nvim',
     requires = {'yamatsum/nvim-nonicons', 'kyazdani42/nvim-web-devicons', opt = true},
     config = function() require'lualine'.setup { options={theme="material"}} end
   }
-  use {'akinsho/nvim-bufferline.lua', 
-    config=function() 
+  use {'akinsho/nvim-bufferline.lua',
+    config=function()
       require("bufferline").setup{options={
         diagnostics="nvim_lsp",
     numbers = "ordinal",
@@ -239,7 +270,7 @@ return require('packer').startup(function()
         return false
       end
           if ( vim.bo[buf_number].buftype == 'terminal') then
-        return false 
+        return false
       end
       return true
         end,
@@ -249,7 +280,7 @@ return require('packer').startup(function()
   }
 
   use { 'simrat39/symbols-outline.nvim' }
- 
+
   use {
     'kyazdani42/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons'
@@ -273,16 +304,16 @@ return require('packer').startup(function()
       wk.setup {
             plugins = {
                 marks = true,
-                registers = true, 
+                registers = true,
                 spelling = { enabled=true },
                 presets = {
-                    operators = true, 
+                    operators = true,
                     motions = true,
-                    text_objects = true, 
-                    windows = true, 
-                    nav = true, 
-                    z = true, 
-                    g = true 
+                    text_objects = true,
+                    windows = true,
+                    nav = true,
+                    z = true,
+                    g = true
                 }
             },
       }
@@ -322,7 +353,7 @@ return require('packer').startup(function()
         m = { require('lspsaga.rename').rename, "Rename" },
         s = { require('lspsaga.signaturehelp').signature_help, "Show signature"},
         w = {"<cmd>LspTroubleToggle lsp_workspace_diagnostics<cr>", "Workspace diagnostics" },
-	v = {"<cmd>SymbolsOutline", "Toggle symbols window" },
+        v = {"<cmd>SymbolsOutline", "Toggle symbols window" },
       },
       d = {
         name = "Debug",
