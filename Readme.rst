@@ -28,6 +28,8 @@ Here goes clean, neovim and tmux:
 
 .. image:: ./docs/tmux_ncmpcpp.png
 
+.. image:: ./docs/dunst.png
+
 
 Mandatory gif too:
 

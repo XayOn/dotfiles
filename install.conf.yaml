@@ -37,6 +37,8 @@
         - polybar
         - i3lock-fancy
         - materia-gtk-theme
+        - feh
+        - picom
 
 - yay:
     - neovim-nightly
@@ -53,6 +55,8 @@
     - polybar
     - i3lock-fancy-git
     - materia-gtk-theme
+    - picom
+    - feh
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
