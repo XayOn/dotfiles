@@ -296,6 +296,7 @@ return require('packer').startup(function()
       require('mkdir')
     end
   }
+  use 'dstein64/nvim-scrollview'
 
   use {
     "folke/which-key.nvim",
@@ -345,15 +346,16 @@ return require('packer').startup(function()
       },
       l = {
         name = "Development (LSP)",
+	c = { vim.lsp.buf.formatting, "Format"},
         a = { require('lspsaga.codeaction').code_action, "Actions" },
-        d = { vim.lsp.buf.definition, "Go to definition" },
         d = {"<cmd>LspTroubleToggle lsp_document_diagnostics<cr>", "File diagnostics" },
         f = { require'lspsaga.provider'.lsp_finder, "Find usages" },
+        g = { vim.lsp.buf.definition, "Go to definition" },
         h = { require('lspsaga.hover').render_hover_doc, "Show doc" },
         m = { require('lspsaga.rename').rename, "Rename" },
         s = { require('lspsaga.signaturehelp').signature_help, "Show signature"},
+        v = {"<cmd>SymbolsOutline<cr>", "Toggle symbols window" },
         w = {"<cmd>LspTroubleToggle lsp_workspace_diagnostics<cr>", "Workspace diagnostics" },
-        v = {"<cmd>SymbolsOutline", "Toggle symbols window" },
       },
       d = {
         name = "Debug",
