@@ -113,19 +113,25 @@ return require('packer').startup(function()
     require 'diagnosticls-configs'.setup {}
     end
   }
-  use {'neovim/nvim-lspconfig', requires={'nvim-lua/completion-nvim'}, config = function()
-    local util = require("lspconfig/util")
-    require'lspconfig'.pyright.setup{
-      on_attach = function(client)
-        require'completion'.on_attach(client)
-        require 'illuminate'.on_attach(client)
-      end,
-      root_dir = function(fname)
-        return util.root_pattern(".git", "setup.py",  "setup.cfg", "pyproject.toml", "requirements.txt")(fname) or util.path.dirname(fname)
-      end;
-    }
-    vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
-  end}
+  use {
+    'neovim/nvim-lspconfig', 
+    requires={'onsails/lspkind-nvim', 'nvim-lua/completion-nvim', 'ray-x/lsp_signature.nvim', 'RRethy/vim-illuminate'}, 
+    config = function()
+      local util = require("lspconfig/util")
+      require'lspconfig'.pyright.setup{
+        on_attach = function(client)
+          require'completion'.on_attach(client)
+          require 'illuminate'.on_attach(client)
+          require "lsp_signature".on_attach()
+        end,
+        root_dir = function(fname)
+          return util.root_pattern(".git", "setup.py",  "setup.cfg", "pyproject.toml", "requirements.txt")(fname) or util.path.dirname(fname)
+        end;
+      }
+      require('lspkind').init({})
+      vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
+    end
+  }
 
   -- Git utilities
   use {
@@ -241,6 +247,9 @@ return require('packer').startup(function()
      }}
      end
   }
+
+  use { 'simrat39/symbols-outline.nvim' }
+ 
   use {
     'kyazdani42/nvim-tree.lua',
     requires = 'kyazdani42/nvim-web-devicons'
@@ -249,6 +258,12 @@ return require('packer').startup(function()
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
     config = function() require("trouble").setup {} end
+  }
+  use {
+    'jghauser/mkdir.nvim',
+    config = function()
+      require('mkdir')
+    end
   }
 
   use {
@@ -307,6 +322,7 @@ return require('packer').startup(function()
         m = { require('lspsaga.rename').rename, "Rename" },
         s = { require('lspsaga.signaturehelp').signature_help, "Show signature"},
         w = {"<cmd>LspTroubleToggle lsp_workspace_diagnostics<cr>", "Workspace diagnostics" },
+	v = {"<cmd>SymbolsOutline", "Toggle symbols window" },
       },
       d = {
         name = "Debug",
