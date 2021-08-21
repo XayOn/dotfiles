@@ -7,7 +7,6 @@
 - create:
     - ~/.config/nvim
     - ~/.config/alacritty
-    - ~/.config/sway
     - ~/.config/polybar
     - ~/.config/dunst
     - ~/.config/sxhkdrc
@@ -16,9 +15,7 @@
 - link:
     ~/.config/nvim/init.lua: configs/neovim
     ~/.config/zshrc: configs/zshrc
-    ~/.config/sway/config: configs/swaywm
     ~/.config/alacritty/alacritty.yml: configs/alacritty.yml
-    ~/.config/waybar: configs/waybar
     ~/.config/polybar/config: configs/polybar
     ~/.config/dunst/dunstrc: config/dunstrc
     ~/.config/tmux.conf: configs/tmux
@@ -27,30 +24,39 @@
     ~/.config/bspwm/bspwmrc: configs/bspwmrc
     ~/.config/Xresources: configs/Xresources
 
+- sudo:
+    - apt:
+        - rofi
+        - lsd-musl
+        - zsh
+        - nodejs
+        - python
+        - xfce4-settings
+        - bspwm
+        - sxhkd
+        - polybar
+        - i3lock-fancy
+        - materia-gtk-theme
+
 - yay:
-    - nwg-launchers
     - neovim-nightly
     - otf-nerd-fonts-fira-code
     - alacritty 
-    - waybar
     - rofi
-    - sway
     - lsd
     - zsh
     - nodejs
     - python
-    - xfce
-    - flatpak
     - xfce4-settings
     - bspwm
     - sxhkd
     - polybar
-    - materia-gtk-theme
     - i3lock-fancy-git
+    - materia-gtk-theme
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    - [git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm, "Installing TPM, apply inside tmux with ctrl+b I"]
+    - [git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm, "Installing TPM"]
     - [git clone https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim, "Installing packer.nvim"]
     - 
       command: xfconf-query -c xsettings -p /Net/ThemeName -s Materia-dark
@@ -58,15 +64,10 @@
     - 
       command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)" && echo "source ~/.config/zshrc" >> ~/.zshrc
       description: Installing and setting up zinit
+    - [pip install pyright, Installing pyright]
     - 
       command: sh -c "nvim +PackerSync +qa"
       descrption: Installing neovim plugins
       stderr: true
       stdout: true
-      stdin: true
-    - 
-      command: zsh
-      description: Entering zsh, press ctrl+d when finished
-      stdout: true
-      stderr: true
       stdin: true
