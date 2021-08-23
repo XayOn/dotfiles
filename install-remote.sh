@@ -1,12 +1,12 @@
 #!/bin/sh
 
-if [ -e ~/.prettierTerminal ]; then
-    cd ~/.prettierTerminal; 
+if [ -e ~/.dotfiles ]; then
+    cd ~/.dotfiles; 
     git pull;
 else
-    git clone https://github.com/XayOn/prettierTerminal/ ~/.prettierTerminal
+    git clone https://github.com/XayOn/dotfiles/ ~/.dotfiles
 fi
 
 # Install script
-cd ~/.prettierTerminal
+cd ~/.dotfiles
 sh install.sh
