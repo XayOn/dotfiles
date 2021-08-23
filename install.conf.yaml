@@ -19,7 +19,7 @@
     ~/.config/polybar/config: configs/polybar
     ~/.config/dunst/dunstrc: configs/dunstrc
     ~/.tmux.conf: configs/tmux
-    ~/.config/sxhkd/sxhkdrc: configs/sxhkd
+    ~/.config/sxhkd/sxhkdrc: configs/sxhkdrc
     ~/.config/rofi.rasi: configs/rofi.rasi
     ~/.config/bspwm/bspwmrc: configs/bspwmrc
     ~/.config/Xresources: configs/Xresources
