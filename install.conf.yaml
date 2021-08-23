@@ -17,7 +17,7 @@
     ~/.config/zshrc: configs/zshrc
     ~/.config/alacritty/alacritty.yml: configs/alacritty.yml
     ~/.config/polybar/config: configs/polybar
-    ~/.config/dunst/dunstrc: config/dunstrc
+    ~/.config/dunst/dunstrc: configs/dunstrc
     ~/.tmux.conf: configs/tmux
     ~/.config/sxhkd/sxhkdrc: configs/sxhkd
     ~/.config/rofi.rasi: configs/rofi.rasi
