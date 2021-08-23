@@ -52,6 +52,12 @@ Mandatory gif too:
 Global installation
 -------------------
 
+Tested on:
+
+ - Debian testing
+ - Ubuntu 20.04
+ - ArchLinux
+
 Uses DotBot to install, should work on any system with:
 
 - git
